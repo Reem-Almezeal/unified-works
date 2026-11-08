@@ -122,9 +122,7 @@
   box-shadow: 0 12px 28px #0002;
 }
 
-/* ========================================
-   HERO / ARCHITECTURAL CITY CUTAWAY
-======================================== */
+
 
 .hero {
   position: relative;
@@ -458,9 +456,7 @@
   box-shadow: 0 0 10px #68d9a3;
 }
 
-/* ========================================
-   BEFORE / AFTER INTERACTIVE COMPARISON
-======================================== */
+
 
 .comparison {
   border: 1px solid var(--line);
@@ -589,7 +585,7 @@
   background: #251b1566;
 }
 
-/* Pipes only exist in the revealed layer */
+
 
 .afterLayer {
   position: absolute;
@@ -823,9 +819,7 @@
   font: 900 22px sans-serif;
 }
 
-/* ========================================
-   STAKEHOLDER EXPERIENCE
-======================================== */
+
 
 .roleExperience {
   border: 1px solid var(--line);
@@ -951,7 +945,7 @@
   font-weight: 700;
 }
 
-/* Network map */
+
 
 .network {
   display: flex;
@@ -1102,9 +1096,7 @@
 .goldDot { background: #f0c775; }
 .orangeDot { background: #ff9757; }
 
-/* ========================================
-   EXPECTED IMPACT / RESEARCH
-======================================== */
+
 
 .outcomesGrid,
 .statsGrid {
@@ -1210,9 +1202,7 @@
 
 .statFoot svg { color: var(--mint); }
 
-/* ========================================
-   CITY MEMORY
-======================================== */
+
 
 .futureLayout {
   display: grid;
@@ -1329,9 +1319,7 @@
   color: #68d9a3;
 }
 
-/* ========================================
-   FINAL CTA
-======================================== */
+
 
 .ctaSection { padding: 0 0 110px; }
 
@@ -1347,9 +1335,7 @@
 .cta h2 { margin: 25px 0; }
 .cta > p { margin-bottom: 27px; }
 
-/* ========================================
-   LIGHT THEME
-======================================== */
+
 
 :global([data-theme="light"]) .page,
 .page:global([data-theme="light"]) {
@@ -1406,9 +1392,7 @@
   background: linear-gradient(120deg,#fff,#e4eee5);
 }
 
-/* ========================================
-   ANIMATIONS
-======================================== */
+
 
 @keyframes scanAcross {
   from { left: 10%; }
@@ -1426,9 +1410,7 @@
   }
 }
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+
 
 @media (max-width: 1100px) {
   .hero .container { gap: 24px; }

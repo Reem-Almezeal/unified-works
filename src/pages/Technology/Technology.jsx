@@ -1,5 +1,4 @@
-
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
@@ -38,26 +37,26 @@ const content = {
   ar: {
     eyebrow: 'UNIFIED WORKS / INTELLIGENCE LAB',
     heroSmall: 'التقنية وراء القرار',
-    heroTitle: 'الذكاء لا يكتفي',
-    heroAccent: 'برؤية الصورة.',
-    heroEnd: 'بل يتعلّم منها.',
+    heroTitle: 'فحص ذكي',
+    heroAccent: 'للأعمال الميدانية',
+    heroEnd: '',
     heroDesc:
-      'كيف نتحقق من أعمال الحفر قبل أن تختفي تحت الأرض؟ باستخدام صور ميدانية مرتبطة بالموقع، ومكتبة مرجعية تتطور بقرارات المشرفين، يمكن تحويل الصورة إلى دليل قابل للمراجعة.',
+      'كيف نتحقق من أعمال الحفر قبل أن تختفي تحت الأرض؟ باستخدام صور ميدانية مرتبطة بالموقع، ومكتبة مرجعية تتطور بقرارات المشرفين، يمكن تحويل الصورة إلى دليل قابل للمراجعة',
     tryLab: 'جرّب المختبر',
     seeResults: 'نتائج التجربة',
     heroNote: 'FIELD PHOTO → AI CHECK → HUMAN REVIEW → SHARED RECORD',
 
     labEyebrow: '01 / INTERACTIVE AI LAB',
-    labTitle: 'صورة واحدة.',
-    labAccent: 'ثلاثة قرارات محتملة.',
+    labTitle: 'اختبر فحص',
+    labAccent: 'الصور الميدانية',
     labDesc:
-      'اختر حالة مختلفة ثم شغّل الفحص لتكتشف كيف يمكن أن يتعامل النظام مع صور الأعمال الميدانية.',
+      'اختر حالة مختلفة ثم شغّل الفحص لتكتشف كيف يمكن أن يتعامل النظام مع صور الأعمال الميدانية',
     demo: 'محاكاة توضيحية',
     selectCase: 'اختر سيناريو الاختبار',
     analyze: 'ابدأ فحص الصورة',
     again: 'إعادة الفحص',
     waiting: 'بانتظار تشغيل الفحص',
-    processing: 'مقارنة الصورة بالمكتبة المرجعية...',
+    processing: 'جارٍ مقارنة الصورة بالمكتبة المرجعية',
     completed: 'اكتمل الفحص التوضيحي',
     imageTitle: 'FIELD EVIDENCE / UW-1042',
     imageNote: 'مشهد توضيحي قابل للاستبدال بصورة ميدانية',
@@ -66,12 +65,12 @@ const content = {
     matching: 'VISUAL MATCHING',
     decision: 'DECISION ENGINE',
     analysisTitle: 'تقرير الفحص',
-    analysisIdle: 'شغّل الفحص لعرض نتيجة الحالة المختارة.',
+    analysisIdle: 'شغّل الفحص لعرض نتيجة الحالة المختارة',
     comparison: 'مقارنة بالصور المعتمدة',
     policy: 'قرار سير العمل',
     nextAction: 'الإجراء التالي',
-    disclaimer: 'هذه محاكاة للمنطق المقترح وليست تشغيلًا لنموذج AI فعلي.',
-    confidenceNote: 'لا تُعرض نسبة ثقة مصطنعة؛ القرار هنا توضيحي.',
+    disclaimer: 'هذه محاكاة للمنطق المقترح وليست تشغيلًا لنموذج AI فعلي',
+    confidenceNote: 'لا تُعرض نسبة ثقة مصطنعة؛ القرار هنا توضيحي',
     cases: [
       {
         id: 'match',
@@ -80,9 +79,9 @@ const content = {
         caption: 'صورة عمل مطابقة لمرجع معتمد',
         result: 'مؤهلة للقبول الآلي',
         resultText:
-          'الصورة متوافقة مع مرجع معتمد ضمن شروط الفحص المصممة. يمكن قبولها آليًا إذا استوفت بقية قواعد العمل.',
-        policyText: 'يمكن تطبيق قاعدة القبول الآلي عند تحقق الشروط.',
-        action: 'توثيق النتيجة وربطها بسجل المشروع.',
+          'الصورة متوافقة مع مرجع معتمد ضمن شروط الفحص المصممة يمكن قبولها آليًا إذا استوفت بقية قواعد العمل',
+        policyText: 'يمكن تطبيق قاعدة القبول الآلي عند تحقق الشروط',
+        action: 'توثيق النتيجة وربطها بسجل المشروع',
         status: 'success',
         matchText: 'تطابق مرئي واضح',
       },
@@ -93,10 +92,10 @@ const content = {
         caption: 'اختلافات بصرية تحتاج إلى قرار بشري',
         result: 'لن يُطبّق القبول الآلي',
         resultText:
-          'المقارنة لم تقدّم تطابقًا كافيًا. لن يتم اعتماد الصورة تلقائيًا، وتُحال إلى المشرف للتحقق.',
-        policyText: 'إيقاف القبول الآلي وإحالة الحالة للمشرف.',
+          'المقارنة لم تقدّم تطابقًا كافيًا لن يتم اعتماد الصورة تلقائيًا، وتُحال إلى المشرف للتحقق',
+        policyText: 'إيقاف القبول الآلي وإحالة الحالة للمشرف',
         action:
-          'يراجع المشرف الصورة، ويمكن إضافة الصورة المعتمدة إلى المكتبة المرجعية.',
+          'يراجع المشرف الصورة، ويمكن إضافة الصورة المعتمدة إلى المكتبة المرجعية',
         status: 'warning',
         matchText: 'تطابق غير حاسم',
       },
@@ -107,39 +106,39 @@ const content = {
         caption: 'صورة لا تستوفي متطلبات التحقق',
         result: 'لن تُقبل الصورة',
         resultText:
-          'الصورة غير مناسبة كدليل معتمد في هذا السيناريو. تُرفض ولا تُضاف إلى المكتبة المرجعية.',
-        policyText: 'عدم تطبيق قاعدة الاعتماد.',
-        action: 'طلب صورة صحيحة وإعادة التحقق.',
+          'الصورة غير مناسبة كدليل معتمد في هذا السيناريو تُرفض ولا تُضاف إلى المكتبة المرجعية',
+        policyText: 'عدم تطبيق قاعدة الاعتماد',
+        action: 'طلب صورة صحيحة وإعادة التحقق',
         status: 'danger',
         matchText: 'لا يوجد تطابق مقبول',
       },
     ],
 
     methodEyebrow: '02 / HUMAN-IN-THE-LOOP',
-    methodTitle: 'المشرف لا يصحّح النتيجة فقط.',
-    methodAccent: 'بل يساهم في تحسين النظام.',
+    methodTitle: 'التعلم من',
+    methodAccent: 'قرارات المشرف',
     methodDesc:
-      'الفكرة الابتكارية في المشروع هي الاستفادة من قرارات المشرفين لتوسيع مكتبة الصور المرجعية المعتمدة، بدل الاعتماد على نموذج ثابت لا يتطور.',
+      'الفكرة الابتكارية في المشروع هي الاستفادة من قرارات المشرفين لتوسيع مكتبة الصور المرجعية المعتمدة، بدل الاعتماد على نموذج ثابت لا يتطور',
     cycle: [
       {
         title: 'تصوير الموقع',
-        desc: 'يلتقط المقاول صورة للعمل الميداني مع معلومات المكان والوقت.',
+        desc: 'يلتقط المقاول صورة للعمل الميداني مع معلومات المكان والوقت',
       },
       {
         title: 'المقارنة الذكية',
-        desc: 'تُقارن الصورة بالصور الموجودة في المكتبة المرجعية المعتمدة.',
+        desc: 'تُقارن الصورة بالصور الموجودة في المكتبة المرجعية المعتمدة',
       },
       {
         title: 'اتخاذ القرار',
-        desc: 'تطابق واضح يُقبل وفق الشروط، أو حالة غير مؤكدة تُحال للمشرف.',
+        desc: 'تطابق واضح يُقبل وفق الشروط، أو حالة غير مؤكدة تُحال للمشرف',
       },
       {
         title: 'المراجعة البشرية',
-        desc: 'يقرر المشرف اعتماد الصورة أو رفضها بعد التحقق.',
+        desc: 'يقرر المشرف اعتماد الصورة أو رفضها بعد التحقق',
       },
       {
         title: 'توسيع المكتبة',
-        desc: 'تُضاف الصور المعتمدة إلى المراجع لتفيد في الفحوص اللاحقة.',
+        desc: 'تُضاف الصور المعتمدة إلى المراجع لتفيد في الفحوص اللاحقة',
       },
     ],
     approved: 'صورة معتمدة',
@@ -147,53 +146,53 @@ const content = {
     notApproved: 'صورة مرفوضة',
     excluded: 'لا تدخل المكتبة المرجعية',
     loopNote:
-      'إضافة الصور إلى المكتبة المرجعية ليست بالضرورة إعادة تدريب تلقائية لأوزان النموذج.',
+      'إضافة الصور إلى المكتبة المرجعية ليست بالضرورة إعادة تدريب تلقائية لأوزان النموذج',
 
     resultsEyebrow: '03 / EXPERIMENTAL EVIDENCE',
-    resultsTitle: 'الابتكار مدعوم',
-    resultsAccent: 'بتجربة فعلية.',
+    resultsTitle: 'دقة الفحص',
+    resultsAccent: 'بالأرقام',
     resultsDesc:
-      'هذه أرقام التجربة البحثية المذكورة في بروشور المشروع، وليست إحصاءات تشغيلية لمنصة منشورة.',
+      'هذه أرقام التجربة البحثية المذكورة في بروشور المشروع، وليست إحصاءات تشغيلية لمنصة منشورة',
     stats: [
       {
         value: '148',
         unit: '',
         label: 'صورة ميدانية حقيقية',
-        desc: 'استخدمت ضمن مجموعة الاختبار الأولية.',
+        desc: 'استخدمت ضمن مجموعة الاختبار الأولية',
       },
       {
         value: '99.5',
         unit: '%',
         label: 'دقة التعرف بعد 10 موافقات',
-        desc: 'النتيجة المذكورة للتجربة البحثية.',
+        desc: 'النتيجة المذكورة للتجربة البحثية',
       },
       {
         value: '44/45',
         unit: '',
         label: 'صور كابلات تم التعرف عليها',
-        desc: 'بحسب النتائج الواردة في البروشور.',
+        desc: 'بحسب النتائج الواردة في البروشور',
       },
       {
         value: '0',
         unit: '',
         label: 'قبول آلي خاطئ',
-        desc: 'ضمن الاختبار الموصوف في البروشور.',
+        desc: 'ضمن الاختبار الموصوف في البروشور',
       },
     ],
     growthTitle: 'كيف تحسنت النتائج؟',
     growthDesc:
-      'مقارنة توضيحية لنتائج التعرف المذكورة في البروشور عند زيادة الصور المعتمدة.',
+      'مقارنة توضيحية لنتائج التعرف المذكورة في البروشور عند زيادة الصور المعتمدة',
     chartLegend: 'دقة التعرف',
     chartLabels: ['البداية', '5 موافقات', '10 موافقات', '20 موافقة'],
     chartValues: [79.4, 96.8, 99.5, 99.9],
     resultsNote:
-      'الأرقام مرتبطة بعينة اختبار محددة. يلزم اختبار مواقع وظروف وصور إضافية قبل تعميم النتائج.',
+      'الأرقام مرتبطة بعينة اختبار محددة يلزم اختبار مواقع وظروف وصور إضافية قبل تعميم النتائج',
 
     geoEyebrow: '04 / BEYOND THE PHOTO',
-    geoTitle: 'الصورة تثبت العمل.',
-    geoAccent: 'والخريطة تحفظ أثره.',
+    geoTitle: 'توثيق الأعمال',
+    geoAccent: 'تحت الأرض',
     geoDesc:
-      'لا تنتهي الفكرة عند التحقق من الصورة؛ فالهدف هو إنشاء سجل مشترك لما نُفّذ تحت الأرض، مرتبط بالموقع والجهة والعمل والتوثيق.',
+      'لا تنتهي الفكرة عند التحقق من الصورة؛ فالهدف هو إنشاء سجل مشترك لما نُفّذ تحت الأرض، مرتبط بالموقع والجهة والعمل والتوثيق',
     geoItems: [
       'موقع جغرافي للعمل',
       'صور وأدلة مرتبطة بالسجل',
@@ -206,20 +205,20 @@ const content = {
     mapRecord: 'UW-1042 / سجل تجريبي',
     mapDetails: 'أعمال حفر موثقة ومربوطة بالموقع',
     geoNote:
-      'الطبقات والمسارات هنا افتراضية، وليست خرائط فعلية لمرافق أو خدمات حكومية.',
+      'الطبقات والمسارات هنا افتراضية، وليست خرائط فعلية لمرافق أو خدمات حكومية',
 
     futureEyebrow: '05 / WHAT COMES NEXT',
-    futureTitle: 'من إثبات الفكرة',
-    futureAccent: 'إلى التطبيق الميداني.',
+    futureTitle: 'من النموذج',
+    futureAccent: 'إلى التطبيق الميداني',
     futureDesc:
-      'المرحلة التالية هي اختبار الحل مع جهات ومواقع إضافية، وتحسين إجراءات التحقق، ودراسة ربط التصاريح ضمن سير العمل.',
+      'المرحلة التالية هي اختبار الحل مع جهات ومواقع إضافية، وتحسين إجراءات التحقق، ودراسة ربط التصاريح ضمن سير العمل',
     futureItems: [
-      ['تجربة ميدانية', 'اختبار الحل مع جهة تشغيلية وفي مواقع حقيقية.'],
-      ['مواقع أكثر', 'التحقق من الأداء على صور ومدن وظروف مختلفة.'],
-      ['التحقق من التصاريح', 'دراسة إضافته كشرط سابق لاعتماد الأعمال.'],
+      ['تجربة ميدانية', 'اختبار الحل مع جهة تشغيلية وفي مواقع حقيقية'],
+      ['مواقع أكثر', 'التحقق من الأداء على صور ومدن وظروف مختلفة'],
+      ['التحقق من التصاريح', 'دراسة إضافته كشرط سابق لاعتماد الأعمال'],
     ],
-    finalTitle: 'هل تريد اكتشاف',
-    finalAccent: 'المنظومة كاملة؟',
+    finalTitle: 'اكتشف منصة',
+    finalAccent: 'الأعمال الموحدة',
     platform: 'استكشف المنصة',
     contact: 'تواصل معنا',
   },
@@ -227,26 +226,26 @@ const content = {
   en: {
     eyebrow: 'UNIFIED WORKS / INTELLIGENCE LAB',
     heroSmall: 'THE TECHNOLOGY BEHIND THE DECISION',
-    heroTitle: 'AI does more than',
-    heroAccent: 'see the photo.',
-    heroEnd: 'It learns from it.',
+    heroTitle: 'Intelligent checks',
+    heroAccent: 'for fieldwork',
+    heroEnd: '',
     heroDesc:
-      'How can we verify excavation work before it disappears underground? Field photos, location-linked evidence, and a reference library expanded through supervisor approvals help turn images into reviewable records.',
+      'How can we verify excavation work before it disappears underground? Field photos, location-linked evidence, and a reference library expanded through supervisor approvals help turn images into reviewable records',
     tryLab: 'Try the AI lab',
     seeResults: 'Explore results',
     heroNote: 'FIELD PHOTO → AI CHECK → HUMAN REVIEW → SHARED RECORD',
 
     labEyebrow: '01 / INTERACTIVE AI LAB',
-    labTitle: 'One photo.',
-    labAccent: 'Three possible decisions.',
+    labTitle: 'Test field',
+    labAccent: 'image checks',
     labDesc:
-      'Choose a scenario and run a simulated check to explore how the proposed system handles field evidence.',
+      'Choose a scenario and run a simulated check to explore how the proposed system handles field evidence',
     demo: 'Illustrative simulation',
     selectCase: 'Choose a test scenario',
     analyze: 'Run image check',
     again: 'Run again',
     waiting: 'Ready to analyze',
-    processing: 'Comparing with approved references...',
+    processing: 'Comparing with approved references',
     completed: 'Illustrative check completed',
     imageTitle: 'FIELD EVIDENCE / UW-1042',
     imageNote: 'Illustrative scene — replaceable with a real field photo',
@@ -255,12 +254,12 @@ const content = {
     matching: 'VISUAL MATCHING',
     decision: 'DECISION ENGINE',
     analysisTitle: 'Analysis report',
-    analysisIdle: 'Run the check to see the selected scenario result.',
+    analysisIdle: 'Run the check to see the selected scenario result',
     comparison: 'Approved reference comparison',
     policy: 'Workflow decision',
     nextAction: 'Next action',
-    disclaimer: 'This is a workflow simulation, not live AI inference.',
-    confidenceNote: 'No fabricated confidence score is displayed.',
+    disclaimer: 'This is a workflow simulation, not live AI inference',
+    confidenceNote: 'No fabricated confidence score is displayed',
     cases: [
       {
         id: 'match',
@@ -269,9 +268,9 @@ const content = {
         caption: 'Field image matching an approved reference',
         result: 'Eligible for automatic approval',
         resultText:
-          'The photo matches an approved reference. It may be accepted automatically if all other workflow rules are satisfied.',
-        policyText: 'Automatic approval can apply when all conditions are met.',
-        action: 'Document the result and link it to the project record.',
+          'The photo matches an approved reference It may be accepted automatically if all other workflow rules are satisfied',
+        policyText: 'Automatic approval can apply when all conditions are met',
+        action: 'Document the result and link it to the project record',
         status: 'success',
         matchText: 'Clear visual match',
       },
@@ -282,10 +281,10 @@ const content = {
         caption: 'Visual differences require human judgment',
         result: 'Automatic approval will not apply',
         resultText:
-          'The comparison is inconclusive. The photo is not automatically accepted and is referred to a supervisor.',
-        policyText: 'Pause automatic approval and request supervisor review.',
+          'The comparison is inconclusive The photo is not automatically accepted and is referred to a supervisor',
+        policyText: 'Pause automatic approval and request supervisor review',
         action:
-          'The supervisor reviews the photo. An approved image may be added to the reference library.',
+          'The supervisor reviews the photo An approved image may be added to the reference library',
         status: 'warning',
         matchText: 'Inconclusive match',
       },
@@ -296,57 +295,57 @@ const content = {
         caption: 'Evidence does not satisfy review requirements',
         result: 'Photo will not be accepted',
         resultText:
-          'This photo is not suitable as approved evidence in the selected scenario and is excluded from the reference library.',
-        policyText: 'Approval rule does not apply.',
-        action: 'Request valid evidence and repeat the check.',
+          'This photo is not suitable as approved evidence in the selected scenario and is excluded from the reference library',
+        policyText: 'Approval rule does not apply',
+        action: 'Request valid evidence and repeat the check',
         status: 'danger',
         matchText: 'No acceptable match',
       },
     ],
 
     methodEyebrow: '02 / HUMAN-IN-THE-LOOP',
-    methodTitle: 'The supervisor does more',
-    methodAccent: 'than review.',
+    methodTitle: 'Learning from',
+    methodAccent: 'supervisor decisions',
     methodDesc:
-      'The innovation is a reference library that expands through approved supervisor decisions instead of relying only on a static collection.',
+      'The innovation is a reference library that expands through approved supervisor decisions instead of relying only on a static collection',
     cycle: [
-      { title: 'Capture the site', desc: 'The contractor takes a field photo with location and time context.' },
-      { title: 'Smart comparison', desc: 'The image is compared with approved reference photos.' },
-      { title: 'Decision', desc: 'Clear matches follow rules; uncertain cases go to a supervisor.' },
-      { title: 'Human review', desc: 'The supervisor approves or rejects the evidence.' },
-      { title: 'Grow the library', desc: 'Approved photos become references for future checks.' },
+      { title: 'Capture the site', desc: 'The contractor takes a field photo with location and time context' },
+      { title: 'Smart comparison', desc: 'The image is compared with approved reference photos' },
+      { title: 'Decision', desc: 'Clear matches follow rules; uncertain cases go to a supervisor' },
+      { title: 'Human review', desc: 'The supervisor approves or rejects the evidence' },
+      { title: 'Grow the library', desc: 'Approved photos become references for future checks' },
     ],
     approved: 'Approved image',
     learned: 'Added to reference library',
     notApproved: 'Rejected image',
     excluded: 'Excluded from reference library',
     loopNote:
-      'Adding references does not necessarily mean automatically retraining the model weights.',
+      'Adding references does not necessarily mean automatically retraining the model weights',
 
     resultsEyebrow: '03 / EXPERIMENTAL EVIDENCE',
-    resultsTitle: 'An idea supported',
-    resultsAccent: 'by an experiment.',
+    resultsTitle: 'Image-check accuracy',
+    resultsAccent: 'in numbers',
     resultsDesc:
-      'Figures from the project research poster, not production platform metrics.',
+      'Figures from the project research poster, not production platform metrics',
     stats: [
-      { value: '148', unit: '', label: 'Real field photos', desc: 'Used in the initial experimental dataset.' },
-      { value: '99.5', unit: '%', label: 'Recognition after 10 approvals', desc: 'Reported in the research experiment.' },
-      { value: '44/45', unit: '', label: 'Cable images recognized', desc: 'As reported in the poster.' },
-      { value: '0', unit: '', label: 'Wrong auto-acceptances', desc: 'Within the described test.' },
+      { value: '148', unit: '', label: 'Real field photos', desc: 'Used in the initial experimental dataset' },
+      { value: '99.5', unit: '%', label: 'Recognition after 10 approvals', desc: 'Reported in the research experiment' },
+      { value: '44/45', unit: '', label: 'Cable images recognized', desc: 'As reported in the poster' },
+      { value: '0', unit: '', label: 'Wrong auto-acceptances', desc: 'Within the described test' },
     ],
     growthTitle: 'How did recognition improve?',
-    growthDesc: 'Recognition results reported as approved references increased.',
+    growthDesc: 'Recognition results reported as approved references increased',
     chartLegend: 'Recognition accuracy',
     chartLabels: ['Baseline', '5 approvals', '10 approvals', '20 approvals'],
     chartValues: [79.4, 96.8, 99.5, 99.9],
     resultsNote:
-      'Results reflect a limited test sample. More locations and conditions must be evaluated before generalization.',
+      'Results reflect a limited test sample More locations and conditions must be evaluated before generalization',
 
     geoEyebrow: '04 / BEYOND THE PHOTO',
-    geoTitle: 'The image proves the work.',
-    geoAccent: 'The map preserves its context.',
+    geoTitle: 'Documenting',
+    geoAccent: 'underground work',
     geoDesc:
-      'The goal extends beyond image checking: creating a shared record of what was buried underground, connected to location, evidence, and responsible organizations.',
+      'The goal extends beyond image checking: creating a shared record of what was buried underground, connected to location, evidence, and responsible organizations',
     geoItems: [
       'Geographic work location',
       'Linked photographic evidence',
@@ -358,20 +357,20 @@ const content = {
     mapRoad: 'Documented utility route',
     mapRecord: 'UW-1042 / DEMO RECORD',
     mapDetails: 'Documented excavation linked to its location',
-    geoNote: 'Map layers and routes are fictional and do not represent live utility infrastructure.',
+    geoNote: 'Map layers and routes are fictional and do not represent live utility infrastructure',
 
     futureEyebrow: '05 / WHAT COMES NEXT',
-    futureTitle: 'From proof of concept',
-    futureAccent: 'to field deployment.',
+    futureTitle: 'From prototype',
+    futureAccent: 'to field deployment',
     futureDesc:
-      'Next steps include testing more sites, improving verification, and exploring permit checks within the workflow.',
+      'Next steps include testing more sites, improving verification, and exploring permit checks within the workflow',
     futureItems: [
-      ['Field pilot', 'Test with an operating organization and real sites.'],
-      ['More locations', 'Validate across more cities, images, and conditions.'],
-      ['Permit verification', 'Explore permits as a pre-approval requirement.'],
+      ['Field pilot', 'Test with an operating organization and real sites'],
+      ['More locations', 'Validate across more cities, images, and conditions'],
+      ['Permit verification', 'Explore permits as a pre-approval requirement'],
     ],
-    finalTitle: 'Ready to explore',
-    finalAccent: 'the full platform?',
+    finalTitle: 'Explore',
+    finalAccent: 'Unified Works',
     platform: 'Explore platform',
     contact: 'Contact us',
   },
@@ -467,6 +466,12 @@ function DecisionLab({ t }) {
   const item = t.cases[scenario]
   const done = stage === 'complete'
   const running = stage === 'running'
+
+  useEffect(() => {
+    if (stage !== 'running') return
+    const timer = setTimeout(() => setStage('complete'), 1400)
+    return () => clearTimeout(timer)
+  }, [stage, runId])
 
   const run = () => {
     setStage('running')
@@ -703,7 +708,6 @@ function LearningCycle({ t }) {
             <span>{t.excluded}</span>
           </div>
         </div>
-        <p className={styles.learningFootnote}>{t.loopNote}</p>
       </div>
     </div>
   )
@@ -719,7 +723,6 @@ function ResearchChart({ t }) {
         <div>
           <span className={styles.microLabel}>RECOGNITION / EXPERIMENT</span>
           <h3>{t.growthTitle}</h3>
-          <p>{t.growthDesc}</p>
         </div>
         <span className={styles.chartLegend}>
           <span /> {t.chartLegend}
@@ -830,10 +833,6 @@ function UndergroundMap({ t }) {
           <span><CheckCircle2 size={14} /> DEMO RECORD</span>
         </div>
       </div>
-      <div className={styles.mapFooter}>
-        <CircleHelp size={14} />
-        {t.geoNote}
-      </div>
     </div>
   )
 }
@@ -939,7 +938,6 @@ export default function Technology() {
           <Reveal className={styles.sectionIntro}>
             <span className={styles.sectionLabel}>{t.resultsEyebrow}</span>
             <h2>{t.resultsTitle}<span>{t.resultsAccent}</span></h2>
-            <p>{t.resultsDesc}</p>
           </Reveal>
 
           <div className={styles.statsGrid}>
@@ -950,15 +948,11 @@ export default function Technology() {
                   {stat.value}<small>{stat.unit}</small>
                 </div>
                 <h3>{stat.label}</h3>
-                <p>{stat.desc}</p>
               </Reveal>
             ))}
           </div>
 
           <Reveal><ResearchChart t={t} /></Reveal>
-          <p className={styles.resultsNote}>
-            <AlertTriangle size={16} /> {t.resultsNote}
-          </p>
         </div>
       </section>
 

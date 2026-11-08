@@ -37,9 +37,9 @@ const projects = [
     type: 'أعمال بنية تحتية',
     typeEn: 'Infrastructure Works',
     description:
-      'استعراض شبكات المياه والكهرباء الموجودة قبل بدء أعمال الحفر لتقليل التعارضات.',
+      'استعراض شبكات المياه والكهرباء الموجودة قبل بدء أعمال الحفر لتقليل التعارضات',
     descriptionEn:
-      'Visualize existing water and power networks before excavation to reduce conflicts.',
+      'Visualize existing water and power networks before excavation to reduce conflicts',
   },
   {
     id: 'UW-1086',
@@ -55,9 +55,9 @@ const projects = [
     type: 'تمديد شبكات',
     typeEn: 'Utility Network Installation',
     description:
-      'مشروع تمديدات قيد المراجعة مع إظهار مسارات المرافق داخل نطاق العمل.',
+      'مشروع تمديدات قيد المراجعة مع إظهار مسارات المرافق داخل نطاق العمل',
     descriptionEn:
-      'Utility installation under review, with infrastructure routes visible within the work area.',
+      'Utility installation under review, with infrastructure routes visible within the work area',
   },
   {
     id: 'UW-1128',
@@ -73,9 +73,9 @@ const projects = [
     type: 'تمديد كابل كهربائي',
     typeEn: 'Electrical Cable Installation',
     description:
-      'اكتمل تمديد الكابل الكهربائي، لكن إعادة تأهيل الموقع لم تكتمل. المقاول المنفذ مسؤول عن المعالجة ضمن هذا النموذج.',
+      'اكتمل تمديد الكابل الكهربائي، لكن إعادة تأهيل الموقع لم تكتمل والمقاول المنفذ مسؤول عن المعالجة ضمن هذا النموذج',
     descriptionEn:
-      'Electrical cable installation is complete, but site restoration is pending. The contractor is responsible for remediation in this demo.',
+      'Electrical cable installation is complete, but site restoration is pending and the contractor is responsible for remediation in this demo',
   },
 ]
 
@@ -605,23 +605,23 @@ function Hero() {
             <h1 className={styles.title}>
               {ar ? (
                 <>
-                  كل موقع <em>معروف.</em>
+                  من <em>الميدان</em>
                   <br />
-                  كل عمل <span>موثّق.</span>
+                  <span>تبدأ الرؤية</span>
                 </>
               ) : (
                 <>
-                  Every site <em>identified.</em>
+                  From the <em>Field</em>
                   <br />
-                  Every work <span>documented.</span>
+                  <span>Comes Clarity</span>
                 </>
               )}
             </h1>
 
             <p className={styles.description}>
               {ar
-                ? 'من الموقع الميداني إلى القرار. تصور لمنصة تجمع المقاولين والجهات المشرفة والبلديات في رؤية جغرافية واحدة.'
-                : 'From field activity to informed decisions. A platform concept connecting contractors, supervisors, and municipalities through one geospatial view.'}
+                ? 'كل مشروع تحت الرصد، وكل معلومة تقود لقرار أذكى'
+                : 'Every project in view, every insight leading to smarter decisions'}
             </p>
 
             <div className={styles.actions}>
