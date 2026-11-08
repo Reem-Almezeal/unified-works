@@ -1,0 +1,667 @@
+
+/* ==========================================
+   UNIFIED WORKS — GEO PRISM
+   DARK & LIGHT THEMES
+   Emerald × Infrastructure × Glass
+========================================== */
+
+/* ==========================================
+   DARK MODE — LUMINOUS FOREST
+========================================== */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --color-bg: #08271D;
+  --color-surface: #124D38;
+  --color-surface-alt: #176748;
+
+  /* Typography */
+  --color-text: #F5FFF8;
+  --color-text-muted: #BBDCCB;
+
+  /* Primary Brand */
+  --color-primary: #20B582;
+  --color-primary-contrast: #FFFFFF;
+  --color-accent: #35C994;
+
+  /* Borders & Overlays */
+  --color-border: rgba(210, 255, 230, 0.18);
+  --color-overlay: rgba(8, 39, 29, 0.76);
+
+  /* Glass */
+  --glass-bg: rgba(20, 85, 60, 0.34);
+  --glass-border: rgba(210, 255, 230, 0.24);
+  --glass-blur: 24px;
+  --glass-highlight: rgba(255, 255, 255, 0.22);
+
+  /* Shadows */
+  --shadow-soft:
+    0 20px 70px rgba(0, 32, 22, 0.18);
+
+  --shadow-industrial:
+    0 28px 90px rgba(0, 35, 24, 0.30);
+
+  --shadow-glass:
+    0 20px 55px rgba(0, 38, 25, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  --shadow-hover:
+    0 24px 65px rgba(0, 75, 51, 0.25);
+
+  /* ========================================
+     BACKGROUND GRADIENTS
+  ======================================== */
+
+  --gradient-page:
+    radial-gradient(
+      ellipse at 80% 18%,
+      rgba(39, 183, 119, 0.20),
+      transparent 52%
+    ),
+    linear-gradient(
+      135deg,
+      #08271D 0%,
+      #104A35 55%,
+      #176A4A 100%
+    );
+
+  --gradient-section:
+    linear-gradient(
+      145deg,
+      #0B3023 0%,
+      #14543D 55%,
+      #1A7251 100%
+    );
+
+  --gradient-hero:
+    radial-gradient(
+      ellipse at 78% 35%,
+      rgba(39, 183, 119, 0.32),
+      transparent 55%
+    ),
+    linear-gradient(
+      120deg,
+      #092D21 0%,
+      #11543A 52%,
+      #1A8057 100%
+    );
+
+  --gradient-urban:
+    linear-gradient(
+      120deg,
+      #0B3326 0%,
+      #166A49 52%,
+      #25976B 100%
+    );
+
+  --gradient-dark:
+    linear-gradient(
+      135deg,
+      #071F18 0%,
+      #0D392A 50%,
+      #176748 100%
+    );
+
+  /* ========================================
+     GLASS CARDS & NAVBAR
+  ======================================== */
+
+  --gradient-card:
+    linear-gradient(
+      145deg,
+      rgba(45, 135, 97, 0.38) 0%,
+      rgba(10, 49, 35, 0.68) 100%
+    );
+
+  --gradient-surface:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.17) 0%,
+      rgba(39, 133, 94, 0.20) 45%,
+      rgba(8, 46, 33, 0.44) 100%
+    );
+
+  --gradient-navbar:
+    linear-gradient(
+      90deg,
+      rgba(9, 48, 34, 0.94),
+      rgba(19, 91, 62, 0.88)
+    );
+
+  --gradient-glass-dark:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(11, 64, 44, 0.48)
+    );
+
+  --gradient-glass-light:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.24),
+      rgba(101, 213, 158, 0.12)
+    );
+
+  /* ========================================
+     AMBIENT LIGHTING
+  ======================================== */
+
+  --gradient-ambient:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(37, 197, 140, 0.20),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 15% 80%,
+      rgba(55, 184, 255, 0.10),
+      transparent 42%
+    );
+
+  --gradient-glow:
+    radial-gradient(
+      ellipse at 78% 25%,
+      rgba(45, 208, 136, 0.24),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 18% 78%,
+      rgba(55, 184, 255, 0.10),
+      transparent 45%
+    );
+
+  /* ========================================
+     PRIMARY BUTTONS & HIGHLIGHTED TEXT
+  ======================================== */
+
+  --gradient-primary-button:
+    linear-gradient(
+      115deg,
+      #16875F 0%,
+      #20B582 50%,
+      #138B83 100%
+    );
+
+  --gradient-button:
+    var(--gradient-primary-button);
+
+  --gradient-button-hover:
+    linear-gradient(
+      115deg,
+      #20B582 0%,
+      #27C99A 48%,
+      #1689B4 100%
+    );
+
+  --gradient-highlight:
+    linear-gradient(
+      110deg,
+      #E6FFF0 0%,
+      #72E7B1 32%,
+      #31C993 65%,
+      #49C5C0 100%
+    );
+
+  --gradient-accent:
+    var(--gradient-highlight);
+
+  /* ========================================
+     INFRASTRUCTURE GRADIENTS
+  ======================================== */
+
+  /* Water / GIS */
+  --gradient-water:
+    linear-gradient(
+      120deg,
+      #A4E8FF 0%,
+      #37B8FF 45%,
+      #176BC5 100%
+    );
+
+  /* Electricity */
+  --gradient-electricity:
+    linear-gradient(
+      120deg,
+      #FFF5A5 0%,
+      #FFD43B 50%,
+      #E5A500 100%
+    );
+
+  /* Excavation / Machinery */
+  --gradient-construction:
+    linear-gradient(
+      120deg,
+      #FFD1A8 0%,
+      #FF914D 50%,
+      #D65D27 100%
+    );
+
+  /* Municipality / Verified */
+  --gradient-municipality:
+    linear-gradient(
+      120deg,
+      #75E7B4 0%,
+      #25C58C 45%,
+      #126447 100%
+    );
+
+  /* Alerts / Incomplete Maintenance */
+  --gradient-alert:
+    linear-gradient(
+      120deg,
+      #FFB4BF 0%,
+      #FF5268 50%,
+      #C92F4C 100%
+    );
+
+  /* ========================================
+     COLORED GLASS
+  ======================================== */
+
+  --glass-blue:
+    linear-gradient(
+      135deg,
+      rgba(164, 232, 255, 0.28),
+      rgba(23, 107, 197, 0.14)
+    );
+
+  --glass-red:
+    linear-gradient(
+      135deg,
+      rgba(255, 180, 191, 0.27),
+      rgba(201, 47, 76, 0.14)
+    );
+
+  --glass-yellow:
+    linear-gradient(
+      135deg,
+      rgba(255, 245, 165, 0.25),
+      rgba(229, 165, 0, 0.12)
+    );
+
+  --glass-orange:
+    linear-gradient(
+      135deg,
+      rgba(255, 209, 168, 0.28),
+      rgba(214, 93, 39, 0.14)
+    );
+
+  --glass-green:
+    linear-gradient(
+      135deg,
+      rgba(117, 231, 180, 0.27),
+      rgba(18, 100, 71, 0.15)
+    );
+
+  /* Legacy aliases */
+  --glass-gold: var(--glass-yellow);
+  --glass-amber: var(--glass-orange);
+
+  /* ========================================
+     COLORED GLOWS
+  ======================================== */
+
+  --glow-water:
+    0 0 36px rgba(55, 184, 255, 0.28);
+
+  --glow-warning:
+    0 0 36px rgba(255, 212, 59, 0.25);
+
+  --glow-alert:
+    0 0 36px rgba(255, 82, 104, 0.26);
+
+  --glow-municipal:
+    0 0 36px rgba(37, 197, 140, 0.28);
+
+  --glow-blue:
+    0 0 35px rgba(55, 184, 255, 0.28);
+
+  --glow-red:
+    0 0 35px rgba(255, 82, 104, 0.26);
+
+  --glow-yellow:
+    0 0 35px rgba(255, 212, 59, 0.24);
+
+  --glow-orange:
+    0 0 35px rgba(255, 145, 77, 0.25);
+
+  --glow-green:
+    0 0 35px rgba(37, 197, 140, 0.26);
+
+  /* Legacy aliases */
+  --glow-gold: var(--glow-yellow);
+  --glow-amber: var(--glow-orange);
+}
+
+/* ==========================================
+   LIGHT MODE — CLEAN WHITE & EMERALD
+========================================== */
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Backgrounds */
+  --color-bg: #F8FCFA;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #ECF8F1;
+
+  /* Typography */
+  --color-text: #123D2C;
+  --color-text-muted: #527566;
+
+  /* Primary Brand */
+  --color-primary: #16875F;
+  --color-primary-contrast: #FFFFFF;
+  --color-accent: #16875F;
+
+  /* Borders & Overlays */
+  --color-border: rgba(18, 100, 71, 0.14);
+  --color-overlay: rgba(248, 252, 250, 0.84);
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.76);
+  --glass-border: rgba(18, 100, 71, 0.16);
+  --glass-blur: 24px;
+  --glass-highlight: rgba(255, 255, 255, 0.90);
+
+  /* Shadows */
+  --shadow-soft:
+    0 20px 70px rgba(18, 100, 71, 0.08);
+
+  --shadow-industrial:
+    0 28px 90px rgba(18, 100, 71, 0.13);
+
+  --shadow-glass:
+    0 20px 55px rgba(18, 100, 71, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  --shadow-hover:
+    0 24px 65px rgba(18, 100, 71, 0.16);
+
+  /* ========================================
+     LIGHT BACKGROUND GRADIENTS
+  ======================================== */
+
+  --gradient-page:
+    radial-gradient(
+      ellipse at 82% 22%,
+      rgba(75, 209, 149, 0.13),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      #F3FBF6 52%,
+      #E9F8F0 100%
+    );
+
+  --gradient-section:
+    linear-gradient(
+      145deg,
+      #FFFFFF 0%,
+      #F0FAF4 55%,
+      #E3F5EB 100%
+    );
+
+  --gradient-hero:
+    radial-gradient(
+      ellipse at 76% 35%,
+      rgba(64, 205, 139, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 12% 80%,
+      rgba(60, 167, 232, 0.13),
+      transparent 45%
+    ),
+    linear-gradient(
+      125deg,
+      #FFFFFF 0%,
+      #F1FFF8 55%,
+      #E3F8ED 100%
+    );
+
+  --gradient-urban:
+    linear-gradient(
+      120deg,
+      #F6FFF9 0%,
+      #E8F9EF 55%,
+      #D6F1E3 100%
+    );
+
+  --gradient-dark:
+    linear-gradient(
+      135deg,
+      #E5F7EB 0%,
+      #CDEEDC 50%,
+      #AFE4C8 100%
+    );
+
+  /* ========================================
+     GLASS CARDS & NAVBAR
+  ======================================== */
+
+  --gradient-card:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(230, 249, 238, 0.82) 100%
+    );
+
+  --gradient-surface:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(225, 246, 235, 0.76)
+    );
+
+  --gradient-navbar:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(235, 250, 241, 0.90)
+    );
+
+  --gradient-glass-light:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.90),
+      rgba(224, 249, 236, 0.72)
+    );
+
+  --gradient-glass-dark:
+    linear-gradient(
+      145deg,
+      rgba(225, 247, 236, 0.88),
+      rgba(187, 232, 208, 0.65)
+    );
+
+  /* ========================================
+     AMBIENT LIGHTING
+  ======================================== */
+
+  --gradient-ambient:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(37, 197, 140, 0.13),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 15% 80%,
+      rgba(55, 184, 255, 0.09),
+      transparent 42%
+    );
+
+  --gradient-glow:
+    radial-gradient(
+      ellipse at 78% 25%,
+      rgba(45, 208, 136, 0.14),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 18% 78%,
+      rgba(55, 184, 255, 0.08),
+      transparent 45%
+    );
+
+  /* ========================================
+     BUTTONS & HIGHLIGHTED TEXT
+  ======================================== */
+
+  --gradient-primary-button:
+    linear-gradient(
+      115deg,
+      #16875F 0%,
+      #20B582 50%,
+      #138B83 100%
+    );
+
+  --gradient-button:
+    var(--gradient-primary-button);
+
+  --gradient-button-hover:
+    linear-gradient(
+      115deg,
+      #20B582 0%,
+      #27C99A 48%,
+      #1689B4 100%
+    );
+
+  --gradient-highlight:
+    linear-gradient(
+      110deg,
+      #126447 0%,
+      #16875F 50%,
+      #1689A2 100%
+    );
+
+  --gradient-accent:
+    var(--gradient-highlight);
+
+  /* ========================================
+     INFRASTRUCTURE GRADIENTS
+  ======================================== */
+
+  --gradient-water:
+    linear-gradient(
+      120deg,
+      #A4E8FF 0%,
+      #37B8FF 45%,
+      #176BC5 100%
+    );
+
+  --gradient-electricity:
+    linear-gradient(
+      120deg,
+      #FFF5A5 0%,
+      #FFD43B 50%,
+      #E5A500 100%
+    );
+
+  --gradient-construction:
+    linear-gradient(
+      120deg,
+      #FFD1A8 0%,
+      #FF914D 50%,
+      #D65D27 100%
+    );
+
+  --gradient-municipality:
+    linear-gradient(
+      120deg,
+      #75E7B4 0%,
+      #25C58C 45%,
+      #126447 100%
+    );
+
+  --gradient-alert:
+    linear-gradient(
+      120deg,
+      #FFB4BF 0%,
+      #FF5268 50%,
+      #C92F4C 100%
+    );
+
+  /* ========================================
+     COLORED GLASS
+  ======================================== */
+
+  --glass-blue:
+    linear-gradient(
+      135deg,
+      rgba(164, 232, 255, 0.36),
+      rgba(23, 107, 197, 0.12)
+    );
+
+  --glass-red:
+    linear-gradient(
+      135deg,
+      rgba(255, 180, 191, 0.36),
+      rgba(201, 47, 76, 0.12)
+    );
+
+  --glass-yellow:
+    linear-gradient(
+      135deg,
+      rgba(255, 245, 165, 0.38),
+      rgba(229, 165, 0, 0.12)
+    );
+
+  --glass-orange:
+    linear-gradient(
+      135deg,
+      rgba(255, 209, 168, 0.38),
+      rgba(214, 93, 39, 0.12)
+    );
+
+  --glass-green:
+    linear-gradient(
+      135deg,
+      rgba(117, 231, 180, 0.36),
+      rgba(18, 100, 71, 0.12)
+    );
+
+  /* Legacy aliases */
+  --glass-gold: var(--glass-yellow);
+  --glass-amber: var(--glass-orange);
+
+  /* ========================================
+     COLORED GLOWS
+  ======================================== */
+
+  --glow-water:
+    0 0 36px rgba(55, 184, 255, 0.17);
+
+  --glow-warning:
+    0 0 36px rgba(255, 212, 59, 0.16);
+
+  --glow-alert:
+    0 0 36px rgba(255, 82, 104, 0.17);
+
+  --glow-municipal:
+    0 0 36px rgba(37, 197, 140, 0.18);
+
+  --glow-blue:
+    0 0 35px rgba(55, 184, 255, 0.18);
+
+  --glow-red:
+    0 0 35px rgba(255, 82, 104, 0.17);
+
+  --glow-yellow:
+    0 0 35px rgba(255, 212, 59, 0.16);
+
+  --glow-orange:
+    0 0 35px rgba(255, 145, 77, 0.16);
+
+  --glow-green:
+    0 0 35px rgba(37, 197, 140, 0.18);
+
+  /* Legacy aliases */
+  --glow-gold: var(--glow-yellow);
+  --glow-amber: var(--glow-orange);
+}
+
+

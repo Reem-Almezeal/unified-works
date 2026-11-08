@@ -1,0 +1,21 @@
+
+{
+  "brand": "Unified Works",
+  "nav": {
+    "home": "Home",
+    "platform": "Platform",
+    "technology": "Technology",
+    "impact": "Impact",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "UNIFIED WORKS / SAIF 2026",
+    "title1": "Every Field Operation Documented.",
+    "title2": "Every Location in Sight.",
+    "description": "An intelligent ecosystem for documenting field operations, verifying them with AI, and connecting them to a unified geospatial record.",
+    "cta": "Explore the Platform",
+    "partner": "Partner With Us",
+    "partnership": "Partner With Us"
+  }
+}

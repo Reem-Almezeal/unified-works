@@ -1,0 +1,545 @@
+
+/* ==========================================
+   UNIFIED WORKS — INDUSTRIAL AURORA
+   GLOBAL DESIGN SYSTEM
+========================================== */
+
+/* RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background-color: var(--color-bg);
+  background-image:
+    var(--gradient-ambient),
+    var(--gradient-page);
+  background-attachment: fixed;
+
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.8;
+
+  transition:
+    background-color var(--duration-normal),
+    color var(--duration-normal);
+}
+
+/* LANGUAGE SUPPORT */
+
+html[lang="ar"] {
+  --font-body: var(--font-ar);
+  direction: rtl;
+}
+
+html[lang="en"] {
+  --font-body: var(--font-en);
+  direction: ltr;
+}
+
+/* ELEMENTS */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+img,
+video {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block-start: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--brand-yellow);
+  color: var(--brand-black);
+}
+
+/* ==========================================
+   SHARED LAYOUT
+========================================== */
+
+.container {
+  width: min(
+    calc(100% - 2 * var(--page-gutter)),
+    var(--container-width)
+  );
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-space);
+}
+
+.section-heading {
+  font-size: var(--heading-md);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* ==========================================
+   GRADIENT UTILITIES
+========================================== */
+
+.bg-aurora {
+  background:
+    var(--gradient-ambient),
+    var(--gradient-page);
+}
+
+.bg-urban {
+  background: var(--gradient-urban);
+}
+
+.bg-industrial {
+  background: var(--gradient-section);
+}
+
+.bg-construction {
+  background: var(--gradient-construction);
+}
+
+.bg-water {
+  background: var(--gradient-water);
+}
+
+.bg-municipality {
+  background: var(--gradient-municipality);
+}
+
+.bg-alert {
+  background: var(--gradient-alert);
+}
+
+/* Gradient text */
+
+.text-gradient {
+  display: inline-block;
+  background: var(--gradient-highlight);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ==========================================
+   SHARED BUTTONS
+========================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+
+  min-height: 52px;
+  padding: 0.85rem 1.75rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+
+  font-weight: 700;
+  line-height: 1.4;
+
+  transition:
+    transform var(--duration-normal) var(--ease-premium),
+    background-color var(--duration-normal),
+    border-color var(--duration-normal),
+    box-shadow var(--duration-normal);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Primary — Construction Gradient */
+
+.btn-primary {
+  background: var(--gradient-primary-button);
+  color: #102027;
+  border-color: rgba(255, 204, 0, 0.3);
+  box-shadow: 0 8px 28px rgba(255, 174, 35, 0.12);
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 12px 35px rgba(255, 174, 35, 0.25);
+}
+
+/* Secondary — Transparent Glass */
+
+.btn-outline {
+  border-color: var(--color-border);
+  color: var(--color-text);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+
+/* ==========================================
+   GLASS SURFACES
+========================================== */
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur, 18px));
+  -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+}
+
+.glass-gradient {
+  background: var(--gradient-card);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ==========================================
+   INDUSTRIAL DETAILS
+========================================== */
+
+/* Construction warning stripes */
+
+.hazard-stripe {
+  height: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #FFCC00 0 12px,
+    #111719 12px 24px
+  );
+  background-size: 48px 48px;
+}
+
+/* Small industrial labels */
+
+.industrial-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+/* Active signal */
+
+.signal-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--brand-orange);
+  box-shadow: 0 0 15px rgba(255, 135, 40, 0.5);
+}
+
+/* Utility status borders */
+
+.utility-water {
+  border-color: var(--utility-water);
+}
+
+.utility-electricity {
+  border-color: var(--utility-electricity);
+}
+
+.utility-municipality {
+  border-color: var(--utility-municipality);
+}
+
+.utility-alert {
+  border-color: var(--utility-alert);
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+@media (hover: hover) {
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-alt);
+    border: 2px solid var(--color-bg);
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --section-space: 5rem;
+    --page-gutter: 1.25rem;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+
+  .btn {
+    min-height: 48px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   UNIFIED WORKS — SHARED INTERACTIONS
+========================================== */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  transition:
+    transform .35s var(--ease-premium),
+    box-shadow .35s,
+    background .35s,
+    border-color .35s;
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.045);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(.98);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    115deg,
+    #eafff4,
+    #8be9bc,
+    #32b981
+  );
+  color: #073d29;
+  box-shadow: 0 12px 30px rgba(38, 185, 123, .17);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    115deg,
+    #c9ffe5,
+    #50d5aa,
+    #5ac5f4
+  );
+  box-shadow: 0 20px 45px rgba(38, 185, 155, .3);
+}
+
+.btn-outline:hover {
+  background: rgba(62, 178, 152, .12);
+  border-color: #4acda3;
+  box-shadow: 0 15px 35px rgba(32, 151, 108, .13);
+}
+
+.glass {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, .16),
+      rgba(255, 255, 255, .035)
+    );
+  border: 1px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* Apply this class to interactive cards */
+.interactive-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform .4s var(--ease-premium),
+    box-shadow .4s,
+    border-color .4s,
+    background .4s;
+}
+
+.interactive-card:hover {
+  transform: translateY(-9px) scale(1.025);
+  border-color: rgba(67, 188, 239, .65);
+  box-shadow:
+    0 25px 55px rgba(22, 137, 164, .16),
+    0 0 25px rgba(58, 184, 228, .09);
+}
+
+/* Optional semantic card variants */
+.interactive-card[data-tone="blue"]:hover {
+  border-color: #43b7f1;
+  box-shadow: 0 24px 50px rgba(38, 151, 239, .22);
+}
+
+.interactive-card[data-tone="red"]:hover {
+  border-color: #f16b77;
+  box-shadow: 0 24px 50px rgba(241, 75, 95, .2);
+}
+
+.interactive-card[data-tone="orange"]:hover {
+  border-color: #ff9e4d;
+  box-shadow: 0 24px 50px rgba(255, 147, 55, .2);
+}
+
+.interactive-card[data-tone="green"]:hover {
+  border-color: #42d9a0;
+  box-shadow: 0 24px 50px rgba(41, 193, 128, .2);
+}
+
+/* Light theme */
+[data-theme="light"] .glass {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, .94),
+      rgba(219, 249, 233, .65)
+    );
+  border-color: rgba(29, 140, 94, .14);
+}
+
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(
+    115deg,
+    #1a965f,
+    #31b982,
+    #169b84
+  );
+  color: #fff;
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: linear-gradient(
+    115deg,
+    #15825c,
+    #20b99c,
+    #299bd7
+  );
+}
+
+@media (hover: none) {
+  .interactive-card:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .interactive-card {
+    transition: none;
+  }
+}
+
+
