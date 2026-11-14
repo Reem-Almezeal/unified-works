@@ -401,11 +401,6 @@ export default function Technology() {
                 fallbackText={t.unavailable}
                 eager
               />
-
-              <div className={styles.imageLabel}>
-                <span className={styles.statusDot} />
-                {t.heroImageLabel}
-              </div>
             </Reveal>
 
           </div>
@@ -458,10 +453,6 @@ export default function Technology() {
                       alt={feature.title}
                       fallbackText={t.unavailable}
                     />
-
-                    <span className={styles.cardNumber}>
-                      {feature.number}
-                    </span>
                   </div>
 
                   <div className={styles.cardMeta}>
@@ -500,10 +491,6 @@ export default function Technology() {
                 alt="Field utility network installation"
                 fallbackText={t.unavailable}
               />
-
-              <span className={styles.imageLabel}>
-                {t.processImageLabel}
-              </span>
             </Reveal>
 
             <div className={styles.steps}>
@@ -574,10 +561,6 @@ export default function Technology() {
                 alt="Unified Works dashboard"
                 fallbackText={t.unavailable}
               />
-
-              <span className={styles.imageLabel}>
-                {t.dashboardLabel}
-              </span>
             </Reveal>
 
           </div>

@@ -1,4 +1,5 @@
 ﻿
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ArrowUpRight, ArrowDown } from 'lucide-react'
@@ -182,6 +183,7 @@ const content = {
 }
 
 export default function Hero() {
+  const [videoStarted, setVideoStarted] = useState(false)
   const { i18n } = useTranslation()
   const isArabic = i18n.language.startsWith('ar')
   const t = content[isArabic ? 'ar' : 'en']
@@ -296,13 +298,24 @@ export default function Hero() {
               muted
               loop
               playsInline
-              controls
+              disablePictureInPicture
+              disableRemotePlayback
               preload="metadata"
               poster={images.inspection}
               aria-label={t.videoTitle}
+              onPlaying={() => setVideoStarted(true)}
+              onError={() => setVideoStarted(false)}
             >
               {t.videoUnavailable}
             </video>
+            {!videoStarted && (
+              <img
+                className={styles.videoPoster}
+                src={images.inspection}
+                alt=""
+                aria-hidden="true"
+              />
+            )}
           </div>
 
           <div className={styles.videoCaption}>
