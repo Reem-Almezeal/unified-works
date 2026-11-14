@@ -127,7 +127,7 @@ const roles = [
 
 const translations = {
   ar: {
-    eyebrow: 'منصة الأعمال الموحّدة',
+    eyebrow: 'الأعمال الموحّدة / المنصة',
     heroTitle: 'من الميدان إلى القرار',
     heroAccent: 'كل شيء في منظومة واحدة',
     heroDesc: 'منصة رقمية تربط الجهات المعنية بأعمال البنية التحتية، وتحوّل التوثيق الميداني إلى معلومات منظمة قابلة للمتابعة والمراجعة',
@@ -157,10 +157,9 @@ const translations = {
     accessTitle: 'مدخل واحد لجميع الجهات',
     accessDesc: 'تسجيل دخول موحّد إلى منظومة الأعمال الموحّدة، مع واجهات مختلفة بحسب الدور والصلاحيات',
     accessButton: 'الدخول إلى المنصة',
-    accessNote: 'نظام موحّد بصلاحيات متعددة'
   },
   en: {
-    eyebrow: 'UNIFIED WORKS PLATFORM',
+    eyebrow: 'UNIFIED WORKS / PLATFORM',
     heroTitle: 'From field to decision',
     heroAccent: 'One connected system',
     heroDesc: 'A digital platform connecting infrastructure stakeholders and transforming field documentation into organized, actionable records',
@@ -189,8 +188,7 @@ const translations = {
     accessLabel: '03 / UNIFIED ACCESS',
     accessTitle: 'One entry point for every stakeholder',
     accessDesc: 'Unified sign-in with workspaces and capabilities tailored to assigned roles',
-    accessButton: 'Access the platform',
-    accessNote: 'One system with role-based access'
+    accessButton: 'Access the platform'
   }
 }
 
@@ -555,8 +553,8 @@ function InteractivePhone({ activeFeature, ar }) {
           <div className={styles.phoneHomeIndicator} />
         </div>
 
-        <div className={styles.phoneStageCaption}>
-          <span className={styles.statusDot} />
+        <div className={`${styles.eyebrow} ${styles.phoneStageCaption}`} dir={ar ? 'rtl' : 'ltr'}>
+          <span className={styles.eyebrowLine} />
           {ar ? 'عرض توضيحي تفاعلي' : 'INTERACTIVE PRODUCT PREVIEW'}
         </div>
       </div>
@@ -598,7 +596,7 @@ export default function Platform() {
             <div className={styles.heroGrid}>
               <div className={styles.heroCopy}>
                 <span className={styles.eyebrow}>
-                  <span className={styles.statusDot} />
+                  <span className={styles.eyebrowLine} />
                   {t.eyebrow}
                 </span>
 
@@ -814,44 +812,23 @@ export default function Platform() {
       {/* 04 — UNIFIED ENTRY */}
 
       <section className={styles.accessSection}>
-        <div className={styles.container}>
-          <Reveal>
-            <div className={styles.accessPanel}>
-              <div className={styles.accessDecor} aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className={styles.accessContent}>
-                <span className={styles.accessLabel}>{t.accessLabel}</span>
-                <h2>{t.accessTitle}</h2>
-                <p>{t.accessDesc}</p>
-
-                <a
-                  href={BASE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.accessButton}
-                >
-                  {t.accessButton}
-                  <ArrowUpRight size={19} />
-                </a>
-
-                <div className={styles.accessNote}>
-                  <ShieldCheck size={17} />
-                  {t.accessNote}
-                </div>
-              </div>
-
-              <div className={styles.accessVisual} aria-hidden="true">
-                <div className={styles.accessCircle}>
-                  <Monitor size={43} strokeWidth={1.3} />
-                  <strong>UNIFIED WORKS</strong>
-                  <span>ONE SYSTEM / MULTIPLE ROLES</span>
-                </div>
-              </div>
+        <div className={styles.accessContainer}>
+          <Reveal className={styles.accessPanel}>
+            <div className={styles.accessContent}>
+              <span className={styles.accessLabel}>{t.accessLabel}</span>
+              <h2>{t.accessTitle}</h2>
+              <p>{t.accessDesc}</p>
             </div>
+
+            <a
+              href={BASE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.accessButton}
+            >
+              {t.accessButton}
+              <ArrowUpRight size={19} />
+            </a>
           </Reveal>
         </div>
       </section>

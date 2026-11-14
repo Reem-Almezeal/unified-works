@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./Contact.module.css";
 
 const content = {
@@ -352,7 +353,7 @@ export default function Contact() {
               <p>{t.heroDescription}</p>
               <a href="#contact-options" className={styles.heroLink}>
                 <span>{t.heroIndex}</span>
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
               </a>
             </div>
           </div>
@@ -414,7 +415,7 @@ export default function Contact() {
                   <span>
                     {form.type === item.id ? "SELECTED" : "EXPLORE"}
                   </span>
-                  <span aria-hidden="true">↗</span>
+                  <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                 </span>
               </button>
             ))}
@@ -470,7 +471,7 @@ export default function Contact() {
                     className={styles.resetButton}
                   >
                     {t.newMessage}
-                    <span aria-hidden="true">↗</span>
+                    <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                   </button>
                 </div>
               ) : (
@@ -702,7 +703,7 @@ export default function Contact() {
                           ? t.sending
                           : t.submit}
                       </span>
-                      <span aria-hidden="true">↗</span>
+                      <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                     </button>
                   </div>
                 </form>

@@ -294,3 +294,14 @@
     transition: none !important;
   }
 }
+
+/* SVG arrows retain the surrounding text size and color on every platform. */
+.arrowIcon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: inherit;
+  stroke: currentColor;
+}

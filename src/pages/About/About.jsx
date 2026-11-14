@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
 import styles from "./About.module.css";
 
 const LOGO = "/images/unified-works-logo.png";
@@ -444,7 +445,7 @@ export default function About() {
 
               <a className={styles.heroButton} href="#our-story">
                 <span>{t.discover}</span>
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
               </a>
             </Reveal>
 
@@ -458,7 +459,7 @@ export default function About() {
 
           <div className={styles.heroFooter}>
             <span>{t.heroFoot}</span>
-            <span>SCROLL TO EXPLORE ↓</span>
+            <span>SCROLL TO EXPLORE <ArrowDown className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
           </div>
         </div>
       </section>
@@ -547,7 +548,7 @@ export default function About() {
 
                   <span className={styles.challengeBottom}>
                     <span>UNIFIED WORKS</span>
-                    <span>↗</span>
+                    <span><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                   </span>
                 </button>
               </Reveal>
@@ -600,7 +601,7 @@ export default function About() {
 
                 <span className={styles.processStepFooter}>
                   <span>{t.stage} {step.number}</span>
-                  <span>↗</span>
+                  <span><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                 </span>
               </button>
             ))}
@@ -709,7 +710,7 @@ export default function About() {
 
                 <span className={styles.ecosystemCardFooter}>
                   <span>UNIFIED WORKS</span>
-                  <span>↗</span>
+                  <span><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                 </span>
               </button>
             ))}
@@ -797,11 +798,11 @@ export default function About() {
             <div className={styles.closingActions}>
               <Link to="/platform" className={styles.primaryButton}>
                 {t.explore}
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
               </Link>
               <Link to="/contact" className={styles.outlineButton}>
                 {t.contact}
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
               </Link>
             </div>
           </Reveal>

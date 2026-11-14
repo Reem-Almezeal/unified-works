@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 import styles from "./Footer.module.css";
 
 const portals = [
@@ -158,7 +159,7 @@ export default function Footer() {
             <p>{t.contactText}</p>
             <Link to="/contact" className={styles.contactLink}>
               <span>{t.contactButton}</span>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
             </Link>
           </div>
         </div>
@@ -179,7 +180,7 @@ export default function Footer() {
             className={styles.backTop}
           >
             {t.backTop}
-            <span aria-hidden="true">↑</span>
+            <span aria-hidden="true"><ArrowUp className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
           </button>
         </div>
       </div>
