@@ -23,6 +23,13 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuPathname, setMenuPathname] = useState(location.pathname)
+
+  // Reset route-specific UI before rendering the new page.
+  if (menuPathname !== location.pathname) {
+    setMenuPathname(location.pathname)
+    setMenuOpen(false)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -32,10 +39,6 @@ export default function Navbar() {
 
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [location.pathname])
 
   useEffect(() => {
     if (!menuOpen) return

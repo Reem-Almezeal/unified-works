@@ -17,11 +17,11 @@ const sectors = [
 
 function Reveal({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() => !("IntersectionObserver" in window));
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (!("IntersectionObserver" in window)) { setVisible(true); return; }
+    if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); }
     }, { threshold: 0.12 });
@@ -61,9 +61,12 @@ function Count({ value, suffix = "" }) {
   return <span ref={ref} className={styles.count}>{count}{suffix}</span>;
 }
 
-function Image({ src, alt, className = "", eager = false }) {
+function Image(props) {
+  return <ImageContent key={props.src} {...props} />;
+}
+
+function ImageContent({ src, alt, className = "", eager = false }) {
   const [error, setError] = useState(false);
-  useEffect(() => setError(false), [src]);
   return error ? <div className={`${styles.imageFallback} ${className}`} role="img" aria-label={alt}><span>{alt}</span></div> : <img src={src} alt={alt} className={className} loading={eager ? "eager" : "lazy"} decoding="async" onError={() => setError(true)} />;
 }
 

@@ -219,7 +219,10 @@ const content = {
 /* Reveal elements when they enter the viewport */
 function Reveal({ children, className = '', delay = 0 }) {
   const elementRef = useRef(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(() =>
+    !('IntersectionObserver' in window) ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
 
   useEffect(() => {
     const element = elementRef.current
@@ -229,7 +232,6 @@ function Reveal({ children, className = '', delay = 0 }) {
       !('IntersectionObserver' in window) ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
-      setVisible(true)
       return
     }
 
@@ -261,6 +263,8 @@ function Reveal({ children, className = '', delay = 0 }) {
 /* Count from 0 to the target value */
 function AnimatedNumber({ value, duration = 1800 }) {
   const elementRef = useRef(null)
+  const skipAnimation = !('IntersectionObserver' in window) ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const [count, setCount] = useState(0)
 
   useEffect(() => {
@@ -287,7 +291,6 @@ function AnimatedNumber({ value, duration = 1800 }) {
       !('IntersectionObserver' in window) ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
-      setCount(value)
       return
     }
 
@@ -311,18 +314,19 @@ function AnimatedNumber({ value, duration = 1800 }) {
 
   return (
     <span ref={elementRef} className={styles.countDigits}>
-      {count}
+      {skipAnimation ? value : count}
     </span>
   )
 }
 
 /* Show a clear fallback if the image file does not exist */
-function ProjectImage({ src, alt, fallbackText, eager = false }) {
+function ProjectImage(props) {
+  return <ProjectImageContent key={props.src} {...props} />
+}
+
+function ProjectImageContent({ src, alt, fallbackText, eager = false }) {
   const [failed, setFailed] = useState(false)
 
-  useEffect(() => {
-    setFailed(false)
-  }, [src])
 
   if (failed) {
     return (

@@ -342,7 +342,10 @@ const content = {
 
 function Reveal({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() =>
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   useEffect(() => {
     const node = ref.current;
@@ -352,7 +355,6 @@ function Reveal({ children, className = "", delay = 0 }) {
       !("IntersectionObserver" in window) ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      setVisible(true);
       return;
     }
 

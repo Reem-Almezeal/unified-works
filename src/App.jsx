@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import Navbar from './components/layout/Navbar/Navbar'
 import Footer from './components/layout/Footer/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 import Platform from './pages/Platform/Platform'
 import Technology from './pages/Technology/Technology'
@@ -33,6 +34,7 @@ useEffect(() => {
 }, [i18n.language])
   return (
     <>
+      <ScrollToTop />
       <Navbar />
 
       <Routes>

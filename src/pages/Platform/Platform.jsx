@@ -21,10 +21,8 @@ import {
   Layers3,
   Monitor,
   FileCheck2,
-  ScanLine,
   Activity,
   ExternalLink,
-  MapPin,
   Wifi,
   BatteryFull,
   Signal
@@ -198,7 +196,10 @@ const translations = {
 
 function Reveal({ children, className = '', delay = 0 }) {
   const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(() =>
+    !('IntersectionObserver' in window) ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
 
   useEffect(() => {
     const node = ref.current
@@ -208,7 +209,6 @@ function Reveal({ children, className = '', delay = 0 }) {
       !('IntersectionObserver' in window) ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
-      setVisible(true)
       return
     }
 
@@ -237,10 +237,13 @@ function Reveal({ children, className = '', delay = 0 }) {
   )
 }
 
-function Photo({ src, alt, className = '', eager = false }) {
+function Photo(props) {
+  return <PhotoContent key={props.src} {...props} />
+}
+
+function PhotoContent({ src, alt, className = '', eager = false }) {
   const [failed, setFailed] = useState(false)
 
-  useEffect(() => setFailed(false), [src])
 
   return (
     <div className={`${styles.photo} ${className}`}>
@@ -261,11 +264,14 @@ function Photo({ src, alt, className = '', eager = false }) {
   )
 }
 
-function OrganizationLogo({ role, large = false }) {
+function OrganizationLogo(props) {
+  return <OrganizationLogoContent key={props.role.logo} {...props} />
+}
+
+function OrganizationLogoContent({ role, large = false }) {
   const [failed, setFailed] = useState(false)
   const Icon = role.icon
 
-  useEffect(() => setFailed(false), [role.logo])
 
   if (!role.logo || failed) {
     return (
