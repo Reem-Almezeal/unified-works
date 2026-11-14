@@ -1,11 +1,4 @@
 
-/* ==========================================
-   UNIFIED WORKS — INDUSTRIAL AURORA
-   GLOBAL DESIGN SYSTEM
-========================================== */
-
-/* RESET */
-
 *,
 *::before,
 *::after {
@@ -175,7 +168,6 @@ h6 {
   background: var(--gradient-alert);
 }
 
-/* Gradient text */
 
 .text-gradient {
   display: inline-block;
@@ -186,9 +178,7 @@ h6 {
   color: transparent;
 }
 
-/* ==========================================
-   SHARED BUTTONS
-========================================== */
+
 
 .btn {
   display: inline-flex;
@@ -394,9 +384,6 @@ button:focus-visible {
   }
 }
 
-/* ==========================================
-   UNIFIED WORKS — SHARED INTERACTIONS
-========================================== */
 
 .btn {
   position: relative;

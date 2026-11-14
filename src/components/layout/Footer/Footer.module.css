@@ -1,0 +1,296 @@
+
+.footer {
+  --footer-bg: #183b46;
+  --footer-green: #197b50;
+  --footer-white: #ffffff;
+  --footer-muted: #b4c8c5;
+
+  width: 100%;
+  background: var(--footer-bg);
+  color: var(--footer-white);
+}
+
+.footer *,
+.footer *::before,
+.footer *::after {
+  box-sizing: border-box;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer h3,
+.footer p {
+  margin: 0;
+}
+
+.container {
+  width: min(1200px, calc(100% - 80px));
+  margin-inline: auto;
+}
+
+/* MAIN GRID */
+
+.footerMain {
+  display: grid;
+  grid-template-columns: 1.65fr 0.8fr 1fr 1.15fr;
+  gap: clamp(28px, 3.5vw, 58px);
+  padding: 64px 0 58px;
+  align-items: start;
+}
+
+/* BRAND */
+
+.brand {
+  max-width: 340px;
+}
+
+.brandIdentity {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #fff;
+}
+
+.logo {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brandName {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.brandName strong {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.5;
+}
+
+.brandName span {
+  color: #a9c8b9;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.brand > p {
+  margin-top: 20px;
+  color: var(--footer-muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.brandLocation {
+  display: block;
+  margin-top: 19px;
+  color: #81a79c;
+  font-size: 11px;
+}
+
+/* LINK COLUMNS */
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.column h3 {
+  margin: 7px 0 24px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.column nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.column nav a {
+  color: var(--footer-muted);
+  font-size: 12px;
+  line-height: 1.7;
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+.column nav a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* CONTACT */
+
+.contactColumn > p {
+  max-width: 240px;
+  color: var(--footer-muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 20px;
+  padding: 11px 0;
+  border-bottom: 1px solid #58ad83;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  transition:
+    color .25s ease,
+    gap .25s ease;
+}
+
+.contactLink:hover {
+  color: #92d4ae;
+  gap: 42px;
+}
+
+.contactLink span:last-child {
+  color: #78c59a;
+  font-size: 19px;
+  line-height: 1;
+}
+
+/* BOTTOM BAR */
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  min-height: 65px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, .13);
+}
+
+.footerBottom > span {
+  color: #92b0a9;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.backTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  border: none;
+  background: transparent;
+  color: #c3d8cf;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+
+.backTop:hover {
+  color: #fff;
+}
+
+.backTop span {
+  font-size: 17px;
+  transition: transform .25s ease;
+}
+
+.backTop:hover span {
+  transform: translateY(-4px);
+}
+
+/* ACCESSIBILITY */
+
+.footer a:focus-visible,
+.footer button:focus-visible {
+  outline: 2px solid #92d4ae;
+  outline-offset: 5px;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .container {
+    width: calc(100% - 60px);
+  }
+
+  .footerMain {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 38px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+    max-width: 480px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .footerMain {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 38px 22px;
+    padding: 45px 0 38px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .brand > p {
+    max-width: 360px;
+  }
+
+  .contactColumn {
+    grid-column: 1 / -1;
+    padding-top: 5px;
+  }
+
+  .contactColumn > p {
+    max-width: 340px;
+  }
+
+  .column h3 {
+    margin-bottom: 17px;
+  }
+
+  .column nav {
+    gap: 12px;
+  }
+
+  .footerBottom {
+    min-height: 75px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footerBottom > span {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer *,
+  .footer *::before,
+  .footer *::after {
+    transition: none !important;
+  }
+}

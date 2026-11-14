@@ -1,793 +1,199 @@
 
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import {
-  ArrowDown, ArrowUpRight, ArrowLeft, ArrowRight,
-  ArrowRightLeft, Camera, MapPin, CheckCircle2,
-  ShieldCheck, HardHat, Building2, AlertTriangle,
-  Waves, Zap, Layers3, Database, Eye, FileCheck2,
-  Activity, Sparkles
-} from 'lucide-react'
-import styles from './Impact.module.css'
 
-const dictionary = {
-  ar: {
-    label: 'UNIFIED WORKS / IMPACT',
-    kicker: 'من الميدان إلى القرار',
-    headline: 'الأثر يبدأ',
-    accent: 'قبل الحفر',
-    intro: 'توثيق ميداني يكشف تفاصيل الأعمال ويمنح الجهات رؤية أوضح وقرارات أدق',
-    explore: 'اكشف الفرق',
-    evidence: 'نتائج التجربة',
-    heroDemo: 'تصور بصري توضيحي',
-    heroRoad: 'سطح الطريق',
-    heroBelow: 'ما تحت السطح',
-    heroRecord: 'سجل موقع موثق',
-    heroCamera: 'صورة ميدانية',
-    heroPermit: 'مراجعة واعتماد',
-    heroHint: 'من العمل المخفي إلى المعرفة المشتركة',
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
+import styles from "./Impact.module.css";
 
-    compareLabel: '01 / BEFORE & AFTER',
-    compareTitle: 'من التخمين',
-    compareAccent: 'إلى التوثيق',
-    compareDesc: 'حرّك المؤشر لتكتشف الفرق بين موقع بلا سجل وموقع موثّق',
-    before: 'قبل الحل',
-    after: 'مع Unified Works',
-    beforeText: 'تفاصيل مخفية وسجلات متفرقة',
-    afterText: 'تمديدات واضحة وسجل مرتبط بالموقع',
-    beforeTags: ['معلومات متفرقة', 'لا توجد رؤية للتمديدات', 'مراجعة أصعب'],
-    afterTags: ['موقع موثق', 'تمديدات مرئية', 'مرجع مشترك'],
-    drag: 'اسحب للكشف',
-    record: 'سجل موثق',
+const IMG = "/images/impact/";
+const ORG = "/images/organizations/";
 
-    rolesLabel: '02 / CONNECTED IMPACT',
-    rolesTitle: 'ثلاث جهات',
-    rolesAccent: 'رؤية واحدة',
-    rolesDesc: 'اختر الجهة لاستعراض دورها في توثيق الأعمال ومتابعتها',
-    roles: [
-      {
-        title: 'المقاول',
-        subtitle: 'توثيق العمل من الميدان',
-        desc: 'يرفع صور الموقع والمستندات وبيانات التنفيذ في سجل واحد',
-        steps: ['تحديد موقع العمل', 'إرفاق الصور والمستندات', 'إرسال السجل للمراجعة']
-      },
-      {
-        title: 'الجهة المشرفة',
-        subtitle: 'مراجعة أسرع وقرار أوضح',
-        desc: 'تتحقق من الأدلة وتراجع السجلات وتعتمد الأعمال أو تطلب تصحيحها',
-        steps: ['استقبال السجل', 'مراجعة الصور غير المؤكدة', 'اعتماد أو طلب تصحيح']
-      },
-      {
-        title: 'البلدية',
-        subtitle: 'رؤية شاملة للأعمال',
-        desc: 'تتابع مواقع الأعمال والحالات التي تستدعي التدخل عبر رؤية مكانية موحدة',
-        steps: ['استعراض الأعمال على الخريطة', 'تحديد الحالات المحتاجة للمتابعة', 'دعم التنسيق بين الجهات']
-      }
-    ],
-    flow: 'مسار العمل المقترح',
-    flowSteps: ['توثيق', 'مراجعة', 'مرجع مشترك'],
-    mapLabel: 'CITY RECORD / CONCEPT',
+const sectors = [
+  { id: "energy", logo: `${ORG}saudi-energy.png`, image: `${IMG}impact-energy.webp`, url: "https://uw.81-208-191-204.sslip.io/p/el/#dash", ar: { name: "الطاقة والكهرباء", title: "متابعة أعمال الشبكات الكهربائية", description: "توثيق الأعمال الميدانية وربط سجلات التنفيذ بمواقعها، لتصبح مراجعة أعمال الشبكات أكثر وضوحًا" }, en: { name: "Energy & electricity", title: "Visibility across electrical works", description: "Link field evidence and execution records to their locations for clearer oversight of electrical networks" } },
+  { id: "water", logo: `${ORG}water.png`, image: `${IMG}impact-water.webp`, url: "https://uw.81-208-191-204.sslip.io/p/wa/#dash", ar: { name: "المياه والصرف الصحي", title: "سجل متصل لأعمال المياه والصرف", description: "جمع الصور والملاحظات الميدانية لأعمال المياه والصرف الصحي في سياق مكاني واضح وقابل للمراجعة" }, en: { name: "Water & wastewater", title: "Connected records for water works", description: "Bring water and wastewater field images and observations into a clear, reviewable location context" } },
+  { id: "telecom", logo: `${ORG}telecom.png`, image: `${IMG}impact-telecom.webp`, url: "https://uw.81-208-191-204.sslip.io/p/tc/#dash", ar: { name: "الاتصالات", title: "متابعة أوضح لأعمال الاتصالات", description: "تجميع أدلة التنفيذ الميداني وربطها بمواقع الأعمال لتسهيل مراجعة أعمال شبكات الاتصالات" }, en: { name: "Telecommunications", title: "Clearer telecom work oversight", description: "Connect field evidence with work locations to simplify the review of telecommunications network activity" } },
+  { id: "municipality", logo: `${ORG}municipality.png`, image: `${IMG}impact-municipality.webp`, url: "https://uw.81-208-191-204.sslip.io/muni#query", ar: { name: "الأمانات والبلديات", title: "رؤية أشمل للأعمال داخل المدينة", description: "دعم متابعة مواقع أعمال البنية التحتية والملاحظات المرتبطة بها، بما يعزز التنسيق بين الجهات" }, en: { name: "Municipal authorities", title: "A wider view of city works", description: "Support oversight of infrastructure worksites and related observations, helping stakeholders coordinate" } },
+];
 
-    outcomesLabel: '03 / EXPECTED IMPACT',
-    outcomesTitle: 'أثر ملموس',
-    outcomesAccent: 'على الميدان',
-    outcomesDesc: 'توثيق أوضح ومراجعة أسرع وتنسيق أفضل بين الجهات',
-    outcomes: [
-      { title: 'وضوح أكبر', desc: 'معرفة ما نُفّذ وأين من خلال سجلات مرتبطة بالموقع' },
-      { title: 'مراجعة مبكرة', desc: 'إتاحة التحقق من الأدلة قبل إغلاق العمل بدل انتظار ظهور المشكلة' },
-      { title: 'تنسيق أفضل', desc: 'تقليل تشتت السجلات بين الأطراف المشاركة' },
-      { title: 'مساءلة قابلة للتتبع', desc: 'الرجوع إلى الصور والمستندات وقرارات المراجعة' }
-    ],
-
-    evidenceLabel: '04 / RESEARCH EVIDENCE',
-    evidenceTitle: 'نتائج تثبت',
-    evidenceAccent: 'الفكرة',
-    evidenceDesc: 'نتائج أولية لاختبار التعرف على الصور',
-    stats: [
-      { value: '148', label: 'صورة حقيقية' },
-      { value: '99.5%', label: 'دقة بعد 10 موافقات' },
-      { value: '44/45', label: 'صورة كابلات تم التعرف عليها' },
-      { value: '0', label: 'قبول آلي خاطئ' }
-    ],
-
-    futureLabel: '05 / CITY MEMORY',
-    futureTitle: 'ذاكرة رقمية',
-    futureAccent: 'لكل موقع',
-    futureDesc: 'سجل مكاني يجمع صور الأعمال ومواقعها وقرارات مراجعتها لدعم التخطيط المستقبلي',
-    futureSteps: [
-      ['01', 'توثيق', 'صورة وموقع ومعلومات العمل'],
-      ['02', 'مراجعة', 'قرار اعتماد موثق'],
-      ['03', 'تراكم المعرفة', 'مرجع مكاني مشترك']
-    ],
-
-    ctaLabel: 'WHAT COMES NEXT',
-    ctaTitle: 'لنحوّل الفكرة',
-    ctaAccent: 'إلى واقع',
-    ctaDesc: 'نبحث عن شركاء لتجربة الحل وتطوير أثره على أرض الواقع',
-    platform: 'استكشف المنصة',
-    contact: 'ناقش شراكة'
-  },
-
-  en: {
-    label: 'UNIFIED WORKS / IMPACT',
-    kicker: 'From the field to better decisions',
-    headline: 'Impact starts',
-    accent: 'before excavation',
-    intro: 'Field documentation that brings hidden work into view and supports smarter decisions',
-    explore: 'Reveal the difference',
-    evidence: 'Research results',
-    heroDemo: 'Illustrative concept',
-    heroRoad: 'Road surface',
-    heroBelow: 'Below the surface',
-    heroRecord: 'Documented site record',
-    heroCamera: 'Field photo',
-    heroPermit: 'Review and approval',
-    heroHint: 'From hidden work to shared knowledge',
-
-    compareLabel: '01 / BEFORE & AFTER',
-    compareTitle: 'From uncertainty',
-    compareAccent: 'to documented clarity',
-    compareDesc: 'Move the slider to compare undocumented work with a connected site record',
-    before: 'Before',
-    after: 'With Unified Works',
-    beforeText: 'Buried work is invisible in this concept, and records may be fragmented',
-    afterText: 'Illustrative utility locations and a shared documentation record',
-    beforeTags: ['Fragmented information', 'No utility visibility', 'Harder review'],
-    afterTags: ['Documented location', 'Visible utilities', 'Shared reference'],
-    drag: 'Drag to reveal',
-    record: 'Verified record',
-
-    rolesLabel: '02 / CONNECTED IMPACT',
-    rolesTitle: 'Three stakeholders',
-    rolesAccent: 'One shared view',
-    rolesDesc: 'Choose a stakeholder to explore how field records move from capture to review',
-    roles: [
-      {
-        title: 'Contractor',
-        subtitle: 'Document work on site',
-        desc: 'Adds site photos, details, and documents to a location-linked record',
-        steps: ['Locate the worksite', 'Attach photos and documents', 'Submit for review']
-      },
-      {
-        title: 'Supervising agency',
-        subtitle: 'Review faster, decide clearly',
-        desc: 'Reviews records and uncertain cases, then documents the approval decision',
-        steps: ['Receive the record', 'Review uncertain photos', 'Approve or request correction']
-      },
-      {
-        title: 'Municipality',
-        subtitle: 'See the full picture',
-        desc: 'Could eventually benefit from a spatial view of documented work and flagged cases; permit integration is not yet assumed',
-        steps: ['Explore mapped records', 'Identify cases for follow-up', 'Support coordination']
-      }
-    ],
-    flow: 'Proposed information flow',
-    flowSteps: ['Capture', 'Review', 'Shared reference'],
-    mapLabel: 'CITY RECORD / CONCEPT',
-
-    outcomesLabel: '03 / EXPECTED IMPACT',
-    outcomesTitle: 'Real value',
-    outcomesAccent: 'on the ground',
-    outcomesDesc: 'Clearer records, faster reviews, and better coordination',
-    outcomes: [
-      { title: 'Greater visibility', desc: 'Know what was done and where through location-linked records' },
-      { title: 'Earlier review', desc: 'Support evidence checks before closing the work' },
-      { title: 'Better coordination', desc: 'Reduce fragmented records across stakeholders' },
-      { title: 'Traceable accountability', desc: 'Retrieve photos, documents, and review decisions' }
-    ],
-
-    evidenceLabel: '04 / RESEARCH EVIDENCE',
-    evidenceTitle: 'Results that',
-    evidenceAccent: 'support the concept',
-    evidenceDesc: 'Early image-recognition test results',
-    stats: [
-      { value: '148', label: 'Real field photos' },
-      { value: '99.5%', label: 'Accuracy after 10 approvals' },
-      { value: '44/45', label: 'Cable photos recognized' },
-      { value: '0', label: 'Wrong auto-acceptances' }
-    ],
-
-    futureLabel: '05 / CITY MEMORY',
-    futureTitle: 'A digital memory',
-    futureAccent: 'for every site',
-    futureDesc: 'Every approved photo and documented site could add to a spatial reference that supports future planning and coordination',
-    futureSteps: [
-      ['01', 'Capture', 'A photo, location, and work details'],
-      ['02', 'Review', 'A documented approval decision'],
-      ['03', 'Build knowledge', 'A shared spatial reference']
-    ],
-
-    ctaLabel: 'WHAT COMES NEXT',
-    ctaTitle: 'Bring the concept',
-    ctaAccent: 'to life',
-    ctaDesc: 'Partner with us to pilot and refine the solution',
-    platform: 'Explore the platform',
-    contact: 'Discuss partnership'
-  }
+function Reveal({ children, className = "", delay = 0 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) { setVisible(true); return; }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); }
+    }, { threshold: 0.12 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return <div ref={ref} style={{ "--reveal-delay": `${delay}ms` }} className={`${styles.reveal} ${visible ? styles.revealed : ""} ${className}`}>{children}</div>;
 }
 
-const roleIcons = [HardHat, Building2, ShieldCheck]
-const outcomeIcons = [Eye, AlertTriangle, Layers3, FileCheck2]
-
-function Reveal({ children, className = '', delay = 0 }) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.65, delay }}
-    >
-      {children}
-    </motion.div>
-  )
+function Count({ value, suffix = "" }) {
+  const ref = useRef(null);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let frame = 0;
+    let observer;
+    const start = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setCount(value); return; }
+      const begin = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - begin) / 1400, 1);
+        setCount(Math.round(value * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    };
+    if (!("IntersectionObserver" in window)) start();
+    else {
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) { start(); observer.disconnect(); }
+      }, { threshold: 0.5 });
+      observer.observe(el);
+    }
+    return () => { observer?.disconnect(); cancelAnimationFrame(frame); };
+  }, [value]);
+  return <span ref={ref} className={styles.count}>{count}{suffix}</span>;
 }
 
-function Heading({ label, title, accent, description }) {
-  return (
-    <Reveal className={styles.sectionHeading}>
-      <span className={styles.eyebrow}>{label}</span>
-      <h2>{title}<em>{accent}</em></h2>
-      <p>{description}</p>
-    </Reveal>
-  )
-}
-function CityCutaway({ t }) {
-  return (
-    <div className={styles.cutaway} aria-label={t.heroDemo}>
-      <div className={styles.cutawayTop}>
-        <span><Activity size={14} /> IMPACT / CITY SECTION</span>
-        <span>{t.heroDemo}</span>
-      </div>
-
-      <div className={styles.cutawayScene}>
-        <div className={styles.cutawaySky}>
-          <div className={styles.cutawayBuildings}>
-            {Array.from({ length: 7 }, (_, i) => (
-              <span key={i} />
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.cutawayRoad}>
-          <div className={styles.cutawayRoadLine} />
-        </div>
-
-        <div className={styles.cutawayGround}>
-          <div className={styles.cutawaySoil} />
-          <div className={styles.cutawayWater}>
-            <Waves size={18} />
-          </div>
-          <div className={styles.cutawayPower}>
-            <Zap size={18} />
-          </div>
-          <div className={styles.cutawayTrench} />
-        </div>
-
-        <div className={styles.cutawayScan}>
-          <div className={styles.scanBeam} />
-          <div className={styles.scanPulse} />
-        </div>
-
-        <div className={styles.cutawayRoadLabel}>
-          <MapPin size={14} />
-          {t.heroRoad}
-        </div>
-
-        <div className={styles.cutawayGroundLabel}>
-          <Layers3 size={14} />
-          {t.heroBelow}
-        </div>
-
-        <motion.div
-          className={`${styles.floatingData} ${styles.floatingPhoto}`}
-          animate={{ y: [0, -9, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
-          <Camera size={18} />
-          <span>{t.heroCamera}</span>
-        </motion.div>
-
-        <motion.div
-          className={`${styles.floatingData} ${styles.floatingApproval}`}
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 5, repeat: Infinity }}
-        >
-          <ShieldCheck size={18} />
-          <span>{t.heroPermit}</span>
-        </motion.div>
-
-        <div className={styles.recordTag}>
-          <Database size={17} />
-          <div>
-            <strong>UW-1042</strong>
-            <small>{t.heroRecord}</small>
-          </div>
-          <CheckCircle2 size={17} />
-        </div>
-      </div>
-
-      <div className={styles.cutawayBottom}>
-        <span><span className={styles.liveDot} /> {t.heroHint}</span>
-        <span>CONCEPT / 001</span>
-      </div>
-    </div>
-  )
-}
-function StreetScene({ t, value, rtl }) {
-  return (
-    <div className={styles.streetScene}>
-      <div className={styles.skyline}>
-        {Array.from({ length: 9 }, (_, i) => <span key={i} />)}
-      </div>
-
-      <div className={styles.streetSurface}>
-        <div className={styles.roadStripe} />
-      </div>
-
-      <div className={styles.underground}>
-        <div className={styles.soilLayers} />
-        <div className={styles.excavation} />
-      </div>
-
-      <div
-        className={styles.afterLayer}
-        style={{
-          clipPath: rtl
-            ? `inset(0 0 0 ${100 - value}%)`
-            : `inset(0 ${100 - value}% 0 0)`
-        }}
-      >
-        <div className={styles.digitalGrid} />
-
-        <div className={styles.waterPipe}>
-          <Waves size={17} />
-        </div>
-
-        <div className={styles.powerPipe}>
-          <Zap size={17} />
-        </div>
-
-        <div className={styles.verifiedPipeOne} />
-        <div className={styles.verifiedPipeTwo} />
-
-        <div className={styles.verifiedMarker}>
-          <CheckCircle2 size={24} />
-          <span>UW-1042</span>
-        </div>
-
-        <div className={styles.digitalRecord}>
-          <CheckCircle2 size={17} />
-          <span>{t.record}</span>
-        </div>
-      </div>
-
-      <div
-        className={styles.comparisonHandle}
-        style={{ left: `${rtl ? 100 - value : value}%` }}
-      >
-        <div className={styles.handleButton}>
-          <ArrowRightLeft size={20} />
-        </div>
-      </div>
-
-      <div className={styles.sceneBeforeLabel}>{t.before}</div>
-      <div className={styles.sceneAfterLabel}>{t.after}</div>
-      <div className={styles.sceneDisclaimer}>{t.sceneNote}</div>
-    </div>
-  )
+function Image({ src, alt, className = "", eager = false }) {
+  const [error, setError] = useState(false);
+  useEffect(() => setError(false), [src]);
+  return error ? <div className={`${styles.imageFallback} ${className}`} role="img" aria-label={alt}><span>{alt}</span></div> : <img src={src} alt={alt} className={className} loading={eager ? "eager" : "lazy"} decoding="async" onError={() => setError(true)} />;
 }
 
-function BeforeAfter({ t, rtl }) {
-  const [value, setValue] = useState(50)
-
-  return (
-    <Reveal className={styles.comparison}>
-      <div className={styles.comparisonTop}>
-        <span><Activity size={16} /> IMPACT COMPARISON / 001</span>
-        <span>CONCEPT SCENARIO</span>
-      </div>
-
-      <div className={styles.comparisonVisual}>
-        <StreetScene t={t} value={value} rtl={rtl} />
-
-        <input
-          className={styles.comparisonRange}
-          type="range"
-          min="0"
-          max="100"
-          value={value}
-          onChange={e => setValue(Number(e.target.value))}
-          aria-label={t.drag}
-          dir="ltr"
-        />
-      </div>
-
-      <div className={styles.comparisonBottom}>
-        <div className={styles.comparisonDescription}>
-          <i className={styles.beforeDot} />
-          <div>
-            <strong>{t.before}</strong>
-            <p>{t.beforeText}</p>
-            <div className={styles.issueTags}>
-              {t.beforeTags.map(x => <span key={x}>{x}</span>)}
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.comparisonCenter}>
-          <ArrowRightLeft size={21} />
-          <small>{t.drag}</small>
-          <strong>{value}%</strong>
-        </div>
-
-        <div className={styles.comparisonDescription}>
-          <i className={styles.afterDot} />
-          <div>
-            <strong>{t.after}</strong>
-            <p>{t.afterText}</p>
-            <div className={styles.issueTags}>
-              {t.afterTags.map(x => <span key={x}>{x}</span>)}
-            </div>
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  )
-}
-function NetworkMap({ t, active }) {
-  const locations = [
-    { x: 19, y: 34, color: 'blue' },
-    { x: 72, y: 26, color: 'gold' },
-    { x: 39, y: 73, color: 'orange' },
-    { x: 78, y: 72, color: 'blue' }
-  ]
-
-  return (
-    <div className={styles.network}>
-      <div className={styles.networkHead}>
-        <span><MapPin size={15} /> {t.mapLabel}</span>
-        <span>DEMO</span>
-      </div>
-
-      <div className={styles.networkMap}>
-        <div className={styles.mapBlocks} />
-        <div className={styles.mapRoadOne} />
-        <div className={styles.mapRoadTwo} />
-
-        <svg
-          className={styles.networkLines}
-          viewBox="0 0 600 390"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M114 133 L300 195 L432 101 L468 280 L234 285 Z"
-            stroke="#f0c775"
-            strokeWidth="2"
-            strokeDasharray="7 9"
-            fill="none"
-          />
-          <path
-            d="M114 133 L468 280 M234 285 L432 101"
-            stroke="#48b8ff"
-            strokeWidth="2"
-            strokeDasharray="6 9"
-            fill="none"
-          />
-        </svg>
-
-        {locations.map((loc, i) => (
-          <div
-            key={i}
-            className={`${styles.networkPin} ${styles[`pin_${loc.color}`]}`}
-            style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
-          >
-            <MapPin size={16} />
-          </div>
-        ))}
-
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className={styles.networkFocus}
-        >
-          <span>UW / 0{active + 1}</span>
-          <strong>{t.roles[active].title}</strong>
-          <CheckCircle2 size={19} />
-        </motion.div>
-      </div>
-
-      <div className={styles.networkFoot}>
-        <span><i className={styles.blueDot} /> WATER</span>
-        <span><i className={styles.goldDot} /> POWER</span>
-        <span><i className={styles.orangeDot} /> FIELDWORK</span>
-      </div>
-    </div>
-  )
-}
-
-function RoleExperience({ t }) {
-  const [active, setActive] = useState(0)
-  const role = t.roles[active]
-  const Icon = roleIcons[active]
-
-  return (
-    <Reveal className={styles.roleExperience}>
-      <div className={styles.roleTabs}>
-        {t.roles.map((r, i) => {
-          const TabIcon = roleIcons[i]
-          return (
-            <button
-              key={i}
-              type="button"
-              aria-pressed={active === i}
-              className={`${styles.roleTab} ${active === i ? styles.roleTabActive : ''}`}
-              onClick={() => setActive(i)}
-            >
-              <TabIcon size={22} />
-              <span>{r.title}</span>
-              <small>0{i + 1}</small>
-            </button>
-          )
-        })}
-      </div>
-
-      <div className={styles.roleBody}>
-        <div className={styles.roleCopy}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25 }}
-            >
-              <div className={styles.roleIcon}>
-                <Icon size={30} />
-              </div>
-              <span className={styles.miniLabel}>ROLE / 0{active + 1}</span>
-              <h3>{role.subtitle}</h3>
-              <p>{role.desc}</p>
-
-              <div className={styles.roleSteps}>
-                {role.steps.map((s, i) => (
-                  <div key={s}>
-                    <CheckCircle2 size={17} />
-                    <span>0{i + 1}</span>
-                    {s}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className={styles.flowBox}>
-            <small>{t.flow}</small>
-            <div>
-              {t.flowSteps.map((s, i) => (
-                <span key={s}>
-                  {s}
-                  {i < 2 && <ArrowLeft size={13} />}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <NetworkMap t={t} active={active} />
-      </div>
-    </Reveal>
-  )
-}
 export default function Impact() {
-  const { i18n } = useTranslation()
-  const lang = i18n.resolvedLanguage?.startsWith('ar') ? 'ar' : 'en'
-  const t = dictionary[lang]
-  const Arrow = lang === 'ar' ? ArrowLeft : ArrowRight
+  const { i18n } = useTranslation();
+  const ar = i18n.language?.startsWith("ar");
+  const t = (a, e) => ar ? a : e;
+  const [activeSector, setActiveSector] = useState("energy");
+  const active = sectors.find(s => s.id === activeSector) || sectors[0];
+  const activeText = ar ? active.ar : active.en;
+
+  const benefits = [
+    { number: "01", image: `${IMG}impact-documentation.webp`, ar: { eyebrow: "توثيق مرتبط بالواقع", title: "توثيق ميداني موحد", desc: "بدل أن تبقى الصور والملاحظات موزعة بين قنوات مختلفة، تصبح جزءًا من سجل مرتبط بالعمل وموقعه ويمكن الرجوع إليه عند الحاجة" }, en: { eyebrow: "Evidence with context", title: "Unified Field Documentation", desc: "Instead of leaving photos and observations scattered across channels, keep them connected to the work and its location in a traceable record" } },
+    { number: "02", image: `${IMG}impact-ai-validation.webp`, ar: { eyebrow: "مراجعة أكثر كفاءة", title: "مراجعة أكثر كفاءة", desc: "تساعد المراجعة المدعومة بالذكاء الاصطناعي في تنظيم الأدلة المرئية وإبراز ما يحتاج إلى تدقيق بشري، دون استبدال دور المسؤول عن القرار" }, en: { eyebrow: "More focused review", title: "More Efficient Review", desc: "AI-assisted review helps organize visual evidence and highlight what may need human attention, without replacing the decision-maker" } },
+    { number: "03", image: `${IMG}impact-after.webp`, ar: { eyebrow: "رؤية تدعم القرار", title: "متابعة تدعم القرار", desc: "عندما تتصل السجلات بالمواقع والملاحظات، يصبح من الأسهل متابعة الأعمال ومراجعة حالتها والتنسيق حول الخطوات التالية" }, en: { eyebrow: "Decision-ready visibility", title: "Decision-Ready Oversight", desc: "When records connect to locations and observations, stakeholders can more easily review progress and coordinate next steps" } },
+  ];
 
   return (
-    <main className={styles.page} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+    <main className={styles.page} dir={ar ? "rtl" : "ltr"}>
+      {/* 01 — HERO: same side-by-side composition as other pages */}
       <section className={styles.hero}>
         <div className={styles.container}>
-          <Reveal className={styles.heroCopy}>
-            <span className={styles.eyebrow}>{t.label}</span>
-            <span className={styles.heroKicker}>{t.kicker}</span>
-
-            <h1>{t.headline}<em>{t.accent}</em></h1>
-            <p>{t.intro}</p>
-
-            <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#comparison">
-                {t.explore}
-                <Arrow size={18} />
-              </a>
-              <a className={styles.secondaryButton} href="#evidence">
-                {t.evidence}
-                <ArrowDown size={18} />
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal className={styles.heroVisual} delay={0.1}>
-            <CityCutaway t={t} />
-          </Reveal>
-
-          <div className={styles.heroBottom}>
-            <span>CAPTURE / VERIFY / PRESERVE</span>
-            <a href="#comparison"><ArrowDown size={17} /></a>
+          <div className={styles.heroGrid}>
+            <Reveal className={styles.heroCopy}>
+              <span className={styles.eyebrow}>UNIFIED WORKS / {t("الأثر", "IMPACT")}</span>
+              <h1>{t("أثر يتجاوز الميدان", "Impact Beyond the Field")}<span>{t("من التوثيق إلى القرار", "From Documentation to Decisions")}</span></h1>
+              <p>{t("لأن جودة متابعة البنية التحتية لا تعتمد على تنفيذ الأعمال وحده، بل على وضوح ما يحدث في الميدان، وإمكانية توثيقه ومراجعته والتنسيق بشأنه", "Because better infrastructure oversight is not only about completing the work. It is about making field activity visible, traceable and easier to coordinate")}</p>
+              <a href="#impact-value" className={styles.primaryLink}>{t("اكتشف قيمة المنصة", "Discover the value")}<ArrowDown size={17} /></a>
+            </Reveal>
+            <Reveal className={styles.heroImageWrap} delay={130}>
+              <Image src={`${IMG}impact-hero.webp`} alt={t("أعمال البنية التحتية في الميدان", "Infrastructure field operations")} className={styles.heroImage} eager />
+              <div className={styles.heroImageCaption}><span className={styles.captionLine} />{t("من الموقع إلى الرؤية الشاملة", "FROM FIELD TO VISIBILITY")}</div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className={styles.section} id="comparison">
+      {/* 02 — THE WHY: editorial impact statement + refined cards */}
+      <section className={styles.whySection} id="impact-value">
         <div className={styles.container}>
-          <Heading
-            label={t.compareLabel}
-            title={t.compareTitle}
-            accent={t.compareAccent}
-            description={t.compareDesc}
-          />
-          <BeforeAfter t={t} rtl={lang === 'ar'} />
+          <Reveal className={styles.whyHeading}>
+            <span className={styles.eyebrow}>{t("لماذا يهم؟", "WHY IT MATTERS")}</span>
+            <h2>{t("متابعة موحدة للأعمال الميدانية", "Unified Field Oversight")}<span>{t("بيانات مترابطة ورؤية أوضح", "Connected Data and Clarity")}</span></h2>
+          </Reveal>
+          <div className={styles.whyLayout}>
+            <Reveal className={styles.whyPhoto}>
+              <Image src={`${IMG}impact-regulator.webp`} alt={t("متابعة أعمال البنية التحتية", "Infrastructure operations oversight")} />
+              <div className={styles.photoBottomText}>{t("رؤية واحدة لأعمال متعددة", "ONE VIEW. MULTIPLE OPERATIONS")}</div>
+            </Reveal>
+            <div className={styles.whyCards}>
+              <Reveal className={styles.whyCard} delay={80}>
+                <span className={styles.cardIndex}>01 / {t("التحدي", "THE CHALLENGE")}</span>
+                <h3>{t("تشتت البيانات الميدانية", "Fragmented Field Data")}</h3>
+                <p>{t("صور وملاحظات ومواقع وأطراف متعددة، دون سياق موحد يسهل الرجوع إليه", "Photos, observations, locations and stakeholders without a shared context")}</p>
+              </Reveal>
+              <Reveal className={`${styles.whyCard} ${styles.whyCardAccent}`} delay={150}>
+                <span className={styles.cardIndex}>02 / {t("الفرصة", "THE OPPORTUNITY")}</span>
+                <h3>{t("توثيق ومتابعة مترابطة", "Connected Documentation & Oversight")}</h3>
+                <p>{t("تجمع المنصة الأدلة الميدانية في مسار منظم يدعم وضوح الحالة والتنسيق", "Bring field evidence into a structured workflow that supports visibility and coordination")}</p>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.altSection}`}>
+      {/* 03 — VALIDATION: compact, premium metrics */}
+      <section className={styles.metricsSection}>
         <div className={styles.container}>
-          <Heading
-            label={t.rolesLabel}
-            title={t.rolesTitle}
-            accent={t.rolesAccent}
-            description={t.rolesDesc}
-          />
-          <RoleExperience t={t} />
+          <Reveal className={styles.metricsTop}>
+            <div><span className={styles.eyebrow}>{t("نتائج تجربة التحقق", "VALIDATION EXPERIMENT")}</span><h2>{t("كفاءة التحقق التقني", "Technical Verification")}</h2></div>
+            <p>{t("أظهرت تجربة التحقق الأولية قبول 94 صورة من أصل 100 صورة جرى اختبارها لدعم مراجعة التوثيق الميداني", "The initial verification experiment recorded 94 accepted images out of 100 tested to support field documentation review")}</p>
+          </Reveal>
+          <div className={styles.metricCards}>
+            <Reveal className={`${styles.metricCard} ${styles.metricFeatured}`}><span className={styles.metricLabel}>{t("نسبة القبول في التجربة", "EXPERIMENT ACCEPTANCE")}</span><Count value={94} suffix="%" /><p>{t("من الصور المقبولة ضمن التجربة", "of images accepted during the experiment")}</p></Reveal>
+            <Reveal className={styles.metricCard} delay={100}><span className={styles.metricLabel}>{t("حجم العينة", "SAMPLE SIZE")}</span><Count value={100} /><p>{t("صورة ضمن تجربة التحقق", "images in the validation experiment")}</p></Reveal>
+            <Reveal className={styles.metricCard} delay={180}><span className={styles.metricLabel}>{t("مراحل العمل", "WORKFLOW")}</span><Count value={4} /><p>{t("مراحل مترابطة من التوثيق إلى المراجعة", "connected stages from capture to review")}</p></Reveal>
+          </div>
         </div>
       </section>
 
-      <section className={styles.section}>
+      {/* 04 — BENEFITS: large editorial photographic stories */}
+      <section className={styles.benefitsSection}>
         <div className={styles.container}>
-          <Heading
-            label={t.outcomesLabel}
-            title={t.outcomesTitle}
-            accent={t.outcomesAccent}
-            description={t.outcomesDesc}
-          />
-
-          <div className={styles.outcomesGrid}>
-            {t.outcomes.map((o, i) => {
-              const Icon = outcomeIcons[i]
+          <Reveal className={styles.benefitsHeader}>
+            <span className={styles.eyebrow}>{t("القيمة التشغيلية", "OPERATIONAL VALUE")}</span>
+            <h2>{t("قيمة تشغيلية", "Operational Value")}<span>{t("ملموسة في الميدان", "Across Field Operations")}</span></h2>
+            <p>{t("ثلاث قيم أساسية تنقل التوثيق من مهمة منفصلة إلى جزء من منظومة المتابعة", "Three ways to turn documentation from an isolated task into part of connected oversight")}</p>
+          </Reveal>
+          <div className={styles.benefitStories}>
+            {benefits.map((item, index) => {
+              const content = ar ? item.ar : item.en;
               return (
-                <Reveal
-                  className={styles.outcomeCard}
-                  key={i}
-                  delay={i * 0.07}
-                >
-                  <div className={styles.cardTop}>
-                    <span>0{i + 1} / EXPECTED</span>
-                    <ArrowUpRight size={17} />
-                  </div>
-                  <Icon className={styles.outcomeIcon} size={32} />
-                  <h3>{o.title}</h3>
-                  <p>{o.desc}</p>
+                <Reveal className={`${styles.benefitStory} ${index % 2 ? styles.benefitReverse : ""}`} key={item.number}>
+                  <div className={styles.benefitPhoto}><Image src={item.image} alt={content.title} /><span className={styles.benefitImageIndex}>{item.number} / 03</span></div>
+                  <div className={styles.benefitCopy}><span className={styles.storyNumber}>{item.number}</span><span className={styles.storyEyebrow}>{content.eyebrow}</span><h3>{content.title}</h3><p>{content.desc}</p><span className={styles.storyUnderline} /></div>
                 </Reveal>
-              )
+              );
             })}
           </div>
         </div>
       </section>
 
-      <section
-        className={`${styles.section} ${styles.altSection}`}
-        id="evidence"
-      >
+      {/* 05 — SECTORS: editorial photographic showcase, no drawn maps */}
+      <section className={styles.sectorsSection}>
         <div className={styles.container}>
-          <Heading
-            label={t.evidenceLabel}
-            title={t.evidenceTitle}
-            accent={t.evidenceAccent}
-            description={t.evidenceDesc}
-          />
-
-          <div className={styles.statsGrid}>
-            {t.stats.map((s, i) => (
-              <Reveal
-                className={styles.statCard}
-                key={i}
-                delay={i * 0.07}
-              >
-                <span>RESEARCH / 0{i + 1}</span>
-                <strong>{s.value}</strong>
-                <h3>{s.label}</h3>
-                <p>{s.note}</p>
-                <div className={styles.statFoot}>
-                  <Activity size={14} />
-                  EXPERIMENTAL RESULT
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <div className={styles.futureLayout}>
-            <Reveal className={styles.futureCopy}>
-              <span className={styles.eyebrow}>{t.futureLabel}</span>
-              <h2>{t.futureTitle}<em>{t.futureAccent}</em></h2>
-              <p>{t.futureDesc}</p>
-
-              <div className={styles.futureSteps}>
-                {t.futureSteps.map(([n, title, desc]) => (
-                  <div key={n}>
-                    <span>{n}</span>
-                    <div>
-                      <strong>{title}</strong>
-                      <p>{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal className={styles.futureVisual} delay={0.1}>
-              <div className={styles.futureVisualHead}>
-                <span><Database size={17} /> CITY MEMORY</span>
-                <span>CONCEPT</span>
-              </div>
-
-              <div className={styles.layerStack}>
-                {[0, 1, 2, 3].map(i => (
-                  <motion.div
-                    key={i}
-                    className={`${styles.layerCard} ${styles[`layer${i}`]}`}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.14 }}
-                  >
-                    <Layers3 size={23} />
-                    <span>RECORD / 0{i + 1}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className={styles.futureVisualFoot}>
-                <CheckCircle2 size={16} />
-                SHARED SPATIAL REFERENCE
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <Reveal className={styles.cta}>
-            <span className={styles.eyebrow}>
-              <Sparkles size={16} />
-              {t.ctaLabel}
-            </span>
-
-            <h2>{t.ctaTitle}<em>{t.ctaAccent}</em></h2>
-            <p>{t.ctaDesc}</p>
-
-            <div className={styles.heroActions}>
-              <Link className={styles.primaryButton} to="/platform">
-                {t.platform}
-                <Arrow size={18} />
-              </Link>
-              <Link className={styles.secondaryButton} to="/contact">
-                {t.contact}
-                <ArrowUpRight size={18} />
-              </Link>
-            </div>
+          <Reveal className={styles.sectorsHeader}>
+            <div><span className={styles.eyebrow}>{t("القطاعات المستفيدة", "SECTOR IMPACT")}</span><h2>{t("حلول لمختلف القطاعات", "Solutions Across Sectors")}<span>{t("متابعة متكاملة", "Connected Oversight")}</span></h2></div>
+            <p>{t("تختلف طبيعة الأعمال بين الجهات، لكن الحاجة إلى توثيق واضح ومتابعة مترابطة تجمعها", "Different sectors face different field challenges, but all benefit from clearer records and connected oversight")}</p>
           </Reveal>
+          <div className={styles.sectorTabs} role="group" aria-label={t("اختر القطاع", "Choose a sector")}>
+            {sectors.map((item) => <button type="button" key={item.id} className={`${styles.sectorTab} ${activeSector === item.id ? styles.sectorTabActive : ""}`} aria-pressed={activeSector === item.id} onClick={() => setActiveSector(item.id)}>{ar ? item.ar.name : item.en.name}</button>)}
+          </div>
+          <div className={styles.sectorShowcase} key={active.id}>
+            <div className={styles.sectorShowcaseImage}><Image src={active.image} alt={activeText.name} /><div className={styles.sectorImageShade} /><span className={styles.sectorImageText}>{activeText.name}</span></div>
+            <div className={styles.sectorShowcaseContent}>
+              <span className={styles.sectorSmall}>{t("أثر القطاع", "SECTOR VALUE")}</span>
+              {active.logo && <img className={styles.sectorLogo} src={active.logo} alt="" onError={e => { e.currentTarget.style.display = "none"; }} />}
+              <h3>{activeText.title}</h3><p>{activeText.description}</p>
+              <a href={active.url} target="_blank" rel="noopener noreferrer">{t("استعرض واجهة القطاع", "Explore the sector portal")}<ArrowUpRight size={19} /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 — CLOSING */}
+      <section className={styles.closing}>
+        <div className={styles.container}>
+          <Reveal className={styles.closingInner}><div><span className={styles.closingEyebrow}>UNIFIED WORKS</span><h2>{t("وضوح أكبر", "Clearer Insights")}<span>{t("قرارات أفضل", "Better Decisions")}</span></h2></div><a href="/platform">{t("تعرّف على المنصة", "Explore the platform")}<ArrowUpRight size={19} /></a></Reveal>
         </div>
       </section>
     </main>
-  )
+  );
 }

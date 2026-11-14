@@ -1,835 +1,810 @@
 
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styles from "./About.module.css";
 
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import {
-  ArrowUpRight,
-  ArrowLeft,
-  ArrowRight,
-  ArrowDown,
-  MapPinned,
-  Camera,
-  Layers3,
-  ShieldCheck,
-  BrainCircuit,
-  Target,
-  Eye,
-  HeartHandshake,
-  Sparkles,
-  CheckCircle2,
-  Quote,
-  Database,
-  ScanSearch
-} from 'lucide-react'
-import styles from './About.module.css'
+const LOGO = "/images/unified-works-logo.png";
+
+const team = [
+  { ar: "ريم المزعل", en: "Reem Almezeal" },
+  { ar: "لينه اللويمي", en: "Linah Alwimi" },
+  { ar: "أحمد الحربي", en: "Ahmed Alharbi" },
+  { ar: "مازن القحطاني", en: "Mazin Alqahtani" },
+];
 
 const content = {
   ar: {
-    eyebrow: 'UNIFIED WORKS / OUR STORY',
-    heroSmall: 'رؤية أوضح لما يحدث في الميدان',
-    heroTitle: 'ما لا يُرى',
-    heroAccent: 'نكشفه',
-    heroDesc:
-      'يوثّق Unified Works الأعمال الميدانية بالصور والموقع الجغرافي، ويجمع المعلومات في مرجع يساعد على المتابعة والتحقق واتخاذ قرارات أدق',
-    discover: 'تعرّف على المشروع',
-    explore: 'استكشف التقنية',
-    heroVisualLabel: 'FIELD INTELLIGENCE',
-    heroVisualTop: 'من الميدان',
-    heroVisualBottom: 'إلى معرفة موثوقة',
-    concept: 'نموذج تجريبي',
+    heroLabel: "من نحن / UNIFIED WORKS",
+    heroFirst: "نحو ميدان",
+    heroSecond: "أكثر وضوحًا",
+    heroText:
+      "نحوّل تفاصيل أعمال البنية التحتية إلى معلومات مترابطة تدعم التوثيق والتحقق والمتابعة وتمنح الجهات المعنية رؤية أوضح لما يحدث على أرض الواقع",
+    discover: "اكتشف قصتنا",
+    heroNote: "منصة الأعمال الموحّدة",
+    heroFoot: "من الميدان إلى القرار",
 
-    originLabel: '01 / THE CHALLENGE',
-    originTitle: 'حين تغيب التفاصيل',
-    originAccent: 'تصبح القرارات أصعب',
-    originDesc:
-      'بعد انتهاء أعمال الحفر وإغلاق المواقع، تختفي تفاصيل مهمة عن البنية التحتية المنفذة، وقد تتوزع الصور والبيانات بين جهات وأنظمة مختلفة، مما يصعّب الرجوع إليها عند الحاجة',
-    originQuote:
-      'ماذا لو أمكن الرجوع إلى تفاصيل الأعمال الميدانية حتى بعد اختفائها تحت الأرض؟',
-    originCards: [
+    storyLabel: "01 — قصتنا",
+    storyTitle: "من تحدٍ ميداني",
+    storyAccent: "إلى فكرة مترابطة",
+    storyLead:
+      "بدأت الفكرة من سؤال بسيط: كيف يمكن أن تكون أعمال البنية التحتية أكثر وضوحًا للجهات التي تنفذها وتشرف عليها؟",
+    storyText:
+      "في بيئة تتعدد فيها الجهات والمقاولون ومواقع التنفيذ، قد تتوزع الصور والملاحظات والمستندات بين مصادر مختلفة، مما يجعل متابعة الأعمال والرجوع إلى تفاصيلها أكثر تعقيدًا",
+    storyText2:
+      "من هنا جاءت الأعمال الموحّدة لتجمع بيانات العمل وموقعه وتوثيقه وملاحظاته ضمن تجربة رقمية واحدة، مع الاستفادة من الذكاء الاصطناعي لدعم المراجعة",
+    storyStatement: "كل عمل له موقع، وكل مرحلة لها توثيق، وكل معلومة لها سياق",
+
+    challengeLabel: "02 — التحديات",
+    challengeTitle: "تحديات واقعية",
+    challengeAccent: "تستحق حلولًا أذكى",
+    challengeIntro:
+      "نركز على التحديات التي تؤثر في وضوح المعلومات وسهولة متابعة الأعمال الميدانية",
+    challenges: [
       {
-        number: '01',
-        title: 'أعمال متواصلة',
-        desc: 'تنفّذ الفرق الميدانية أعمال الحفر والتمديدات في مواقع متعددة'
+        number: "01",
+        title: "تشتت التوثيق",
+        short: "عندما تتفرق تفاصيل العمل بين مصادر متعددة",
+        detail:
+          "توزع الصور والمستندات والملاحظات يجعل الوصول إلى سجل واضح لكل عمل أكثر صعوبة، لذلك نربط الأدلة بسجل العمل نفسه",
+        tag: "DOCUMENTATION",
       },
       {
-        number: '02',
-        title: 'تفاصيل غير مرئية',
-        desc: 'تختفي مكونات البنية التحتية عن الأنظار بعد إغلاق الموقع'
+        number: "02",
+        title: "ضعف الترابط المكاني",
+        short: "عندما تنفصل المعلومات عن موقع التنفيذ",
+        detail:
+          "ربط التوثيق بالموقع الجغرافي يمنح الجهات المعنية سياقًا أوضح للأعمال المنفذة ويساعدها على فهم ارتباطها بالمرافق المحيطة",
+        tag: "LOCATION",
       },
       {
-        number: '03',
-        title: 'بيانات متفرقة',
-        desc: 'تتوزع الصور والمعلومات بين سجلات وجهات مختلفة'
-      }
+        number: "03",
+        title: "تعقيد المتابعة",
+        short: "عندما تتعدد الجهات ومسارات المراجعة",
+        detail:
+          "تنظيم البيانات والملاحظات في سجل مترابط يسهّل المراجعة والتنسيق بين الجهات وفق مسؤولياتها وصلاحياتها",
+        tag: "OVERSIGHT",
+      },
     ],
 
-    solutionLabel: '02 / THE APPROACH',
-    solutionTitle: 'من صورة ميدانية',
-    solutionAccent: 'إلى معرفة موثوقة',
-    solutionDesc:
-      'يجمع المشروع بين توثيق الموقع والتحليل الذكي والمراجعة البشرية، لتحويل الصور الميدانية إلى معلومات منظمة يمكن التحقق منها والرجوع إليها',
-    solutionSteps: [
+    processLabel: "03 — منهجيتنا",
+    processTitle: "من الميدان",
+    processAccent: "إلى القرار",
+    processIntro:
+      "أربع مراحل مترابطة تجمع دورة العمل الميداني في مسار واحد واضح وقابل للتتبع",
+    process: [
       {
-        title: 'توثيق الموقع',
-        desc: 'التقاط صورة مرتبطة بالموقع الجغرافي ووقت التنفيذ'
+        number: "01",
+        en: "REGISTER",
+        title: "تسجيل العمل",
+        short: "بداية منظمة لكل مهمة",
+        detail:
+          "تسجيل بيانات العمل وتحديد موقعه الجغرافي والجهة المرتبطة به لإنشاء مرجع رقمي موحد",
       },
       {
-        title: 'تحليل ذكي',
-        desc: 'مقارنة الصور بمراجع معتمدة لدعم عملية التحقق'
+        number: "02",
+        en: "DOCUMENT",
+        title: "التوثيق الميداني",
+        short: "كل مرحلة موثقة",
+        detail:
+          "إرفاق صور التنفيذ والمستندات والملاحظات وربطها مباشرة بالعمل المسجل",
       },
       {
-        title: 'مراجعة بشرية',
-        desc: 'إحالة الحالات غير المؤكدة إلى المشرف لاتخاذ القرار'
+        number: "03",
+        en: "VERIFY",
+        title: "التحقق الذكي",
+        short: "تقنية تدعم المراجعة",
+        detail:
+          "الاستفادة من الذكاء الاصطناعي لمراجعة الصور وإبراز الملاحظات المحتملة لدعم التحقق البشري",
       },
       {
-        title: 'مرجع متنامٍ',
-        desc: 'إضافة الصور المعتمدة إلى مكتبة مرجعية قابلة للتوسع'
-      }
+        number: "04",
+        en: "OVERSEE",
+        title: "المراجعة والإشراف",
+        short: "رؤية تدعم القرار",
+        detail:
+          "تمكين الجهات المختصة من مراجعة بيانات الأعمال وتوثيقها وملاحظاتها وفق الصلاحيات المحددة",
+      },
     ],
+    stage: "المرحلة",
+    nextStage: "المرحلة التالية",
 
-    visionLabel: '03 / OUR DIRECTION',
-    visionTitle: 'رؤية تتجاوز',
-    visionAccent: 'حدود الميدان',
-    values: [
+    directionLabel: "04 — رؤيتنا ورسالتنا",
+    directionTitle: "نؤمن بأن وضوح",
+    directionAccent: "الميدان يصنع الفرق",
+    vision: "رؤيتنا",
+    visionText:
+      "المساهمة في مستقبل تصبح فيه أعمال البنية التحتية أكثر وضوحًا وترابطًا وقابلية للمتابعة",
+    mission: "رسالتنا",
+    missionText:
+      "توحيد التوثيق الميداني والمعلومات المكانية والتحقق الذكي في منظومة رقمية تدعم الإشراف وجودة التنفيذ",
+
+    ecosystemLabel: "05 — منظومة العمل",
+    ecosystemTitle: "جهات مختلفة",
+    ecosystemAccent: "ضمن رؤية واحدة",
+    ecosystemIntro:
+      "تجمع المنصة الأطراف المرتبطة بأعمال البنية التحتية مع الحفاظ على اختصاصات كل جهة",
+    stakeholders: [
       {
-        title: 'الرؤية',
-        desc: 'بنية تحتية أكثر وضوحًا ومعلومات مكانية تدعم التخطيط واتخاذ القرار'
+        number: "01",
+        en: "REGULATORS",
+        title: "الجهات التنظيمية",
+        short: "متابعة وتنظيم",
+        detail:
+          "استعراض الأعمال والمعلومات المرتبطة بها وفق الاختصاصات والمسؤوليات التنظيمية",
       },
       {
-        title: 'الرسالة',
-        desc: 'توحيد توثيق الأعمال الميدانية والتحقق منها ضمن مسار واضح ومترابط'
+        number: "02",
+        en: "OPERATORS",
+        title: "الجهات المالكة والمشغلة",
+        short: "رؤية للمرافق والشبكات",
+        detail:
+          "متابعة الأعمال ذات العلاقة بالمرافق وشبكات البنية التحتية التابعة للجهة",
       },
       {
-        title: 'المبدأ',
-        desc: 'توظيف الذكاء الاصطناعي لدعم الإنسان مع الحفاظ على المراجعة البشرية عند الحاجة'
-      }
+        number: "03",
+        en: "CONTRACTORS",
+        title: "المقاولون",
+        short: "التنفيذ يبدأ من الميدان",
+        detail:
+          "تسجيل الأعمال وتوثيق مراحل التنفيذ وإرفاق الأدلة والملاحظات الميدانية",
+      },
+      {
+        number: "04",
+        en: "MUNICIPALITIES",
+        title: "الأمانات والبلديات",
+        short: "متابعة النطاق الحضري",
+        detail:
+          "استعراض الأعمال المرتبطة بالشوارع والمواقع الحضرية لدعم أعمال المتابعة",
+      },
     ],
 
-    researchLabel: '04 / PROTOTYPE RESULTS',
-    researchTitle: 'الفكرة تتحول',
-    researchAccent: 'إلى واقع',
-    researchDesc:
-      'انتقل المشروع من التصور إلى نموذج تجريبي لاختبار تحليل الصور الميدانية والتعرف على مكونات البنية التحتية',
-    researchStats: [
-      ['148', 'صورة حقيقية ضمن التجربة'],
-      ['99.5%', 'دقة مذكورة بعد 10 موافقات'],
-      ['44/45', 'صورة كابلات تم التعرف عليها'],
-      ['0', 'حالات قبول آلي خاطئ في التجربة الموصوفة']
-    ],
-    researchButton: 'استعرض النتائج',
+    teamLabel: "06 — فريق المشروع",
+    teamTitle: "العقول خلف",
+    teamAccent: "الأعمال الموحّدة",
+    teamIntro:
+      "فريق جمعته رؤية مشتركة لتطوير تجربة رقمية أكثر ترابطًا ووضوحًا للأعمال الميدانية",
+    member: "عضو فريق المشروع",
+    teamEnglish: "PROJECT TEAM",
 
-    teamLabel: '05 / THE TEAM',
-    teamTitle: 'وراء الفكرة',
-    teamAccent: 'فريق يؤمن بها',
-    teamDesc:
-      'يجمع فريق Unified Works بين التفكير الهندسي وتطوير الحلول التقنية لفهم تحديات العمل الميداني ومعالجتها',
-    teamMembers: [
-    'ريم المزعل',
-    'لينة اللويمي',
-    'أحمد الحربي',
-    'مازن القحطاني'
-    ],
-    teamBadge: 'PROJECT TEAM',
-
-    nextLabel: '06 / THE ROAD AHEAD',
-    nextTitle: 'من التجربة',
-    nextAccent: 'إلى التطبيق والتوسع',
-    nextDesc:
-      'تركز المرحلة القادمة على اختبار النموذج في بيئات ميدانية متنوعة وتطوير إمكانات التكامل مع إجراءات الجهات ذات العلاقة',
-    nextSteps: [
-      [
-        '01',
-        'تجربة ميدانية',
-        'اختبار النموذج في مواقع فعلية بالتعاون مع جهة شريكة'
-      ],
-      [
-        '02',
-        'توسيع نطاق الاختبار',
-        'اختبار صور ومواقع وظروف تشغيل أكثر تنوعًا'
-      ],
-      [
-        '03',
-        'تكامل الأنظمة',
-        'دراسة ربط التصاريح وبيانات المواقع بإجراءات العمل'
-      ]
-    ],
-
-    ctaLabel: 'WHAT COMES NEXT',
-    ctaTitle: 'من معرفة ما تحت الأرض',
-    ctaAccent: 'إلى تخطيط ما فوقها',
-    ctaDesc:
-      'نبحث عن فرص للتعاون واختبار الحل وتطويره في بيئات ميدانية حقيقية',
-    contact: 'تواصل معنا',
-    platform: 'استكشف المنصة'
+    closingLabel: "UNIFIED WORKS",
+    closingTitle: "لنصنع مستقبلًا",
+    closingAccent: "أكثر وضوحًا",
+    closingText:
+      "اكتشف كيف تربط الأعمال الموحّدة الميدان بالتوثيق والمعلومات والمتابعة",
+    explore: "استكشف المنصة",
+    contact: "تواصل معنا",
   },
 
   en: {
-    eyebrow: 'UNIFIED WORKS / OUR STORY',
-    heroSmall: 'Bringing clarity to field operations',
-    heroTitle: 'Making the unseen',
-    heroAccent: 'visible',
-    heroDesc:
-      'Unified Works documents field operations through images and geolocation, bringing information together to support monitoring, verification and better decisions',
-    discover: 'Discover the project',
-    explore: 'Explore the technology',
-    heroVisualLabel: 'FIELD INTELLIGENCE',
-    heroVisualTop: 'From the field',
-    heroVisualBottom: 'to trusted knowledge',
-    concept: 'Prototype',
+    heroLabel: "ABOUT US / UNIFIED WORKS",
+    heroFirst: "A clearer view",
+    heroSecond: "of the field",
+    heroText:
+      "We connect infrastructure work details into meaningful information that supports documentation verification and oversight across stakeholders",
+    discover: "Discover our story",
+    heroNote: "Unified Works Platform",
+    heroFoot: "From the field to decisions",
 
-    originLabel: '01 / THE CHALLENGE',
-    originTitle: 'When details disappear',
-    originAccent: 'decisions become harder',
-    originDesc:
-      'Once excavation sites are closed, important infrastructure details become hidden, while photos and records may remain scattered across different teams and systems',
-    originQuote:
-      'What if we could revisit fieldwork details long after they disappear underground?',
-    originCards: [
+    storyLabel: "01 — OUR STORY",
+    storyTitle: "From a field challenge",
+    storyAccent: "to a connected idea",
+    storyLead:
+      "It began with one question: how can infrastructure operations become clearer for everyone involved?",
+    storyText:
+      "With multiple stakeholders contractors and work locations, photographs documents and observations may become scattered across separate sources",
+    storyText2:
+      "Unified Works brings work records locations documentation and observations into one digital experience while using AI to support review",
+    storyStatement:
+      "Every activity has a location, every stage has evidence, and every detail has context",
+
+    challengeLabel: "02 — CHALLENGES",
+    challengeTitle: "Real challenges",
+    challengeAccent: "deserve smarter solutions",
+    challengeIntro:
+      "We focus on the challenges affecting information clarity and effective field oversight",
+    challenges: [
       {
-        number: '01',
-        title: 'Work in progress',
-        desc: 'Field teams carry out excavation and utility work across multiple sites'
+        number: "01",
+        title: "Fragmented documentation",
+        short: "When work details are scattered",
+        detail:
+          "Photographs documents and observations across different sources make complete work records harder to maintain",
+        tag: "DOCUMENTATION",
       },
       {
-        number: '02',
-        title: 'Hidden details',
-        desc: 'Infrastructure components become invisible once sites are restored'
+        number: "02",
+        title: "Disconnected locations",
+        short: "When evidence loses its location context",
+        detail:
+          "Connecting documentation with geographic locations provides clearer context for infrastructure activities",
+        tag: "LOCATION",
       },
       {
-        number: '03',
-        title: 'Fragmented records',
-        desc: 'Photos and information remain distributed across separate records'
-      }
+        number: "03",
+        title: "Complex oversight",
+        short: "When stakeholders follow separate review paths",
+        detail:
+          "Organized records support review and coordination according to stakeholder responsibilities and permissions",
+        tag: "OVERSIGHT",
+      },
     ],
 
-    solutionLabel: '02 / THE APPROACH',
-    solutionTitle: 'From field evidence',
-    solutionAccent: 'to trusted knowledge',
-    solutionDesc:
-      'The project connects geolocated field documentation, intelligent image analysis and human review to create structured, verifiable records',
-    solutionSteps: [
+    processLabel: "03 — OUR APPROACH",
+    processTitle: "From the field",
+    processAccent: "to the decision",
+    processIntro:
+      "Four connected stages bringing field operations into one traceable workflow",
+    process: [
       {
-        title: 'Capture evidence',
-        desc: 'Record field images with location and capture time'
+        number: "01",
+        en: "REGISTER",
+        title: "Register work",
+        short: "An organized starting point",
+        detail:
+          "Record work information its geographic location and relevant stakeholders",
       },
       {
-        title: 'Intelligent analysis',
-        desc: 'Compare images against approved references'
+        number: "02",
+        en: "DOCUMENT",
+        title: "Field documentation",
+        short: "Evidence for every stage",
+        detail:
+          "Attach execution photographs documents and observations directly to each work record",
       },
       {
-        title: 'Human verification',
-        desc: 'Route uncertain cases to supervisors for review'
+        number: "03",
+        en: "VERIFY",
+        title: "Intelligent verification",
+        short: "Technology supporting review",
+        detail:
+          "Use AI assistance to review photographs and highlight potential observations for human verification",
       },
       {
-        title: 'Growing knowledge',
-        desc: 'Expand the reference library with approved images'
-      }
+        number: "04",
+        en: "OVERSEE",
+        title: "Review and oversight",
+        short: "Clarity supporting decisions",
+        detail:
+          "Enable authorized stakeholders to review work records documentation and observations",
+      },
     ],
+    stage: "STAGE",
+    nextStage: "Next stage",
 
-    visionLabel: '03 / OUR DIRECTION',
-    visionTitle: 'A vision beyond',
-    visionAccent: 'the field',
-    values: [
+    directionLabel: "04 — VISION & MISSION",
+    directionTitle: "We believe clarity",
+    directionAccent: "makes the difference",
+    vision: "Our vision",
+    visionText:
+      "To contribute to a future where infrastructure operations are clearer more connected and easier to oversee",
+    mission: "Our mission",
+    missionText:
+      "To unify field documentation geospatial information and AI-assisted verification in one digital ecosystem supporting execution quality",
+
+    ecosystemLabel: "05 — OUR ECOSYSTEM",
+    ecosystemTitle: "Different stakeholders",
+    ecosystemAccent: "one connected view",
+    ecosystemIntro:
+      "The platform connects infrastructure stakeholders while respecting each organization's responsibilities",
+    stakeholders: [
       {
-        title: 'Vision',
-        desc: 'Make infrastructure more visible and spatial information more useful for planning and decision-making'
+        number: "01",
+        en: "REGULATORS",
+        title: "Regulatory authorities",
+        short: "Regulation and oversight",
+        detail:
+          "Review relevant work information within regulatory responsibilities",
       },
       {
-        title: 'Mission',
-        desc: 'Bring field documentation and verification into one connected workflow'
+        number: "02",
+        en: "OPERATORS",
+        title: "Infrastructure operators",
+        short: "Visibility across utility networks",
+        detail:
+          "Monitor activities associated with their facilities and infrastructure networks",
       },
       {
-        title: 'Principle',
-        desc: 'Use AI to support human decisions while preserving oversight when needed'
-      }
+        number: "03",
+        en: "CONTRACTORS",
+        title: "Contractors",
+        short: "Execution starts in the field",
+        detail:
+          "Register activities and document execution stages with field evidence",
+      },
+      {
+        number: "04",
+        en: "MUNICIPALITIES",
+        title: "Municipalities",
+        short: "Urban infrastructure oversight",
+        detail:
+          "Review activities associated with streets and urban environments",
+      },
     ],
 
-    researchLabel: '04 / PROTOTYPE RESULTS',
-    researchTitle: 'Turning the concept',
-    researchAccent: 'into reality',
-    researchDesc:
-      'The project progressed into a prototype designed to evaluate field-image analysis and infrastructure component recognition',
-    researchStats: [
-      ['148', 'Real images included in the experiment'],
-      ['99.5%', 'Reported accuracy after 10 approvals'],
-      ['44/45', 'Cable images recognized'],
-      ['0', 'Incorrect automatic acceptances in the reported experiment']
-    ],
-    researchButton: 'Explore the results',
+    teamLabel: "06 — PROJECT TEAM",
+    teamTitle: "The people behind",
+    teamAccent: "Unified Works",
+    teamIntro:
+      "A team united by a shared vision for clearer and more connected field operations",
+    member: "Project team member",
+    teamEnglish: "PROJECT TEAM",
 
-    teamLabel: '05 / THE TEAM',
-    teamTitle: 'Behind the idea',
-    teamAccent: 'a team that believes in it',
-    teamDesc:
-      'The Unified Works team combines engineering thinking and technical development to address real field-operation challenges',
-    teamMembers: [
-      'Mazin Alqahtani',
-      'Ahmed Alharbi',
-      'Linah Alwilmi',
-      'Reem Almezeal'
-    ],
-    teamBadge: 'PROJECT TEAM',
+    closingLabel: "UNIFIED WORKS",
+    closingTitle: "A clearer future",
+    closingAccent: "starts in the field",
+    closingText:
+      "Discover how Unified Works connects field documentation information and oversight",
+    explore: "Explore the platform",
+    contact: "Contact us",
+  },
+};
 
-    nextLabel: '06 / THE ROAD AHEAD',
-    nextTitle: 'From prototype',
-    nextAccent: 'to deployment and scale',
-    nextDesc:
-      'The next phase focuses on testing in diverse field environments and exploring integration with relevant organizational workflows',
-    nextSteps: [
-      [
-        '01',
-        'Field pilot',
-        'Evaluate the prototype at real worksites with a partner organization'
-      ],
-      [
-        '02',
-        'Broader testing',
-        'Expand testing across more images, locations and operating conditions'
-      ],
-      [
-        '03',
-        'System integration',
-        'Explore connecting permits and site data with operational workflows'
-      ]
-    ],
+function Reveal({ children, className = "", delay = 0 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
 
-    ctaLabel: 'WHAT COMES NEXT',
-    ctaTitle: 'Understanding what lies below',
-    ctaAccent: 'to plan what comes above',
-    ctaDesc:
-      'We welcome opportunities to collaborate, test and develop the solution in real field environments',
-    contact: 'Get in touch',
-    platform: 'Explore the platform'
-  }
-}
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
 
-function Reveal({ children, className = '', delay = 0 }) {
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.65, delay }}
+    <div
+      ref={ref}
+      className={`${styles.reveal} ${
+        visible ? styles.revealVisible : ""
+      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </motion.div>
-  )
+    </div>
+  );
 }
 
-function SectionHeading({ label, title, accent, desc }) {
+function SectionHeading({ label, first, accent, center = false }) {
   return (
-    <Reveal className={styles.sectionHeading}>
-      <span className={styles.eyebrow}>{label}</span>
+    <div
+      className={`${styles.sectionHeading} ${
+        center ? styles.headingCenter : ""
+      }`}
+    >
+      <span className={styles.sectionEyebrow}>{label}</span>
       <h2>
-        {title}
-        <em>{accent}</em>
+        {first}
+        <span>{accent}</span>
       </h2>
-      {desc && <p>{desc}</p>}
-    </Reveal>
-  )
-}
-
-function StoryVisual({ t }) {
-  const [active, setActive] = useState(0)
-
-  const steps = [
-    { icon: Camera, code: 'CAPTURE' },
-    { icon: BrainCircuit, code: 'COMPARE' },
-    { icon: ShieldCheck, code: 'VERIFY' },
-    { icon: Database, code: 'PRESERVE' }
-  ]
-
-  const ActiveIcon = steps[active].icon
-
-  return (
-    <div className={styles.storyVisual}>
-      <div className={styles.visualTop}>
-        <span>{t.heroVisualLabel}</span>
-        <span className={styles.demoPill}>
-          <span />
-          {t.concept}
-        </span>
-      </div>
-
-      <div className={styles.storyCanvas}>
-        <div className={styles.canvasGrid} />
-
-        <div className={styles.storyRoad}>
-          <div className={styles.storyRoadLine} />
-          <div className={styles.storyExcavation} />
-        </div>
-
-        <div className={styles.storyDepth}>
-          <div className={styles.storyPipeBlue} />
-          <div className={styles.storyPipeGold} />
-        </div>
-
-        <div className={styles.storyCenter}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, scale: 0.75, rotate: -12 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 1.12 }}
-              transition={{ duration: 0.35 }}
-              className={styles.storyCenterIcon}
-            >
-              <ActiveIcon size={42} strokeWidth={1.5} />
-            </motion.div>
-          </AnimatePresence>
-
-          <span>{steps[active].code}</span>
-          <strong>0{active + 1} / 04</strong>
-        </div>
-
-        <div className={styles.visualCornerOne}>
-          <ScanSearch size={16} />
-          AI / HUMAN REVIEW
-        </div>
-
-        <div className={styles.visualCornerTwo}>
-          <MapPinned size={16} />
-          LOCATION-LINKED
-        </div>
-      </div>
-
-      <div className={styles.visualBottom}>
-        <div>
-          <span>{t.heroVisualTop}</span>
-          <strong>{t.heroVisualBottom}</strong>
-        </div>
-
-        <div className={styles.visualControls}>
-          {steps.map((step, i) => {
-            const Icon = step.icon
-
-            return (
-              <button
-                type="button"
-                key={step.code}
-                onClick={() => setActive(i)}
-                className={active === i ? styles.activeStep : ''}
-                aria-label={step.code}
-                aria-pressed={active === i}
-              >
-                <Icon size={17} />
-              </button>
-            )
-          })}
-        </div>
-      </div>
     </div>
-  )
-}
-
-function OriginTimeline({ t }) {
-  return (
-    <div className={styles.originTimeline}>
-      {t.originCards.map((item, i) => (
-        <Reveal
-          key={item.number}
-          delay={i * 0.1}
-          className={styles.originItem}
-        >
-          <span className={styles.originNumber}>{item.number}</span>
-
-          <div className={styles.originLine}>
-            <span />
-          </div>
-
-          <div>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
-          </div>
-        </Reveal>
-      ))}
-    </div>
-  )
-}
-
-function KnowledgeCycle({ t }) {
-  const icons = [Camera, BrainCircuit, ShieldCheck, Database]
-  const [selected, setSelected] = useState(0)
-
-  return (
-    <div className={styles.cycleLayout}>
-      <div className={styles.cycleDiagram}>
-        <div className={styles.cycleRing} />
-        <div className={styles.cycleRingInner} />
-
-        <div className={styles.cycleCenter}>
-          <Layers3 size={36} />
-          <strong>UNIFIED</strong>
-          <strong>WORKS</strong>
-          <small>KNOWLEDGE CYCLE</small>
-        </div>
-
-        {t.solutionSteps.map((step, i) => {
-          const Icon = icons[i]
-
-          return (
-            <button
-              key={i}
-              type="button"
-              className={`${styles.cycleNode} ${styles[`cycleNode${i}`]} ${
-                selected === i ? styles.cycleNodeActive : ''
-              }`}
-              onClick={() => setSelected(i)}
-              aria-label={step.title}
-              aria-pressed={selected === i}
-            >
-              <Icon size={23} />
-              <span>0{i + 1}</span>
-            </button>
-          )
-        })}
-      </div>
-
-      <div className={styles.cycleDetails}>
-        <span className={styles.eyebrow}>
-          INTERACTIVE PROCESS / 0{selected + 1}
-        </span>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selected}
-            initial={{ opacity: 0, x: 15 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -15 }}
-            transition={{ duration: 0.25 }}
-          >
-            <span className={styles.cycleIndex}>
-              0{selected + 1} / 04
-            </span>
-            <h3>{t.solutionSteps[selected].title}</h3>
-            <p>{t.solutionSteps[selected].desc}</p>
-          </motion.div>
-        </AnimatePresence>
-
-        <div className={styles.cycleSelector}>
-          {t.solutionSteps.map((step, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setSelected(i)}
-              className={selected === i ? styles.cycleSelected : ''}
-            >
-              <span>0{i + 1}</span>
-              {step.title}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function TeamCard({ name, index, label }) {
-  return (
-    <Reveal className={styles.teamCard} delay={index * 0.07}>
-      <div className={styles.teamCardTop}>
-        <span>0{index + 1}</span>
-        <Sparkles size={18} />
-      </div>
-
-      <div className={styles.teamAvatar}>
-        <span>
-          {name.split(' ').map(x => x[0]).join('')}
-        </span>
-      </div>
-
-      <strong>{name}</strong>
-      <small>{label}</small>
-
-      <div className={styles.teamCardBottom}>
-        <span>UNIFIED WORKS</span>
-        <span>2026</span>
-      </div>
-    </Reveal>
-  )
+  );
 }
 
 export default function About() {
-  const { i18n } = useTranslation()
-  const lang = i18n.resolvedLanguage?.startsWith('ar') ? 'ar' : 'en'
-  const t = content[lang]
-  const Arrow = lang === 'ar' ? ArrowLeft : ArrowRight
+  const { i18n } = useTranslation();
+  const isArabic = i18n.language?.startsWith("ar");
+  const t = isArabic ? content.ar : content.en;
 
-  const valueIcons = [Eye, Target, HeartHandshake]
+  const [activeStep, setActiveStep] = useState(0);
+  const [activeChallenge, setActiveChallenge] = useState(0);
+  const [activeStakeholder, setActiveStakeholder] = useState(0);
+  const [activeMember, setActiveMember] = useState(-1);
+
+  useEffect(() => {
+    document.title = isArabic
+      ? "من نحن | الأعمال الموحّدة"
+      : "About | Unified Works";
+  }, [isArabic]);
 
   return (
     <main
-      className={styles.page}
-      dir={lang === 'ar' ? 'rtl' : 'ltr'}
+      className={styles.about}
+      dir={isArabic ? "rtl" : "ltr"}
     >
+      {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.container}>
+          <div className={styles.heroMeta}>
+            <span>{t.heroLabel}</span>
+            <span>2026 / ABOUT</span>
+          </div>
+
           <div className={styles.heroGrid}>
             <Reveal className={styles.heroCopy}>
-              <span className={styles.eyebrow}>
-                {t.eyebrow}
-              </span>
-
-              <span className={styles.heroSmall}>
-                {t.heroSmall}
-              </span>
-
-              <h1>
-                {t.heroTitle}
-                <em>{t.heroAccent}</em>
-              </h1>
-
-              <p>{t.heroDesc}</p>
-
-              <div className={styles.heroActions}>
-                <a
-                  href="#our-story"
-                  className={styles.primaryButton}
-                >
-                  {t.discover}
-                  <Arrow size={18} />
-                </a>
-
-                <Link
-                  to="/technology"
-                  className={styles.secondaryButton}
-                >
-                  {t.explore}
-                  <ArrowUpRight size={18} />
-                </Link>
+              <div className={styles.heroTitle}>
+                <span className={styles.heroIndex}>UW / 01</span>
+                <h1>
+                  {t.heroFirst}
+                  <span>{t.heroSecond}</span>
+                </h1>
               </div>
+
+              <p>{t.heroText}</p>
+
+              <a className={styles.heroButton} href="#our-story">
+                <span>{t.discover}</span>
+                <span aria-hidden="true">↗</span>
+              </a>
             </Reveal>
 
-            <Reveal delay={0.15}>
-              <StoryVisual t={t} />
+            <Reveal className={styles.heroBrand} delay={120}>
+              <img src={LOGO} alt="Unified Works" />
+              <span className={styles.heroBrandCaption}>
+                {t.heroNote}
+              </span>
             </Reveal>
           </div>
 
           <div className={styles.heroFooter}>
-            <span>FROM EVIDENCE TO INTELLIGENCE</span>
-
-            <a href="#our-story" aria-label={t.discover}>
-              <ArrowDown size={18} />
-            </a>
+            <span>{t.heroFoot}</span>
+            <span>SCROLL TO EXPLORE ↓</span>
           </div>
         </div>
       </section>
 
-      <section
-        className={styles.section}
-        id="our-story"
-      >
+      {/* STORY */}
+      <section id="our-story" className={styles.story}>
         <div className={styles.container}>
-          <div className={styles.originGrid}>
-            <div>
-              <SectionHeading
-                label={t.originLabel}
-                title={t.originTitle}
-                accent={t.originAccent}
-                desc={t.originDesc}
-              />
+          <Reveal>
+            <SectionHeading
+              label={t.storyLabel}
+              first={t.storyTitle}
+              accent={t.storyAccent}
+            />
+          </Reveal>
 
-              <Reveal className={styles.quoteBox}>
-                <Quote size={26} />
-                <blockquote>{t.originQuote}</blockquote>
+          <div className={styles.storyComposition}>
+            <Reveal className={styles.storyFeature}>
+              <span className={styles.storyFeatureIndex}>
+                UNIFIED WORKS / ORIGIN
+              </span>
+              <strong>{t.storyLead}</strong>
+              <span className={styles.storyFeatureEnd}>01 / 06</span>
+            </Reveal>
+
+            <div className={styles.storyNarrative}>
+              <Reveal delay={90}>
+                <p>{t.storyText}</p>
+              </Reveal>
+              <Reveal delay={140}>
+                <p>{t.storyText2}</p>
+              </Reveal>
+
+              <Reveal className={styles.storySignature}>
+                <span>UW</span>
+                <strong>{t.storyStatement}</strong>
               </Reveal>
             </div>
-
-            <OriginTimeline t={t} />
           </div>
         </div>
       </section>
 
-      <section
-        className={`${styles.section} ${styles.altSection}`}
-      >
+      {/* CHALLENGES */}
+      <section className={styles.challenges}>
         <div className={styles.container}>
-          <SectionHeading
-            label={t.solutionLabel}
-            title={t.solutionTitle}
-            accent={t.solutionAccent}
-            desc={t.solutionDesc}
-          />
-
           <Reveal>
-            <KnowledgeCycle t={t} />
-          </Reveal>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <SectionHeading
-            label={t.visionLabel}
-            title={t.visionTitle}
-            accent={t.visionAccent}
-          />
-
-          <div className={styles.valuesGrid}>
-            {t.values.map((value, i) => {
-              const Icon = valueIcons[i]
-
-              return (
-                <Reveal
-                  key={i}
-                  delay={i * 0.1}
-                  className={styles.valueCard}
-                >
-                  <div className={styles.valueTop}>
-                    <span>0{i + 1}</span>
-                    <ArrowUpRight size={18} />
-                  </div>
-
-                  <Icon
-                    size={37}
-                    className={styles.valueIcon}
-                  />
-
-                  <h3>{value.title}</h3>
-                  <p>{value.desc}</p>
-                </Reveal>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.researchSection}`}
-      >
-        <div className={styles.container}>
-          <div className={styles.researchHeader}>
             <SectionHeading
-              label={t.researchLabel}
-              title={t.researchTitle}
-              accent={t.researchAccent}
-              desc={t.researchDesc}
+              label={t.challengeLabel}
+              first={t.challengeTitle}
+              accent={t.challengeAccent}
+              center
             />
+            <p className={styles.centerIntro}>
+              {t.challengeIntro}
+            </p>
+          </Reveal>
 
-            <Link
-              to="/impact"
-              className={styles.secondaryButton}
-            >
-              {t.researchButton}
-              <ArrowUpRight size={18} />
-            </Link>
-          </div>
+          <div className={styles.challengeGrid}>
+            {t.challenges.map((item, index) => (
+              <Reveal key={item.number} delay={index * 85}>
+                <button
+                  type="button"
+                  className={`${styles.challengeCard} ${
+                    activeChallenge === index
+                      ? styles.challengeActive
+                      : ""
+                  }`}
+                  onMouseEnter={() => setActiveChallenge(index)}
+                  onFocus={() => setActiveChallenge(index)}
+                  onClick={() => setActiveChallenge(index)}
+                  aria-expanded={activeChallenge === index}
+                >
+                  <span className={styles.challengeTop}>
+                    <span>{item.number} / 03</span>
+                    <span>{item.tag}</span>
+                  </span>
 
-          <div className={styles.researchGrid}>
-            {t.researchStats.map(([number, label], i) => (
-              <Reveal
-                key={i}
-                className={styles.researchCard}
-                delay={i * 0.07}
-              >
-                <span>EXPERIMENT / 0{i + 1}</span>
-                <strong>{number}</strong>
-                <p>{label}</p>
+                  <span className={styles.challengeBody}>
+                    <strong>{item.title}</strong>
+                    <span className={styles.challengeShort}>
+                      {item.short}
+                    </span>
+                    <span className={styles.challengeDetail}>
+                      {item.detail}
+                    </span>
+                  </span>
+
+                  <span className={styles.challengeBottom}>
+                    <span>UNIFIED WORKS</span>
+                    <span>↗</span>
+                  </span>
+                </button>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.section}>
+      {/* PROCESS */}
+      <section className={styles.process}>
         <div className={styles.container}>
-          <div className={styles.teamIntro}>
+          <Reveal className={styles.processHeading}>
+            <SectionHeading
+              label={t.processLabel}
+              first={t.processTitle}
+              accent={t.processAccent}
+            />
+            <p>{t.processIntro}</p>
+          </Reveal>
+
+          <div className={styles.processTrack}>
+            {t.process.map((step, index) => (
+              <button
+                key={step.number}
+                type="button"
+                onMouseEnter={() => setActiveStep(index)}
+                onFocus={() => setActiveStep(index)}
+                onClick={() => setActiveStep(index)}
+                className={`${styles.processStep} ${
+                  activeStep === index
+                    ? styles.processStepActive
+                    : ""
+                }`}
+                aria-expanded={activeStep === index}
+              >
+                <span className={styles.processStepTop}>
+                  <span>{step.number}</span>
+                  <span>{step.en}</span>
+                </span>
+
+                <span className={styles.processStepBody}>
+                  <strong>{step.title}</strong>
+                  <span className={styles.processStepShort}>
+                    {step.short}
+                  </span>
+                  <span className={styles.processStepDetail}>
+                    {step.detail}
+                  </span>
+                </span>
+
+                <span className={styles.processStepFooter}>
+                  <span>{t.stage} {step.number}</span>
+                  <span>↗</span>
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className={styles.processProgress}>
+            {t.process.map((step, index) => (
+              <button
+                key={step.number}
+                type="button"
+                aria-label={step.title}
+                onClick={() => setActiveStep(index)}
+                className={
+                  activeStep === index ? styles.progressActive : ""
+                }
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VISION & MISSION */}
+      <section className={styles.direction}>
+        <div className={styles.container}>
+          <div className={styles.directionLayout}>
+            <Reveal className={styles.directionHeading}>
+              <span className={styles.directionLabel}>
+                {t.directionLabel}
+              </span>
+              <h2>
+                {t.directionTitle}
+                <span>{t.directionAccent}</span>
+              </h2>
+              <span className={styles.directionSignature}>
+                UNIFIED WORKS / OUR DIRECTION
+              </span>
+            </Reveal>
+
+            <div className={styles.directionContent}>
+              <Reveal>
+                <article className={styles.directionBlock}>
+                  <span className={styles.directionNumber}>
+                    01 / VISION
+                  </span>
+                  <h3>{t.vision}</h3>
+                  <p>{t.visionText}</p>
+                </article>
+              </Reveal>
+
+              <Reveal delay={100}>
+                <article className={styles.directionBlock}>
+                  <span className={styles.directionNumber}>
+                    02 / MISSION
+                  </span>
+                  <h3>{t.mission}</h3>
+                  <p>{t.missionText}</p>
+                </article>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ECOSYSTEM */}
+      <section className={styles.ecosystem}>
+        <div className={styles.container}>
+          <Reveal>
+            <SectionHeading
+              label={t.ecosystemLabel}
+              first={t.ecosystemTitle}
+              accent={t.ecosystemAccent}
+              center
+            />
+            <p className={styles.centerIntro}>
+              {t.ecosystemIntro}
+            </p>
+          </Reveal>
+
+          <div className={styles.ecosystemGrid}>
+            {t.stakeholders.map((item, index) => (
+              <button
+                key={item.number}
+                type="button"
+                className={`${styles.ecosystemCard} ${
+                  activeStakeholder === index
+                    ? styles.ecosystemCardActive
+                    : ""
+                }`}
+                onMouseEnter={() => setActiveStakeholder(index)}
+                onFocus={() => setActiveStakeholder(index)}
+                onClick={() => setActiveStakeholder(index)}
+                aria-expanded={activeStakeholder === index}
+              >
+                <span className={styles.ecosystemCardTop}>
+                  <span>{item.number}</span>
+                  <span>{item.en}</span>
+                </span>
+
+                <span className={styles.ecosystemCardBody}>
+                  <strong>{item.title}</strong>
+                  <span>{item.short}</span>
+                  <span className={styles.ecosystemDetail}>
+                    {item.detail}
+                  </span>
+                </span>
+
+                <span className={styles.ecosystemCardFooter}>
+                  <span>UNIFIED WORKS</span>
+                  <span>↗</span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section id="our-team" className={styles.team}>
+        <div className={styles.container}>
+          <Reveal>
             <SectionHeading
               label={t.teamLabel}
-              title={t.teamTitle}
+              first={t.teamTitle}
               accent={t.teamAccent}
-              desc={t.teamDesc}
+              center
             />
-
-            <div className={styles.teamEmblem}>
-              <Layers3 size={31} />
-              <span>UNIFIED WORKS</span>
-              <small>PROJECT TEAM</small>
-            </div>
-          </div>
+            <p className={styles.centerIntro}>
+              {t.teamIntro}
+            </p>
+          </Reveal>
 
           <div className={styles.teamGrid}>
-            {t.teamMembers.map((name, i) => (
-              <TeamCard
-                key={name}
-                name={name}
-                index={i}
-                label={t.teamBadge}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.section} ${styles.altSection}`}
-      >
-        <div className={styles.container}>
-          <SectionHeading
-            label={t.nextLabel}
-            title={t.nextTitle}
-            accent={t.nextAccent}
-            desc={t.nextDesc}
-          />
-
-          <div className={styles.futureTrack}>
-            {t.nextSteps.map(([num, title, desc], i) => (
-              <Reveal
-                key={num}
-                delay={i * 0.12}
-                className={styles.futureStep}
+            {team.map((member, index) => (
+              <button
+                type="button"
+                key={member.ar}
+                className={`${styles.teamCard} ${
+                  activeMember === index
+                    ? styles.teamCardActive
+                    : ""
+                }`}
+                onMouseEnter={() => setActiveMember(index)}
+                onMouseLeave={() => setActiveMember(-1)}
+                onFocus={() => setActiveMember(index)}
+                onBlur={() => setActiveMember(-1)}
+                onClick={() =>
+                  setActiveMember(
+                    activeMember === index ? -1 : index
+                  )
+                }
+                aria-expanded={activeMember === index}
               >
-                <div className={styles.futureNumber}>
-                  {num}
-                </div>
+                <span className={styles.teamCardTop}>
+                  <span>0{index + 1}</span>
+                  <span>UW / TEAM</span>
+                </span>
 
-                <h3>{title}</h3>
-                <p>{desc}</p>
+                <span className={styles.teamCardCenter}>
+                  <span className={styles.teamMonogram}>
+                    {isArabic
+                      ? member.ar.charAt(0)
+                      : member.en.charAt(0)}
+                  </span>
+                </span>
 
-                <CheckCircle2 size={20} />
-              </Reveal>
+                <span className={styles.teamCardInfo}>
+                  <strong>
+                    {isArabic ? member.ar : member.en}
+                  </strong>
+                  <span>{t.member}</span>
+                  <span className={styles.teamCardExtra}>
+                    {isArabic ? member.en : member.ar}
+                  </span>
+                </span>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
+      {/* CLOSING */}
+      <section className={styles.closing}>
         <div className={styles.container}>
-          <Reveal className={styles.cta}>
-            <span className={styles.eyebrow}>
-              {t.ctaLabel}
+          <Reveal className={styles.closingContent}>
+            <span className={styles.closingEyebrow}>
+              {t.closingLabel}
             </span>
-
             <h2>
-              {t.ctaTitle}
-              <em>{t.ctaAccent}</em>
+              {t.closingTitle}
+              <span>{t.closingAccent}</span>
             </h2>
+            <p>{t.closingText}</p>
 
-            <p>{t.ctaDesc}</p>
-
-            <div className={styles.heroActions}>
-              <Link
-                to="/contact"
-                className={styles.primaryButton}
-              >
-                {t.contact}
-                <Arrow size={18} />
+            <div className={styles.closingActions}>
+              <Link to="/platform" className={styles.primaryButton}>
+                {t.explore}
+                <span aria-hidden="true">↗</span>
               </Link>
-
-              <Link
-                to="/platform"
-                className={styles.secondaryButton}
-              >
-                {t.platform}
-                <ArrowUpRight size={18} />
+              <Link to="/contact" className={styles.outlineButton}>
+                {t.contact}
+                <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </Reveal>
         </div>
       </section>
     </main>
-  )
+  );
 }
