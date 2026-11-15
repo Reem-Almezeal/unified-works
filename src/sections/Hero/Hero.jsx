@@ -18,167 +18,167 @@ const video = '/videos/unified-works.mp4'
 
 const content = {
   ar: {
-    eyebrow: 'منصة ذكية لإدارة الأعمال الميدانية',
-    stakeholdersLabel: 'جهات وقطاعات مستهدفة للتكامل',
+    eyebrow: 'منصة رقمية للإشراف الميداني',
+    stakeholdersLabel: 'الجهات والقطاعات المستهدفة بخدمات المنصة',
     stakeholders: ['الشركة السعودية للكهرباء', 'شركة المياه الوطنية', 'هيئة الاتصالات والفضاء والتقنية', 'وزارة البلديات والإسكان', 'الأمانات والبلديات', 'مشغلو شبكات الاتصالات', 'الجهات التنظيمية', 'مقاولو البنية التحتية'],
-    title: 'كل عمل ميداني',
-    accent: 'تحت رؤية واحدة',
+    title: 'توثيق ومراجعة',
+    accent: 'أعمال البنية التحتية',
     description:
-      'من توثيق الأعمال الميدانية إلى متابعة جودة التنفيذ، منصة موحدة تربط الجهات والمقاولين وتدعم اتخاذ القرار بالذكاء الاصطناعي',
-    explore: 'اكتشف المنصة',
-    watch: 'شاهد كيف يعمل النظام',
-    overviewTag: 'UNIFIED WORKS / 01',
-    overviewTitle: 'رؤية موحدة لأعمال ميدانية أكثر كفاءة',
+      'توثيق الأعمال بالصور، ومتابعة تنفيذ المقاولين، وتسجيل الملاحظات وقرارات المشرفين لدعم مراجعة الجودة والالتزام بمتطلبات المشروع',
+    explore: 'عن المنصة',
+    watch: 'عرض المنصة',
+    overviewTag: 'عن المنصة / 01',
+    overviewTitle: 'وظائف المنصة',
     overviewDescription:
-      'يجمع نظام الأعمال الموحدة التوثيق الميداني ومتابعة المقاولين ومراجعة جودة التنفيذ في تجربة مترابطة، لتكون المعلومات متاحة للجهات المعنية في مكان واحد',
+      'الأعمال الموحّدة منصة رقمية لتوثيق أعمال البنية التحتية والإشراف عليها، وتنظيم سجلات الأعمال الجارية والمنجزة لدعم المراجعة والاعتماد',
     features: [
       {
-        title: 'توثيق ميداني',
-        description: 'توثيق مراحل التنفيذ بالصور والبيانات المرتبطة بالموقع والوقت',
+        title: 'التوثيق الميداني',
+        description: 'حفظ صور التنفيذ والملاحظات وقرارات المشرفين في سجلات مرتبطة بمواقع الأعمال ومراحلها',
       },
       {
-        title: 'متابعة الجودة',
-        description: 'مراجعة الأعمال الميدانية والتحقق من الالتزام بمتطلبات التنفيذ',
+        title: 'مراقبة جودة التنفيذ',
+        description: 'مراجعة التزام المقاولين بمتطلبات المشروع والمعايير الفنية وتوثيق المخالفات والإجراءات التصحيحية',
       },
       {
-        title: 'تحليل ذكي',
-        description: 'دعم عمليات المراجعة باستخدام تقنيات الذكاء الاصطناعي',
+        title: 'نماذج ذكاء اصطناعي مخططة',
+        description: 'يتضمن التصور التقني نموذجًا خاصًا بكل جهة، يُدرّب على الصور وقرارات المشرفين المعتمدة لدعم سرعة المراجعة واتساقها تدريجيًا، مع بقاء الاعتماد النهائي للمشرف',
       },
     ],
-    videoTag: 'SYSTEM OVERVIEW / 02',
-    videoTitle: 'تعرّف على النظام عن قرب',
+    videoTag: 'عرض المنصة / 02',
+    videoTitle: 'نظرة عامة على المنصة',
     videoDescription:
-      'شاهد كيف يربط النظام بين العمل الميداني والتوثيق ومراجعة الجودة والإشراف في تجربة واحدة',
-    processTag: 'HOW IT WORKS / 03',
-    processTitle: 'من الميدان إلى القرار',
+      'عرض مرئي يوضح توثيق الأعمال الميدانية ومتابعة التنفيذ ومراجعة الأدلة وتسجيل نتائج الإشراف',
+    processTag: 'إجراءات العمل / 03',
+    processTitle: 'آلية العمل',
     processDescription:
-      'سير عمل مترابط يجعل كل مرحلة من مراحل التنفيذ أكثر وضوحًا وقابلية للمتابعة',
+      'إجراءات تبدأ بتحديد العمل وتوثيقه، وتنتهي بمراجعة الأدلة وتسجيل قرار القبول أو الرفض وأسبابه',
     steps: [
       {
-        title: 'تحديد موقع العمل',
-        description: 'ربط المهمة بموقعها الجغرافي ونطاق العمل المحدد',
+        title: 'تحديد نطاق العمل',
+        description: 'تسجيل موقع العمل ونطاقه ومتطلبات التنفيذ ذات الصلة',
       },
       {
         title: 'توثيق التنفيذ',
-        description: 'إرفاق الصور والبيانات اللازمة لتوثيق تقدم الأعمال',
+        description: 'إرفاق الصور والبيانات والملاحظات المرتبطة بمراحل التنفيذ',
       },
       {
-        title: 'المراجعة الذكية',
-        description: 'مساعدة المشرف في مراجعة الصور ومطابقتها مع متطلبات العمل',
+        title: 'مراجعة الأدلة',
+        description: 'مراجعة المشرف للصور ومدى مطابقة الأعمال للمتطلبات والمعايير',
       },
       {
-        title: 'متابعة القرارات',
-        description: 'تسجيل نتائج المراجعة وإتاحتها للجهات المعنية',
+        title: 'تسجيل القرار',
+        description: 'توثيق القبول أو الرفض وأسبابه ومتابعة الإجراءات التصحيحية',
       },
     ],
-    applicationsTag: 'FIELD APPLICATIONS / 04',
-    applicationsTitle: 'تقنية ترتبط بواقع الميدان',
+    applicationsTag: 'الأثر التشغيلي / 04',
+    applicationsTitle: 'الفوائد التشغيلية',
     applicationsDescription:
-      'حلول مترابطة لمتابعة الأعمال والمرافق وجودة التنفيذ',
+      'دعم الجهات في ترشيد تكاليف التفتيش وتوزيع موارد الإشراف والحد من إعادة العمل والصيانة التي يمكن تجنبها',
     applications: [
       {
-        title: 'أعمال البنية التحتية',
-        description: 'متابعة أعمال المرافق والمشروعات الميدانية',
+        title: 'متابعة أداء المقاولين',
+        description: 'سجلات التنفيذ والملاحظات تدعم تقييم الأداء وتحديد أولويات الإشراف',
         image: images.utilities,
       },
       {
-        title: 'الفرق الميدانية',
-        description: 'تسهيل توثيق الأعمال والتواصل بين الفرق',
+        title: 'كفاءة الزيارات الميدانية',
+        description: 'مراجعة الأدلة عن بُعد تساعد في تقليل الزيارات غير الضرورية وتكاليفها',
         image: images.team,
       },
       {
-        title: 'التفتيش وضمان الجودة',
-        description: 'مراجعة مراحل التنفيذ وتوثيق نتائج الفحص',
+        title: 'رصد مشكلات التنفيذ',
+        description: 'الكشف المبكر يدعم التصحيح للحد من إعادة العمل وتكاليف الصيانة اللاحقة',
         image: images.inspection,
       },
     ],
-    finalTitle: 'معلومات أوضح، قرارات أفضل',
+    finalTitle: 'حوكمة الأعمال الميدانية',
     finalDescription:
-      'نحو تجربة موحدة تجمع أطراف العمل الميداني في منصة واحدة',
-    finalAction: 'تعرّف على الفريق',
-    videoUnavailable: 'تعذر تحميل الفيديو، تأكدي من مساره داخل مجلد public',
+      'سجلات موثقة تدعم المساءلة وتتبع التنفيذ وقرارات الإشراف لدى الجهات والمقاولين',
+    finalAction: 'عن الأعمال الموحّدة',
+    videoUnavailable: 'الفيديو غير متاح حاليًا',
   },
 
   en: {
-    eyebrow: 'INTELLIGENT FIELD OPERATIONS',
-    stakeholdersLabel: 'SECTORS & ORGANIZATIONS FOR POTENTIAL INTEGRATION',
+    eyebrow: 'DIGITAL FIELD OVERSIGHT',
+    stakeholdersLabel: 'INTENDED ORGANIZATIONS AND BENEFICIARY SECTORS',
     stakeholders: ['Saudi Electricity Company', 'National Water Company', 'Communications, Space & Technology Commission', 'Ministry of Municipalities and Housing', 'Municipalities', 'Telecom Operators', 'Regulatory Authorities', 'Infrastructure Contractors'],
-    title: 'Every field operation',
-    accent: 'under one system',
+    title: 'Infrastructure works',
+    accent: 'Documentation and review',
     description:
-      'From field documentation to execution quality monitoring, one connected platform brings organizations and contractors together with AI-assisted insights',
-    explore: 'Explore the platform',
-    watch: 'See how it works',
-    overviewTag: 'UNIFIED WORKS / 01',
-    overviewTitle: 'One connected view of field operations',
+      'Document fieldwork with photos, monitor contractor execution, and record observations and supervisor decisions to support quality review and project compliance',
+    explore: 'About the platform',
+    watch: 'Platform overview',
+    overviewTag: 'ABOUT THE PLATFORM / 01',
+    overviewTitle: 'Key functions',
     overviewDescription:
-      'Unified Works brings field documentation, contractor oversight, and execution quality review into one coordinated experience, keeping stakeholders connected',
+      'Unified Works is a digital platform for documenting and supervising infrastructure operations, with organized records of ongoing and completed work to support review and approval',
     features: [
       {
         title: 'Field documentation',
-        description: 'Capture execution stages with location-aware photos and records',
+        description: 'Maintain photographs, observations, and supervisor decisions linked to work locations and execution stages',
       },
       {
-        title: 'Quality oversight',
-        description: 'Review field activities against execution requirements',
+        title: 'Contractor quality control',
+        description: 'Review compliance with project requirements and technical standards, documenting issues and corrective actions',
       },
       {
-        title: 'AI-assisted review',
-        description: 'Support review workflows with artificial intelligence',
+        title: 'Planned organization-specific AI',
+        description: 'The concept includes a model for each organization, trained on images and validated supervisor decisions to support faster, more consistent reviews over time, with final approval retained by supervisors',
       },
     ],
-    videoTag: 'SYSTEM OVERVIEW / 02',
-    videoTitle: 'See the system in action',
+    videoTag: 'PLATFORM OVERVIEW / 02',
+    videoTitle: 'Platform overview',
     videoDescription:
-      'Discover how field documentation, quality review, and supervision connect in one experience',
-    processTag: 'HOW IT WORKS / 03',
-    processTitle: 'From fieldwork to decisions',
+      'A video overview of field documentation, execution monitoring, evidence review, and supervision records',
+    processTag: 'WORK PROCEDURES / 03',
+    processTitle: 'How it works',
     processDescription:
-      'A connected workflow designed to make execution more visible and easier to coordinate',
+      'A review process from defining and documenting the work to recording evidence-based acceptance or rejection and its reasons',
     steps: [
       {
-        title: 'Locate the work',
-        description: 'Connect each task to its geographic location and work zone',
+        title: 'Define the work',
+        description: 'Record the location, scope, and applicable execution requirements',
       },
       {
         title: 'Document progress',
-        description: 'Capture photos and essential records throughout execution',
+        description: 'Attach photographs, field data, and observations for each execution stage',
       },
       {
-        title: 'Review quality',
-        description: 'Assist supervisors in reviewing images and work requirements',
+        title: 'Review evidence',
+        description: 'Supervisors assess images and work against requirements and standards',
       },
       {
-        title: 'Coordinate decisions',
-        description: 'Record review outcomes and share them with stakeholders',
+        title: 'Record the decision',
+        description: 'Document acceptance or rejection, its reasons, and corrective action follow-up',
       },
     ],
-    applicationsTag: 'FIELD APPLICATIONS / 04',
-    applicationsTitle: 'Technology grounded in the field',
+    applicationsTag: 'OPERATIONAL VALUE / 04',
+    applicationsTitle: 'Operational benefits',
     applicationsDescription:
-      'Connected solutions for infrastructure, field operations, and execution quality',
+      'Support inspection cost control, supervision resource allocation, and reductions in rework and avoidable maintenance',
     applications: [
       {
-        title: 'Infrastructure works',
-        description: 'Track utility projects and field activities',
+        title: 'Contractor performance',
+        description: 'Execution records and observations support performance assessment and supervision priorities',
         image: images.utilities,
       },
       {
-        title: 'Field teams',
-        description: 'Streamline documentation and team coordination',
+        title: 'Inspection efficiency',
+        description: 'Remote evidence review can reduce unnecessary field visits and associated inspection costs',
         image: images.team,
       },
       {
-        title: 'Inspection and quality',
-        description: 'Review execution stages and inspection outcomes',
+        title: 'Execution issue detection',
+        description: 'Early detection supports corrective action to limit rework and subsequent maintenance costs',
         image: images.inspection,
       },
     ],
-    finalTitle: 'Better visibility. Better decisions.',
+    finalTitle: 'Field operations governance',
     finalDescription:
-      'Bringing fieldwork stakeholders together in one connected platform',
-    finalAction: 'Meet the team',
-    videoUnavailable: 'Video unavailable. Check its path inside the public folder.',
+      'Documented records support accountability and traceability of execution and supervision decisions across organizations and contractors',
+    finalAction: 'About Unified Works',
+    videoUnavailable: 'Video currently unavailable',
   },
 }
 
@@ -242,7 +242,7 @@ export default function Hero() {
       {/* Continuous, non-interactive sector marquee. These are potential stakeholders, not confirmed partners. */}
       <section className={styles.stakeholderStrip} aria-label={t.stakeholdersLabel}>
         <div className={styles.stakeholderViewport}>
-          <div className={styles.stakeholderTrack}>
+          <div className={styles.stakeholderTrack} key={isArabic ? 'rtl' : 'ltr'}>
             {[0, 1].map((copy) => (
               <div className={styles.stakeholderGroup} key={copy} aria-hidden={copy === 1}>
                 {t.stakeholders.map((name) => (
@@ -320,7 +320,7 @@ export default function Hero() {
 
           <div className={styles.videoCaption}>
             <span>UNIFIED WORKS / SYSTEM OVERVIEW</span>
-            <span>{isArabic ? 'عرض مرئي للمنصة' : 'A closer look at the platform'}</span>
+            <span>{isArabic ? 'التوثيق والإشراف الميداني' : 'Field documentation and supervision'}</span>
           </div>
         </div>
       </section>
