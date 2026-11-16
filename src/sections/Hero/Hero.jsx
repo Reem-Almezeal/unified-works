@@ -16,11 +16,18 @@ const images = {
 
 const video = '/videos/unified-works.mp4'
 
+const tickerLogos = [
+  { src: '/images/organizations/saudi-energy.png', ar: 'السعودية للطاقة', en: 'Saudi Energy' },
+  { src: '/images/organizations/water.png', ar: 'المياه والصرف الصحي', en: 'Water and wastewater' },
+  { src: '/images/organizations/telecom.png', ar: 'الاتصالات', en: 'Telecommunications' },
+  { src: '/images/organizations/municipality.png', ar: 'الأمانات والبلديات', en: 'Municipal authorities' },
+  { src: '/images/unified-works-logo.png', ar: 'الأعمال الموحّدة', en: 'Unified Works' },
+]
+
 const content = {
   ar: {
     eyebrow: 'منصة رقمية للإشراف الميداني',
-    stakeholdersLabel: 'الجهات والقطاعات المستهدفة بخدمات المنصة',
-    stakeholders: ['الشركة السعودية للكهرباء', 'شركة المياه الوطنية', 'هيئة الاتصالات والفضاء والتقنية', 'وزارة البلديات والإسكان', 'الأمانات والبلديات', 'مشغلو شبكات الاتصالات', 'الجهات التنظيمية', 'مقاولو البنية التحتية'],
+    stakeholdersLabel: 'شعارات الجهات والأعمال الموحّدة',
     title: 'توثيق ومراجعة',
     accent: 'أعمال البنية التحتية',
     description:
@@ -101,8 +108,7 @@ const content = {
 
   en: {
     eyebrow: 'DIGITAL FIELD OVERSIGHT',
-    stakeholdersLabel: 'INTENDED ORGANIZATIONS AND BENEFICIARY SECTORS',
-    stakeholders: ['Saudi Electricity Company', 'National Water Company', 'Communications, Space & Technology Commission', 'Ministry of Municipalities and Housing', 'Municipalities', 'Telecom Operators', 'Regulatory Authorities', 'Infrastructure Contractors'],
+    stakeholdersLabel: 'Organization and Unified Works logos',
     title: 'Infrastructure works',
     accent: 'Documentation and review',
     description:
@@ -239,17 +245,20 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Continuous, non-interactive sector marquee. These are potential stakeholders, not confirmed partners. */}
+      {/* Repeated logos do not imply confirmed partnerships or adoption. */}
       <section className={styles.stakeholderStrip} aria-label={t.stakeholdersLabel}>
         <div className={styles.stakeholderViewport}>
           <div className={styles.stakeholderTrack} key={isArabic ? 'rtl' : 'ltr'}>
             {[0, 1].map((copy) => (
               <div className={styles.stakeholderGroup} key={copy} aria-hidden={copy === 1}>
-                {t.stakeholders.map((name) => (
-                  <span className={styles.stakeholderItem} key={`${copy}-${name}`}>
-                    <span className={styles.stakeholderDot} aria-hidden="true" />
-                    {name}
-                  </span>
+                {tickerLogos.map((logo) => (
+                  <img
+                    className={styles.stakeholderLogo}
+                    key={logo.src}
+                    src={logo.src}
+                    alt={copy === 0 ? isArabic ? logo.ar : logo.en : ''}
+                    decoding="async"
+                  />
                 ))}
               </div>
             ))}

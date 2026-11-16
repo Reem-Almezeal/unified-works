@@ -128,8 +128,9 @@
   font-size: 10px;
   letter-spacing: .12em;
 }
-/* ONLY MOVING NAMES — NO FIXED INTRO */
+/* LOGO TICKER */
 .stakeholderStrip {
+  --logo-height: 44px;
   --scroll-start: -50%;
   --scroll-origin: left center;
   width: 100%;
@@ -163,23 +164,26 @@
   display: flex;
   align-items: center;
   flex: 0 0 auto;
+  min-width: 100vw;
+  justify-content: space-around;
   gap: 48px;
-  padding-inline-end: 48px;
-  white-space: nowrap;
+  padding-inline: 24px;
 }
-.stakeholderItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 13px;
+.stakeholderLogo {
+  display: block;
   flex: 0 0 auto;
-  color: #183b46;
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
+  width: auto;
+  height: var(--logo-height);
+  max-width: none;
+  object-fit: contain;
 }
-.stakeholderDot { width: 5px; height: 5px; flex: 0 0 auto; border-radius: 50%; background: #197b50; }
+/* The 600px canvas contains a 140px-high mark with equal transparent margins. */
+.stakeholderLogo[src$='/telecom.png'] {
+  height: calc(var(--logo-height) * 4.285714);
+  margin-block: calc(var(--logo-height) * -1.642857);
+}
 /* Each half is an identical group, so both directions loop without a gap. */
-@keyframes stakeholderScroll { from { transform: translateX(var(--scroll-start)); } to { transform: translateX(0); } }
+@keyframes stakeholderScroll { from { transform: translateX(0); } to { transform: translateX(var(--scroll-start)); } }
 @media (max-width: 1024px) { .hero { min-height: calc(100svh - 74px); } }
 @media (max-width: 768px) {
   .heroContent { padding: 80px 28px 100px; }
@@ -187,8 +191,8 @@
   .heroDescription { font-size: 14px; }
   .stakeholderViewport { min-height: 62px; }
   .stakeholderTrack { animation-duration: 34s; }
-  .stakeholderGroup { gap: 32px; padding-inline-end: 32px; }
-  .stakeholderItem { font-size: 12px; }
+  .stakeholderStrip { --logo-height: 36px; }
+  .stakeholderGroup { gap: 32px; padding-inline: 16px; }
 }
 @media (max-width: 600px) { .hero { min-height: calc(100svh - 68px); } .heroBottom { inset-inline: 23px; } }
 @media (max-width: 480px) { .heroContent { padding-inline: 23px; } .heroTitle { font-size: 38px; } }
@@ -640,7 +644,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .page *:not(.stakeholderTrack) { scroll-behavior: auto; }
-  .stakeholderTrack { animation-duration: 90s; }
+  .stakeholderViewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .stakeholderTrack { animation: none; transform: none; will-change: auto; }
+  .stakeholderGroup[aria-hidden='true'] { display: none; }
 }
 /* ======================================================
    CORPORATE EDITORIAL SECTIONS — 2026 REDESIGN
