@@ -6,201 +6,201 @@ import styles from "./Contact.module.css";
 
 const content = {
   ar: {
-    eyebrow: "UNIFIED WORKS / CONTACT",
-    heroTitle: "لنبدأ",
-    heroAccent: "حوارًا يصنع أثرًا",
+    eyebrow: "الأعمال الموحّدة / التواصل",
+    heroTitle: "تواصل",
+    heroAccent: "معنا",
     heroDescription:
-      "سواء كنت تمثل جهة تبحث عن شراكة، أو ترغب في التعاون معنا، أو لديك استفسار حول الأعمال الموحّدة، يسعدنا التعرف على احتياجك ومناقشة الفرص الممكنة",
-    heroIndex: "التواصل يبدأ من هنا",
+      "للتواصل مع فريق الأعمال الموحّدة بشأن وظائف المنصة، وطلبات العروض التوضيحية، والاستفسارات الفنية والتشغيلية، وفرص التعاون مع الجهات والشركات والأفراد",
+    heroIndex: "عرض مجالات التواصل",
 
     introLabel: "01 — مجالات التواصل",
-    introTitle: "كيف يمكننا",
-    introAccent: "العمل معًا؟",
+    introTitle: "مجالات",
+    introAccent: "التواصل",
     introText:
-      "اختر المجال الأقرب لطلبك، وسنساعدك في توجيه رسالتك إلى المسار المناسب",
+      "حدد نوع الطلب من المجالات التالية، ويُدرج اختيارك في نموذج التواصل",
 
     types: [
       {
         id: "partnership",
         number: "01",
-        en: "PARTNERSHIPS",
-        title: "الشراكات الاستراتيجية",
-        subtitle: "نبني فرصًا مشتركة",
+        en: "التعاون",
+        title: "التعاون والشراكات",
+        subtitle: "استفسارات التعاون المؤسسي",
         description:
-          "للتعاون مع الجهات الحكومية والخاصة، ومشغلي البنية التحتية، والشركات المهتمة بتطوير حلول الأعمال الميدانية",
+          "للجهات الحكومية والخاصة ومالكي المشروعات ومشغلي المرافق الراغبين في مناقشة تعاون محتمل يتعلق بالتوثيق والإشراف على أعمال البنية التحتية",
       },
       {
         id: "business",
         number: "02",
-        en: "BUSINESS",
-        title: "التعاون والأعمال",
-        subtitle: "نحو فرص جديدة",
+        en: "العروض",
+        title: "العروض التوضيحية",
+        subtitle: "عرض وظائف المنصة",
         description:
-          "لمناقشة فرص التعاون المهني، وتطوير الحلول، والمبادرات والمشاريع المرتبطة بالمنصة",
+          "لطلب عرض توضيحي ومناقشة متطلبات الجهة في التوثيق الميداني ومتابعة المقاولين ومراجعة جودة التنفيذ",
       },
       {
         id: "inquiry",
         number: "03",
-        en: "INQUIRIES",
+        en: "الاستفسارات",
         title: "الاستفسارات العامة",
-        subtitle: "نحن هنا للإجابة",
+        subtitle: "معلومات فنية وتشغيلية",
         description:
-          "للاستفسار عن فكرة المنصة أو آلية عملها أو إمكانياتها ومجالات استخدامها",
+          "للأسئلة المتعلقة بإمكانات المنصة وآلية استخدامها ومجالات تطبيقها ومتطلبات التوثيق ومراجعة الأعمال",
       },
     ],
 
-    formLabel: "02 — أرسل رسالتك",
-    formTitle: "أخبرنا عن",
-    formAccent: "فرصتك أو استفسارك",
+    formLabel: "02 — تقديم الطلب",
+    formTitle: "نموذج",
+    formAccent: "التواصل",
     formDescription:
-      "شاركنا التفاصيل الأساسية لنتمكن من فهم طلبك والتواصل معك بشكل مناسب",
-    formSideLabel: "LET'S CONNECT",
-    formSideTitle: "الأفكار الجيدة تبدأ بحوار واضح",
+      "يرجى تعبئة الحقول المطلوبة وتوضيح موضوع الطلب والتفاصيل ذات الصلة، ويمكن إضافة بيانات الجهة والمسمى الوظيفي ورقم الهاتف اختياريًا",
+    formSideLabel: "إرشادات الطلب",
+    formSideTitle: "المعلومات المطلوبة",
     formSideText:
-      "نرحب بالجهات والأفراد المهتمين بتطوير بيئة أكثر ترابطًا وكفاءة لأعمال البنية التحتية",
-    formSideBottom: "UNIFIED WORKS / BUSINESS RELATIONS",
+      "اذكر طبيعة الاستفسار أو العرض المطلوب، ونطاق الأعمال الميدانية واحتياجات الإشراف أو الجودة التي ترغب في مناقشتها",
+    formSideBottom: "الاستفسارات والتعاون المؤسسي",
 
     name: "الاسم الكامل",
-    email: "البريد الإلكتروني للعمل",
+    email: "البريد الإلكتروني",
     organization: "الجهة أو الشركة",
     position: "المسمى الوظيفي",
-    phone: "رقم التواصل",
-    subject: "موضوع الرسالة",
-    type: "نوع التواصل",
+    phone: "رقم الهاتف",
+    subject: "موضوع الطلب",
+    type: "نوع الطلب",
     message: "تفاصيل الطلب",
-    namePlaceholder: "اكتب اسمك الكامل",
+    namePlaceholder: "الاسم الكامل لمقدم الطلب",
     emailPlaceholder: "name@company.com",
     organizationPlaceholder: "اسم الجهة أو الشركة",
-    positionPlaceholder: "مثال: مدير تطوير الأعمال",
+    positionPlaceholder: "المسمى الوظيفي لدى الجهة",
     phonePlaceholder: "+966 5X XXX XXXX",
     subjectPlaceholder: "عنوان مختصر للطلب",
     messagePlaceholder:
-      "عرّفنا بطلبك، والجهة التي تمثلها، وما الذي ترغب في مناقشته معنا",
+      "وضح الاستفسار أو العرض المطلوب والمتطلبات المرتبطة به",
     optional: "اختياري",
     required: "مطلوب",
-    selectType: "اختر نوع التواصل",
+    selectType: "اختر نوع الطلب",
     consent:
-      "أوافق على استخدام بياناتي للتواصل معي بخصوص هذا الطلب",
+      "أوافق على استخدام بياناتي للرد على هذا الطلب",
     submit: "إرسال الطلب",
     sending: "جارٍ الإرسال",
-    success: "تم إرسال طلبك بنجاح",
+    success: "تم إرسال الطلب",
     successDescription:
-      "شكرًا لتواصلك معنا، تم استلام رسالتك",
-    newMessage: "إرسال رسالة أخرى",
+      "يمكن إرسال طلب جديد للاستفسارات الإضافية المستقلة",
+    newMessage: "تقديم طلب جديد",
     error:
       "تعذر إرسال الطلب حاليًا، يرجى المحاولة مرة أخرى لاحقًا",
     configError:
-      "نموذج التواصل غير متصل بخدمة استقبال الرسائل حاليًا",
+      "خدمة إرسال الطلبات غير متاحة حاليًا",
     invalidEmail: "يرجى إدخال بريد إلكتروني صحيح",
-    invalidName: "يرجى إدخال الاسم الكامل",
-    invalidSubject: "يرجى كتابة موضوع الرسالة",
-    invalidMessage: "يرجى كتابة تفاصيل الطلب",
-    invalidConsent: "يرجى الموافقة على استخدام البيانات للتواصل",
+    invalidName: "يرجى إدخال اسم لا يقل عن حرفين",
+    invalidSubject: "يرجى إدخال موضوع الطلب",
+    invalidMessage: "يرجى كتابة تفاصيل الطلب بما لا يقل عن 10 أحرف",
+    invalidConsent: "يرجى الموافقة على استخدام البيانات للرد على الطلب",
 
-    closingLabel: "LET'S BUILD SOMETHING MEANINGFUL",
-    closingTitle: "شراكات أقوى",
-    closingAccent: "وأثر يمتد للميدان",
+    closingLabel: "مجالات التعاون",
+    closingTitle: "التعاون",
+    closingAccent: "المؤسسي",
     closingText:
-      "نؤمن بأن التعاون بين الجهات والخبرات هو أساس تطوير حلول عملية ومستدامة",
+      "يمكن للجهات والشركات الاستفسار عن ملاءمة وظائف المنصة لمتطلباتها ومناقشة فرص التعاون المتعلقة بتوثيق الأعمال الميدانية والإشراف عليها",
   },
 
   en: {
     eyebrow: "UNIFIED WORKS / CONTACT",
-    heroTitle: "Let's start",
-    heroAccent: "a meaningful conversation",
+    heroTitle: "Contact",
+    heroAccent: "us",
     heroDescription:
-      "Whether you represent an organization exploring a partnership, are interested in business collaboration, or have a question about Unified Works, we'd be glad to hear from you",
-    heroIndex: "Your conversation starts here",
+      "Contact the Unified Works team about platform capabilities, demonstration requests, technical and operational inquiries, or potential cooperation with organizations, companies, and individuals",
+    heroIndex: "View contact categories",
 
-    introLabel: "01 — GET IN TOUCH",
-    introTitle: "How can we",
-    introAccent: "work together?",
+    introLabel: "01 — CONTACT CATEGORIES",
+    introTitle: "Inquiry",
+    introAccent: "categories",
     introText:
-      "Choose the area that best describes your request so we can understand your interests",
+      "Select a category below to set the request type in the contact form",
 
     types: [
       {
         id: "partnership",
         number: "01",
-        en: "PARTNERSHIPS",
-        title: "Strategic partnerships",
-        subtitle: "Creating shared opportunities",
+        en: "COOPERATION",
+        title: "Cooperation and partnerships",
+        subtitle: "Institutional cooperation inquiries",
         description:
-          "For public and private organizations, infrastructure operators, and companies interested in collaborative field operations solutions",
+          "For public and private organizations, project owners, and utility operators enquiring about potential cooperation in infrastructure documentation and supervision",
       },
       {
         id: "business",
         number: "02",
-        en: "BUSINESS",
-        title: "Business collaboration",
-        subtitle: "Exploring new opportunities",
+        en: "DEMONSTRATIONS",
+        title: "Platform demonstrations",
+        subtitle: "Review platform functions",
         description:
-          "For professional collaboration, solution development, initiatives, and projects related to the platform",
+          "Request a demonstration and discuss organizational requirements for field documentation, contractor monitoring, and execution quality review",
       },
       {
         id: "inquiry",
         number: "03",
         en: "INQUIRIES",
         title: "General inquiries",
-        subtitle: "We're here to help",
+        subtitle: "Technical and operational information",
         description:
-          "For questions about the platform, its concept, capabilities, and potential applications",
+          "For questions about platform capabilities, use, application areas, and work documentation and review requirements",
       },
     ],
 
-    formLabel: "02 — SEND A MESSAGE",
-    formTitle: "Tell us about",
-    formAccent: "your opportunity",
+    formLabel: "02 — SUBMIT A REQUEST",
+    formTitle: "Contact",
+    formAccent: "form",
     formDescription:
-      "Share the essential details so we can understand your request and respond appropriately",
-    formSideLabel: "LET'S CONNECT",
-    formSideTitle: "Great ideas begin with meaningful conversations",
+      "Complete the required fields and provide the request subject and relevant details; organization, job title, and telephone information are optional",
+    formSideLabel: "REQUEST GUIDANCE",
+    formSideTitle: "Information to include",
     formSideText:
-      "We welcome organizations and individuals interested in more connected and efficient infrastructure operations",
-    formSideBottom: "UNIFIED WORKS / BUSINESS RELATIONS",
+      "Specify the inquiry or demonstration requested, the scope of field operations, and the supervision or quality requirements you wish to discuss",
+    formSideBottom: "INQUIRIES AND INSTITUTIONAL COOPERATION",
 
     name: "Full name",
-    email: "Work email",
+    email: "Email address",
     organization: "Organization or company",
     position: "Job title",
-    phone: "Contact number",
-    subject: "Subject",
-    type: "Inquiry type",
-    message: "Message details",
-    namePlaceholder: "Your full name",
+    phone: "Telephone number",
+    subject: "Request subject",
+    type: "Request type",
+    message: "Request details",
+    namePlaceholder: "Applicant's full name",
     emailPlaceholder: "name@company.com",
     organizationPlaceholder: "Organization name",
-    positionPlaceholder: "e.g. Business Development Manager",
+    positionPlaceholder: "Your job title within the organization",
     phonePlaceholder: "+966 5X XXX XXXX",
     subjectPlaceholder: "Brief subject of your request",
     messagePlaceholder:
-      "Tell us about your request, your organization, and what you would like to discuss",
+      "Describe the inquiry or demonstration requested and the relevant requirements",
     optional: "Optional",
     required: "Required",
-    selectType: "Select inquiry type",
+    selectType: "Select request type",
     consent:
-      "I agree to the use of my information to respond to this inquiry",
-    submit: "Send inquiry",
-    sending: "Sending",
-    success: "Your inquiry has been sent",
+      "I agree to the use of my information to respond to this request",
+    submit: "Submit request",
+    sending: "Submitting",
+    success: "Your request has been submitted",
     successDescription:
-      "Thank you for reaching out. Your message has been received",
-    newMessage: "Send another message",
+      "You can submit a separate request for additional inquiries",
+    newMessage: "Submit another request",
     error:
-      "We couldn't send your inquiry. Please try again later",
+      "The request could not be submitted, please try again later",
     configError:
-      "The contact form is not yet connected to a message service",
+      "The request submission service is currently unavailable",
     invalidEmail: "Please enter a valid email address",
-    invalidName: "Please enter your full name",
-    invalidSubject: "Please enter a subject",
-    invalidMessage: "Please enter your message",
-    invalidConsent: "Please agree to be contacted about your request",
+    invalidName: "Please enter a name containing at least 2 characters",
+    invalidSubject: "Please enter the request subject",
+    invalidMessage: "Please provide request details containing at least 10 characters",
+    invalidConsent: "Please consent to the use of your information to respond to the request",
 
-    closingLabel: "LET'S BUILD SOMETHING MEANINGFUL",
-    closingTitle: "Stronger partnerships",
-    closingAccent: "lasting field impact",
+    closingLabel: "COOPERATION AREAS",
+    closingTitle: "Institutional",
+    closingAccent: "cooperation",
     closingText:
-      "We believe collaboration across organizations and expertise is essential to building practical and sustainable solutions",
+      "Organizations and companies can inquire about the suitability of platform functions for their requirements and discuss potential cooperation in field documentation and supervision",
   },
 };
 
@@ -337,7 +337,7 @@ export default function Contact() {
         <div className={styles.container}>
           <div className={styles.heroMeta}>
             <span>{t.eyebrow}</span>
-            <span>2026 / CONTACT</span>
+            <span>{isArabic ? "2026 / التواصل" : "2026 / CONTACT"}</span>
           </div>
 
           <div className={styles.heroContent}>
@@ -359,8 +359,8 @@ export default function Contact() {
           </div>
 
           <div className={styles.heroBottom}>
-            <span>UNIFIED WORKS</span>
-            <span>BUSINESS / PARTNERSHIPS / INQUIRIES</span>
+            <span>{isArabic ? "الأعمال الموحّدة" : "UNIFIED WORKS"}</span>
+            <span>{isArabic ? "التعاون / العروض / الاستفسارات" : "COOPERATION / DEMONSTRATIONS / INQUIRIES"}</span>
           </div>
         </div>
       </section>
@@ -413,7 +413,9 @@ export default function Contact() {
 
                 <span className={styles.optionBottom}>
                   <span>
-                    {form.type === item.id ? "SELECTED" : "EXPLORE"}
+                    {form.type === item.id
+                      ? isArabic ? "محدد" : "SELECTED"
+                      : isArabic ? "اختيار المجال" : "SELECT CATEGORY"}
                   </span>
                   <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                 </span>
@@ -441,7 +443,7 @@ export default function Contact() {
             <aside className={styles.formAside}>
               <div className={styles.asideTop}>
                 <span>{t.formSideLabel}</span>
-                <span>UW / CONTACT</span>
+                <span>{isArabic ? "UW / التواصل" : "UW / CONTACT"}</span>
               </div>
 
               <div className={styles.asideContent}>
@@ -450,7 +452,7 @@ export default function Contact() {
               </div>
 
               <div className={styles.asideBottom}>
-                <span>UNIFIED WORKS</span>
+                <span>{isArabic ? "الأعمال الموحّدة" : "UNIFIED WORKS"}</span>
                 <span>{t.formSideBottom}</span>
               </div>
             </aside>
@@ -477,8 +479,8 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
                   <div className={styles.formTop}>
-                    <span>CONTACT REQUEST</span>
-                    <span>01 / FORM</span>
+                    <span>{isArabic ? "طلب تواصل" : "CONTACT REQUEST"}</span>
+                    <span>{isArabic ? "01 / النموذج" : "01 / FORM"}</span>
                   </div>
 
                   <div className={styles.fieldsGrid}>
@@ -692,7 +694,7 @@ export default function Contact() {
                   )}
 
                   <div className={styles.submitRow}>
-                    <span>UNIFIED WORKS / CONTACT</span>
+                    <span>{t.eyebrow}</span>
                     <button
                       type="submit"
                       className={styles.submitButton}

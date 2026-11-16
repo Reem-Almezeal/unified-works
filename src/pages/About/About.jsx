@@ -16,327 +16,327 @@ const team = [
 
 const content = {
   ar: {
-    heroLabel: "من نحن / UNIFIED WORKS",
-    heroFirst: "نحو ميدان",
-    heroSecond: "أكثر وضوحًا",
+    heroLabel: "من نحن / الأعمال الموحّدة",
+    heroFirst: "عن",
+    heroSecond: "الأعمال الموحّدة",
     heroText:
-      "نحوّل تفاصيل أعمال البنية التحتية إلى معلومات مترابطة تدعم التوثيق والتحقق والمتابعة وتمنح الجهات المعنية رؤية أوضح لما يحدث على أرض الواقع",
-    discover: "اكتشف قصتنا",
+      "الأعمال الموحّدة منصة رقمية لتوثيق أعمال البنية التحتية ومتابعة المقاولين ومراجعة جودة التنفيذ، من خلال الصور الميدانية وسجلات الأعمال وقرارات المشرفين",
+    discover: "نبذة عن المنصة",
     heroNote: "منصة الأعمال الموحّدة",
-    heroFoot: "من الميدان إلى القرار",
+    heroFoot: "التوثيق والإشراف على الأعمال",
 
-    storyLabel: "01 — قصتنا",
-    storyTitle: "من تحدٍ ميداني",
-    storyAccent: "إلى فكرة مترابطة",
+    storyLabel: "01 — التعريف بالمنصة",
+    storyTitle: "نبذة عن",
+    storyAccent: "المنصة",
     storyLead:
-      "بدأت الفكرة من سؤال بسيط: كيف يمكن أن تكون أعمال البنية التحتية أكثر وضوحًا للجهات التي تنفذها وتشرف عليها؟",
+      "طُوّرت الأعمال الموحّدة لتنظيم التوثيق الميداني ومساندة الجهات في الإشراف على تنفيذ أعمال البنية التحتية",
     storyText:
-      "في بيئة تتعدد فيها الجهات والمقاولون ومواقع التنفيذ، قد تتوزع الصور والملاحظات والمستندات بين مصادر مختلفة، مما يجعل متابعة الأعمال والرجوع إلى تفاصيلها أكثر تعقيدًا",
+      "تعدد مواقع التنفيذ وتوزع الصور والملاحظات بين ملفات ومراسلات منفصلة يصعّبان متابعة المقاولين واسترجاع سجلات الأعمال والتحقق من معالجة الملاحظات",
     storyText2:
-      "من هنا جاءت الأعمال الموحّدة لتجمع بيانات العمل وموقعه وتوثيقه وملاحظاته ضمن تجربة رقمية واحدة، مع الاستفادة من الذكاء الاصطناعي لدعم المراجعة",
-    storyStatement: "كل عمل له موقع، وكل مرحلة لها توثيق، وكل معلومة لها سياق",
+      "تجمع المنصة أدلة التنفيذ والمراجعة في سجلات مرتبطة بالأعمال، وتستخدم نموذج ذكاء اصطناعي مدرّبًا ومختبرًا على صور ميدانية فعلية، مع إمكانية تخصيص النماذج ببيانات الصور وقرارات المشرفين المعتمدة وبقاء الاعتماد النهائي للمشرف",
+    storyStatement: "سجل العمل مرجع للتوثيق والملاحظات وقرارات المراجعة",
 
     challengeLabel: "02 — التحديات",
-    challengeTitle: "تحديات واقعية",
-    challengeAccent: "تستحق حلولًا أذكى",
+    challengeTitle: "تحديات",
+    challengeAccent: "الأعمال الميدانية",
     challengeIntro:
-      "نركز على التحديات التي تؤثر في وضوح المعلومات وسهولة متابعة الأعمال الميدانية",
+      "تعالج المنصة صعوبات تنظيم الأدلة ومتابعة التنفيذ وتوثيق نتائج الإشراف عبر مواقع العمل المتعددة",
     challenges: [
       {
         number: "01",
         title: "تشتت التوثيق",
-        short: "عندما تتفرق تفاصيل العمل بين مصادر متعددة",
+        short: "صور ومستندات في مصادر منفصلة",
         detail:
-          "توزع الصور والمستندات والملاحظات يجعل الوصول إلى سجل واضح لكل عمل أكثر صعوبة، لذلك نربط الأدلة بسجل العمل نفسه",
-        tag: "DOCUMENTATION",
+          "اختلاف أساليب توثيق المراحل وتوزع الأدلة يصعّبان الوصول إلى سجل مكتمل ومراجعة ما نُفذ فعليًا",
+        tag: "التوثيق",
       },
       {
         number: "02",
-        title: "ضعف الترابط المكاني",
-        short: "عندما تنفصل المعلومات عن موقع التنفيذ",
+        title: "تعدد مواقع التنفيذ",
+        short: "صعوبة ربط الأدلة بالأعمال",
         detail:
-          "ربط التوثيق بالموقع الجغرافي يمنح الجهات المعنية سياقًا أوضح للأعمال المنفذة ويساعدها على فهم ارتباطها بالمرافق المحيطة",
-        tag: "LOCATION",
+          "غياب الربط بين الصور ومواقع الأعمال يحد من إمكانية تتبع التنفيذ والرجوع إلى البيانات التاريخية لكل موقع",
+        tag: "المواقع",
       },
       {
         number: "03",
-        title: "تعقيد المتابعة",
-        short: "عندما تتعدد الجهات ومسارات المراجعة",
+        title: "المتابعة اليدوية",
+        short: "تكرار الاستفسارات وزيارات الفحص",
         detail:
-          "تنظيم البيانات والملاحظات في سجل مترابط يسهّل المراجعة والتنسيق بين الجهات وفق مسؤولياتها وصلاحياتها",
-        tag: "OVERSIGHT",
+          "عدم انتظام تسجيل الملاحظات وقرارات المراجعة يزيد صعوبة متابعة التصحيح، وقد يسهم في تكرار المشكلات وأعمال المعالجة",
+        tag: "الإشراف",
       },
     ],
 
-    processLabel: "03 — منهجيتنا",
-    processTitle: "من الميدان",
-    processAccent: "إلى القرار",
+    processLabel: "03 — إجراءات العمل",
+    processTitle: "منهجية",
+    processAccent: "العمل",
     processIntro:
-      "أربع مراحل مترابطة تجمع دورة العمل الميداني في مسار واحد واضح وقابل للتتبع",
+      "تربط المنهجية بيانات العمل بأدلة التنفيذ ومراجعة المشرف، مع تحديد مسؤولية كل طرف عن التوثيق والقرار",
     process: [
       {
         number: "01",
-        en: "REGISTER",
+        en: "التسجيل",
         title: "تسجيل العمل",
-        short: "بداية منظمة لكل مهمة",
+        short: "تحديد بيانات النشاط وموقعه",
         detail:
-          "تسجيل بيانات العمل وتحديد موقعه الجغرافي والجهة المرتبطة به لإنشاء مرجع رقمي موحد",
+          "إنشاء سجل للعمل يتضمن موقع التنفيذ والبيانات اللازمة للمتابعة من الجهات المختصة",
       },
       {
         number: "02",
-        en: "DOCUMENT",
+        en: "التوثيق",
         title: "التوثيق الميداني",
-        short: "كل مرحلة موثقة",
+        short: "إرفاق أدلة مراحل التنفيذ",
         detail:
-          "إرفاق صور التنفيذ والمستندات والملاحظات وربطها مباشرة بالعمل المسجل",
+          "حفظ صور الأعمال وبياناتها والملاحظات الميدانية ضمن السجل الخاص بالنشاط",
       },
       {
         number: "03",
-        en: "VERIFY",
-        title: "التحقق الذكي",
-        short: "تقنية تدعم المراجعة",
+        en: "التحقق",
+        title: "التحقق من الصور",
+        short: "مساندة المراجعة الأولية",
         detail:
-          "الاستفادة من الذكاء الاصطناعي لمراجعة الصور وإبراز الملاحظات المحتملة لدعم التحقق البشري",
+          "تحليل الصور لمساعدة المشرف في تحديد الحالات التي تستدعي التدقيق، دون إسناد الاعتماد النهائي إلى النموذج",
       },
       {
         number: "04",
-        en: "OVERSEE",
-        title: "المراجعة والإشراف",
-        short: "رؤية تدعم القرار",
+        en: "المراجعة",
+        title: "توثيق قرار المشرف",
+        short: "تسجيل النتيجة والملاحظات",
         detail:
-          "تمكين الجهات المختصة من مراجعة بيانات الأعمال وتوثيقها وملاحظاتها وفق الصلاحيات المحددة",
+          "مراجعة الأدلة وتسجيل قرار المشرف وملاحظاته، مع إتاحة السجلات للمستخدمين المخولين",
       },
     ],
     stage: "المرحلة",
     nextStage: "المرحلة التالية",
 
-    directionLabel: "04 — رؤيتنا ورسالتنا",
-    directionTitle: "نؤمن بأن وضوح",
-    directionAccent: "الميدان يصنع الفرق",
-    vision: "رؤيتنا",
+    directionLabel: "04 — التوجه والأهداف",
+    directionTitle: "أهداف",
+    directionAccent: "المنصة",
+    vision: "الرؤية",
     visionText:
-      "المساهمة في مستقبل تصبح فيه أعمال البنية التحتية أكثر وضوحًا وترابطًا وقابلية للمتابعة",
-    mission: "رسالتنا",
+      "أن تكون الأعمال الموحّدة المنصة الرقمية الوطنية الموحدة لإدارة أعمال البنية التحتية الميدانية والإشراف عليها في المملكة العربية السعودية، بما يعزز التكامل بين الجهات ويوحّد التوثيق ومراجعة الجودة ومتابعة التزام المقاولين بالمتطلبات الفنية، ويرفع كفاءة العمليات وجودة التنفيذ",
+    mission: "الرسالة",
     missionText:
-      "توحيد التوثيق الميداني والمعلومات المكانية والتحقق الذكي في منظومة رقمية تدعم الإشراف وجودة التنفيذ",
+      "تحسين ممارسات التوثيق ومتابعة الالتزام بالمتطلبات الفنية، وتسهيل التنسيق بين المقاولين والمشرفين والجهات لتقليل المتابعة والزيارات غير الضرورية",
 
-    ecosystemLabel: "05 — منظومة العمل",
-    ecosystemTitle: "جهات مختلفة",
-    ecosystemAccent: "ضمن رؤية واحدة",
+    ecosystemLabel: "05 — مجالات الاستخدام",
+    ecosystemTitle: "الجهات",
+    ecosystemAccent: "المستفيدة",
     ecosystemIntro:
-      "تجمع المنصة الأطراف المرتبطة بأعمال البنية التحتية مع الحفاظ على اختصاصات كل جهة",
+      "تستهدف المنصة الجهات المسؤولة عن مشروعات الكهرباء والمياه والصرف الصحي والاتصالات والخدمات البلدية، وفق اختصاصاتها وصلاحيات مستخدميها",
     stakeholders: [
       {
         number: "01",
-        en: "REGULATORS",
+        en: "التنظيم",
         title: "الجهات التنظيمية",
-        short: "متابعة وتنظيم",
+        short: "الاطلاع وفق الاختصاص",
         detail:
-          "استعراض الأعمال والمعلومات المرتبطة بها وفق الاختصاصات والمسؤوليات التنظيمية",
+          "الرجوع إلى سجلات الأعمال والملاحظات ذات الصلة بالمسؤوليات التنظيمية عند توفر الصلاحية",
       },
       {
         number: "02",
-        en: "OPERATORS",
+        en: "الملكية والتشغيل",
         title: "الجهات المالكة والمشغلة",
-        short: "رؤية للمرافق والشبكات",
+        short: "متابعة الجودة وأداء المقاولين",
         detail:
-          "متابعة الأعمال ذات العلاقة بالمرافق وشبكات البنية التحتية التابعة للجهة",
+          "مراجعة تقدم الأعمال وأدلة التنفيذ وقرارات الإشراف المرتبطة بالمرافق والمشروعات التابعة للجهة",
       },
       {
         number: "03",
-        en: "CONTRACTORS",
+        en: "التنفيذ",
         title: "المقاولون",
-        short: "التنفيذ يبدأ من الميدان",
+        short: "تقديم الأدلة ومعالجة الملاحظات",
         detail:
-          "تسجيل الأعمال وتوثيق مراحل التنفيذ وإرفاق الأدلة والملاحظات الميدانية",
+          "توثيق الأنشطة المسندة بالصور والبيانات وتحديث السجلات استجابة لملاحظات المشرف ومتطلبات التصحيح",
       },
       {
         number: "04",
-        en: "MUNICIPALITIES",
+        en: "الخدمات البلدية",
         title: "الأمانات والبلديات",
-        short: "متابعة النطاق الحضري",
+        short: "متابعة الأعمال ضمن الاختصاص",
         detail:
-          "استعراض الأعمال المرتبطة بالشوارع والمواقع الحضرية لدعم أعمال المتابعة",
+          "الاطلاع المصرح به على أعمال البنية التحتية ومواقعها وملاحظاتها لدعم المتابعة والتنسيق بين الجهات",
       },
     ],
 
-    teamLabel: "06 — فريق المشروع",
-    teamTitle: "العقول خلف",
+    teamLabel: "06 — الفريق",
+    teamTitle: "فريق",
     teamAccent: "الأعمال الموحّدة",
     teamIntro:
-      "فريق جمعته رؤية مشتركة لتطوير تجربة رقمية أكثر ترابطًا ووضوحًا للأعمال الميدانية",
-    member: "عضو فريق المشروع",
-    teamEnglish: "PROJECT TEAM",
+      "أعضاء الفريق القائم على تطوير منصة الأعمال الموحّدة لتوثيق أعمال البنية التحتية ومراجعتها",
+    member: "عضو الفريق",
+    teamEnglish: "TEAM",
 
-    closingLabel: "UNIFIED WORKS",
-    closingTitle: "لنصنع مستقبلًا",
-    closingAccent: "أكثر وضوحًا",
+    closingLabel: "الأعمال الموحّدة",
+    closingTitle: "وظائف المنصة",
+    closingAccent: "والتواصل",
     closingText:
-      "اكتشف كيف تربط الأعمال الموحّدة الميدان بالتوثيق والمعلومات والمتابعة",
-    explore: "استكشف المنصة",
+      "للاطلاع على وظائف النظام وأدوار المستخدمين أو التواصل بشأن احتياجات التوثيق والإشراف الميداني",
+    explore: "عرض المنصة",
     contact: "تواصل معنا",
   },
 
   en: {
     heroLabel: "ABOUT US / UNIFIED WORKS",
-    heroFirst: "A clearer view",
-    heroSecond: "of the field",
+    heroFirst: "About",
+    heroSecond: "Unified Works",
     heroText:
-      "We connect infrastructure work details into meaningful information that supports documentation verification and oversight across stakeholders",
-    discover: "Discover our story",
+      "Unified Works is a digital platform for infrastructure work documentation, contractor monitoring, and execution quality review through field photographs, work records, and supervisor decisions",
+    discover: "Platform overview",
     heroNote: "Unified Works Platform",
-    heroFoot: "From the field to decisions",
+    heroFoot: "Work documentation and supervision",
 
-    storyLabel: "01 — OUR STORY",
-    storyTitle: "From a field challenge",
-    storyAccent: "to a connected idea",
+    storyLabel: "01 — INTRODUCTION",
+    storyTitle: "Platform",
+    storyAccent: "overview",
     storyLead:
-      "It began with one question: how can infrastructure operations become clearer for everyone involved?",
+      "Unified Works was developed to organize field documentation and support organizations supervising infrastructure execution",
     storyText:
-      "With multiple stakeholders contractors and work locations, photographs documents and observations may become scattered across separate sources",
+      "Multiple worksites and photographs and observations held in separate files and correspondence make contractor monitoring, record retrieval, and corrective action follow-up more difficult",
     storyText2:
-      "Unified Works brings work records locations documentation and observations into one digital experience while using AI to support review",
+      "The platform links execution and review evidence to work records and uses an AI model trained and tested on real field images, with models adaptable through validated images and supervisor decisions and final approval retained by supervisors",
     storyStatement:
-      "Every activity has a location, every stage has evidence, and every detail has context",
+      "The work record provides a reference for evidence, observations, and review decisions",
 
     challengeLabel: "02 — CHALLENGES",
-    challengeTitle: "Real challenges",
-    challengeAccent: "deserve smarter solutions",
+    challengeTitle: "Field operations",
+    challengeAccent: "challenges",
     challengeIntro:
-      "We focus on the challenges affecting information clarity and effective field oversight",
+      "The platform addresses difficulties organizing evidence, monitoring execution, and recording supervision outcomes across multiple worksites",
     challenges: [
       {
         number: "01",
         title: "Fragmented documentation",
-        short: "When work details are scattered",
+        short: "Photographs and documents held separately",
         detail:
-          "Photographs documents and observations across different sources make complete work records harder to maintain",
+          "Inconsistent stage documentation and dispersed evidence make it harder to retrieve complete records and verify completed work",
         tag: "DOCUMENTATION",
       },
       {
         number: "02",
-        title: "Disconnected locations",
-        short: "When evidence loses its location context",
+        title: "Multiple worksites",
+        short: "Evidence not linked to work activities",
         detail:
-          "Connecting documentation with geographic locations provides clearer context for infrastructure activities",
+          "Photographs without links to work locations limit execution traceability and access to historical records for each site",
         tag: "LOCATION",
       },
       {
         number: "03",
-        title: "Complex oversight",
-        short: "When stakeholders follow separate review paths",
+        title: "Manual follow-up",
+        short: "Repeated enquiries and inspection visits",
         detail:
-          "Organized records support review and coordination according to stakeholder responsibilities and permissions",
+          "Inconsistent observation and decision records complicate corrective action follow-up and can contribute to recurring issues and remedial work",
         tag: "OVERSIGHT",
       },
     ],
 
-    processLabel: "03 — OUR APPROACH",
-    processTitle: "From the field",
-    processAccent: "to the decision",
+    processLabel: "03 — WORK PROCEDURES",
+    processTitle: "Our",
+    processAccent: "approach",
     processIntro:
-      "Four connected stages bringing field operations into one traceable workflow",
+      "The approach links work details to execution evidence and supervisor review, with defined responsibilities for documentation and decisions",
     process: [
       {
         number: "01",
         en: "REGISTER",
         title: "Register work",
-        short: "An organized starting point",
+        short: "Record activity and location details",
         detail:
-          "Record work information its geographic location and relevant stakeholders",
+          "Create a work record containing the execution location and information required for oversight by responsible organizations",
       },
       {
         number: "02",
         en: "DOCUMENT",
         title: "Field documentation",
-        short: "Evidence for every stage",
+        short: "Attach evidence of execution stages",
         detail:
-          "Attach execution photographs documents and observations directly to each work record",
+          "Retain work photographs, supporting data, and field observations within the activity record",
       },
       {
         number: "03",
         en: "VERIFY",
-        title: "Intelligent verification",
-        short: "Technology supporting review",
+        title: "Image verification",
+        short: "Support preliminary review",
         detail:
-          "Use AI assistance to review photographs and highlight potential observations for human verification",
+          "Analyze photographs to help supervisors identify cases requiring examination, without assigning final approval to the model",
       },
       {
         number: "04",
-        en: "OVERSEE",
-        title: "Review and oversight",
-        short: "Clarity supporting decisions",
+        en: "REVIEW",
+        title: "Supervisor decision records",
+        short: "Record outcomes and observations",
         detail:
-          "Enable authorized stakeholders to review work records documentation and observations",
+          "Review evidence and record supervisor decisions and observations, with records available to authorized users",
       },
     ],
     stage: "STAGE",
     nextStage: "Next stage",
 
-    directionLabel: "04 — VISION & MISSION",
-    directionTitle: "We believe clarity",
-    directionAccent: "makes the difference",
-    vision: "Our vision",
+    directionLabel: "04 — DIRECTION AND OBJECTIVES",
+    directionTitle: "Platform",
+    directionAccent: "objectives",
+    vision: "Vision",
     visionText:
-      "To contribute to a future where infrastructure operations are clearer more connected and easier to oversee",
-    mission: "Our mission",
+      "To become Saudi Arabia’s unified national digital platform for managing and overseeing infrastructure field operations, strengthening coordination among organizations, standardizing documentation and quality review, and supporting contractor compliance with technical requirements to improve operational efficiency and execution quality",
+    mission: "Mission",
     missionText:
-      "To unify field documentation geospatial information and AI-assisted verification in one digital ecosystem supporting execution quality",
+      "Improve documentation practices and technical compliance monitoring, and facilitate coordination between contractors, supervisors, and organizations to reduce unnecessary follow-up and site visits",
 
-    ecosystemLabel: "05 — OUR ECOSYSTEM",
-    ecosystemTitle: "Different stakeholders",
-    ecosystemAccent: "one connected view",
+    ecosystemLabel: "05 — APPLICATION AREAS",
+    ecosystemTitle: "Beneficiary",
+    ecosystemAccent: "organizations",
     ecosystemIntro:
-      "The platform connects infrastructure stakeholders while respecting each organization's responsibilities",
+      "The platform is intended for organizations responsible for electricity, water and wastewater, telecommunications, and municipal projects, within their remit and user permissions",
     stakeholders: [
       {
         number: "01",
         en: "REGULATORS",
         title: "Regulatory authorities",
-        short: "Regulation and oversight",
+        short: "Access within regulatory responsibilities",
         detail:
-          "Review relevant work information within regulatory responsibilities",
+          "Refer to work records and observations relevant to regulatory responsibilities where access is authorized",
       },
       {
         number: "02",
-        en: "OPERATORS",
-        title: "Infrastructure operators",
-        short: "Visibility across utility networks",
+        en: "OWNERS AND OPERATORS",
+        title: "Project owners and operators",
+        short: "Quality and contractor performance monitoring",
         detail:
-          "Monitor activities associated with their facilities and infrastructure networks",
+          "Review progress, execution evidence, and supervision decisions associated with their facilities and projects",
       },
       {
         number: "03",
         en: "CONTRACTORS",
         title: "Contractors",
-        short: "Execution starts in the field",
+        short: "Submit evidence and address observations",
         detail:
-          "Register activities and document execution stages with field evidence",
+          "Document assigned activities with photographs and data, updating records in response to supervisor observations and corrective requirements",
       },
       {
         number: "04",
         en: "MUNICIPALITIES",
         title: "Municipalities",
-        short: "Urban infrastructure oversight",
+        short: "Work oversight within municipal responsibilities",
         detail:
-          "Review activities associated with streets and urban environments",
+          "Access authorized infrastructure work records, locations, and observations to support oversight and interagency coordination",
       },
     ],
 
-    teamLabel: "06 — PROJECT TEAM",
-    teamTitle: "The people behind",
-    teamAccent: "Unified Works",
+    teamLabel: "06 — TEAM",
+    teamTitle: "Unified Works",
+    teamAccent: "team",
     teamIntro:
-      "A team united by a shared vision for clearer and more connected field operations",
-    member: "Project team member",
-    teamEnglish: "PROJECT TEAM",
+      "The team developing Unified Works for infrastructure work documentation and review",
+    member: "Team member",
+    teamEnglish: "TEAM",
 
     closingLabel: "UNIFIED WORKS",
-    closingTitle: "A clearer future",
-    closingAccent: "starts in the field",
+    closingTitle: "Platform functions",
+    closingAccent: "and enquiries",
     closingText:
-      "Discover how Unified Works connects field documentation information and oversight",
-    explore: "Explore the platform",
+      "View system functions and user roles or contact us about field documentation and supervision requirements",
+    explore: "View the platform",
     contact: "Contact us",
   },
 };
@@ -428,7 +428,7 @@ export default function About() {
         <div className={styles.container}>
           <div className={styles.heroMeta}>
             <span>{t.heroLabel}</span>
-            <span>2026 / ABOUT</span>
+            <span>{isArabic ? "2026 / من نحن" : "2026 / ABOUT"}</span>
           </div>
 
           <div className={styles.heroGrid}>
@@ -459,7 +459,7 @@ export default function About() {
 
           <div className={styles.heroFooter}>
             <span>{t.heroFoot}</span>
-            <span>SCROLL TO EXPLORE <ArrowDown className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
+            <span>{isArabic ? "متابعة القراءة" : "CONTINUE READING"} <ArrowDown className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
           </div>
         </div>
       </section>
@@ -478,7 +478,7 @@ export default function About() {
           <div className={styles.storyComposition}>
             <Reveal className={styles.storyFeature}>
               <span className={styles.storyFeatureIndex}>
-                UNIFIED WORKS / ORIGIN
+                {isArabic ? "الأعمال الموحّدة / التعريف" : "UNIFIED WORKS / INTRODUCTION"}
               </span>
               <strong>{t.storyLead}</strong>
               <span className={styles.storyFeatureEnd}>01 / 06</span>
@@ -636,7 +636,7 @@ export default function About() {
                 <span>{t.directionAccent}</span>
               </h2>
               <span className={styles.directionSignature}>
-                UNIFIED WORKS / OUR DIRECTION
+                {isArabic ? "الأعمال الموحّدة / الأهداف" : "UNIFIED WORKS / OBJECTIVES"}
               </span>
             </Reveal>
 
@@ -644,7 +644,7 @@ export default function About() {
               <Reveal>
                 <article className={styles.directionBlock}>
                   <span className={styles.directionNumber}>
-                    01 / VISION
+                    {isArabic ? "01 / الرؤية" : "01 / VISION"}
                   </span>
                   <h3>{t.vision}</h3>
                   <p>{t.visionText}</p>
@@ -654,7 +654,7 @@ export default function About() {
               <Reveal delay={100}>
                 <article className={styles.directionBlock}>
                   <span className={styles.directionNumber}>
-                    02 / MISSION
+                    {isArabic ? "02 / الرسالة" : "02 / MISSION"}
                   </span>
                   <h3>{t.mission}</h3>
                   <p>{t.missionText}</p>
@@ -756,7 +756,7 @@ export default function About() {
               >
                 <span className={styles.teamCardTop}>
                   <span>0{index + 1}</span>
-                  <span>UW / TEAM</span>
+                  <span>{isArabic ? "UW / الفريق" : "UW / TEAM"}</span>
                 </span>
 
                 <span className={styles.teamCardCenter}>

@@ -36,182 +36,182 @@ const IMAGES = {
 
 const content = {
   ar: {
-    heroLabel: 'UNIFIED WORKS / TECHNOLOGY',
-    heroTitle: 'تقنية تدعم الميدان',
-    heroAccent: 'ورقابة أدق على التنفيذ',
+    heroLabel: 'الأعمال الموحّدة / التقنية',
+    heroTitle: 'التقنية',
+    heroAccent: 'المستخدمة',
     heroText:
-      'نجمع التوثيق الميداني، والربط الجغرافي، والمراجعة المدعومة بالذكاء الاصطناعي في منظومة واحدة لمتابعة أعمال البنية التحتية بوضوح أكبر',
-    explore: 'استكشف التقنيات',
-    heroImageLabel: 'INFRASTRUCTURE INTELLIGENCE',
+      'يستخدم النظام نموذج ذكاء اصطناعي مدرّبًا على بيانات ميدانية فعلية لتحليل صور التنفيذ ومساندة المشرف في التحقق من جودة أعمال المقاولين وتوثيق نتائج المراجعة',
+    explore: 'التقنيات المستخدمة',
+    heroImageLabel: 'توثيق أعمال البنية التحتية',
 
     stats: [
-      { value: 100, suffix: '', label: 'صورة ضمن تجربة التحقق' },
-      { value: 94, suffix: '%', label: 'نسبة الصور المقبولة في التجربة' },
-      { value: 4, suffix: '', label: 'مراحل مترابطة للعمل' },
+      { value: 100, suffix: '', label: 'صورة في اختبار القبول' },
+      { value: 94, suffix: '%', label: 'نسبة القبول الصحيح للصور' },
+      { value: 4, suffix: '', label: 'مراحل التوثيق والتحقق' },
     ],
-    statsNote: 'نتائج تجربة التحقق الأولية للمشروع',
+    statsNote: 'شملت اختبارات التحقق 148 صورة ميدانية فعلية، وسُجل قبول صحيح لـ94 صورة من أصل 100 بعد 10 اعتمادات من المشرف، وفق شروط التقييم',
 
-    featuresLabel: '01 / القدرات التقنية',
-    featuresTitle: 'قدرات النظام',
+    featuresLabel: '01 / التوثيق والتحليل',
+    featuresTitle: 'مكونات النظام',
     featuresDescription:
-      'تقنيات متكاملة لتحويل الأعمال الميدانية إلى معلومات موثقة وقابلة للمراجعة',
+      'يجمع النظام توثيق الصور وتحليلها وسجلات المراجعة للتحقق من متطلبات التنفيذ، وتتيح منهجية تخصيص النماذج مواءمة التحقق مع معايير الجودة لدى كل جهة',
 
     features: [
       {
         number: '01',
-        label: 'FIELD DOCUMENTATION',
+        label: 'أدلة التنفيذ',
         title: 'التوثيق الميداني',
         description:
-          'تسجيل الأعمال وإرفاق الصور والمعلومات المرتبطة بكل مرحلة من مراحل التنفيذ',
+          'تُحفظ صور مراحل التنفيذ مع بيانات الموقع والوقت وسجل العمل لتوفير أدلة موثقة على أعمال المقاول ومدى استيفائها للمتطلبات الفنية',
         image: IMAGES.documentation,
       },
       {
         number: '02',
-        label: 'AI-ASSISTED VERIFICATION',
-        title: 'التحقق الذكي',
+        label: 'التحليل والتدريب',
+        title: 'تدريب النماذج',
         description:
-          'المساعدة في مراجعة الصور الميدانية وإبراز الحالات التي تتطلب تدقيقًا إضافيًا',
+          'طُوّر النموذج ودُرّب على بيانات ميدانية موثوقة واختُبر على صور فعلية، ويمكن تخصيصه لمعايير كل جهة وتحسينه بتدريب لاحق خاضع للمراجعة على الصور والقرارات المعتمدة، لدعم اتساق التوصيات وتقليل الفحص المتكرر مع بقاء القرار النهائي للمشرف',
         image: IMAGES.verification,
       },
       {
         number: '03',
-        label: 'LOCATION INTELLIGENCE',
-        title: 'الربط الجغرافي',
+        label: 'بيانات الموقع',
+        title: 'سجلات الأعمال',
         description:
-          'ربط السجلات بالمواقع الجغرافية لدعم التتبع والإشراف على أعمال البنية التحتية',
+          'تجمع السجلات مواقع الأعمال والصور والملاحظات وقرارات المشرفين، لتتبع نتائج المراجعة والرجوع إليها في التدقيق وتقييم أداء المقاولين',
         image: IMAGES.geospatial,
       },
     ],
 
-    processLabel: '02 / آلية العمل',
+    processLabel: '02 / إجراءات العمل',
     processTitle: 'آلية العمل',
     processDescription:
-      'تسلسل واضح يربط البيانات الميدانية بالجهات المسؤولة عن المتابعة',
-    processImageLabel: 'FIELD OPERATIONS / WORKFLOW',
+      'يساند التحقق الأولي والمراجعة المركزية تقليل الفحص المتكرر والزيارات غير الضرورية، ويساعد اكتشاف مشكلات التنفيذ مبكرًا في الحد من إعادة العمل وتكاليف المتابعة والصيانة',
+    processImageLabel: 'مراحل مراجعة الأعمال',
 
     steps: [
       {
-        title: 'تسجيل الأعمال',
+        title: 'تسجيل الحضور',
         description:
-          'إدخال بيانات العمل وتحديد موقعه الجغرافي',
+          'يسجل الفريق حضوره في موقع التنفيذ، ويثبت التطبيق بيانات الموقع والمعلومات المرتبطة بالعمل',
       },
       {
         title: 'توثيق التنفيذ',
         description:
-          'رفع الصور والمرفقات المرتبطة بالعمل الميداني',
+          'يلتقط الفريق صور الأعمال المنفذة، وتُربط الصور بوقت الالتقاط وموقع التنفيذ وسجل النشاط',
       },
       {
-        title: 'التحقق الذكي',
+        title: 'تحليل الصور',
         description:
-          'المساعدة في فحص التوثيق وإبراز الملاحظات المحتملة',
+          'يحلل النموذج المدرّب الصور وفق معايير المراجعة لدعم التحقق الأولي وتحديد الحالات التي تستدعي فحص المشرف',
       },
       {
-        title: 'المراجعة والاعتماد',
+        title: 'مراجعة المشرف',
         description:
-          'إتاحة السجلات للجهات المختصة وفق الصلاحيات',
+          'يراجع المشرف الأدلة ويسجل قرار الاعتماد أو الرفض، وتُحفظ الصور والقرارات المتحقق منها مرجعًا للمراجعة والتدريب اللاحق',
       },
     ],
 
-    resultsLabel: '03 / التحقق والتقييم',
-    resultsTitle: 'نتائج التحقق',
+    resultsLabel: '03 / تقييم النموذج',
+    resultsTitle: 'نتائج الاختبارات',
     resultsText:
-      'أظهرت التجربة الأولية للنظام قبول 94 صورة من أصل 100 صورة تم اختبارها، في إطار تقييم قدرات التحقق من التوثيق الميداني ودعم عمليات مراجعة جودة التنفيذ',
-    accepted: 'صورة مقبولة',
-    total: 'من أصل 100 صورة',
-    dashboardLabel: 'UNIFIED WORKS / PLATFORM',
+      'سجلت اختبارات التحقق قيم دقة 79.4% و96.8% و99.5% و99.9% عند المقارنة بين كميات مختلفة من الصور المعتمدة، وسُجل قبول صحيح لـ94 صورة من أصل 100 بعد 10 اعتمادات من المشرف، وتعكس النتائج شروط التقييم ولا تضمن الأداء نفسه في جميع بيئات التشغيل',
+    accepted: 'صور مقبولة بصورة صحيحة',
+    total: 'من أصل 100 صورة بعد 10 اعتمادات من المشرف',
+    dashboardLabel: 'الأعمال الموحّدة / لوحة المتابعة',
 
     closing:
-      'توثيق موحد ومتابعة أدق',
+      'توثيق قرارات المراجعة',
     unavailable: 'الصورة غير متاحة',
   },
 
   en: {
     heroLabel: 'UNIFIED WORKS / TECHNOLOGY',
-    heroTitle: 'Technology for the field',
-    heroAccent: 'Better execution oversight',
+    heroTitle: 'System',
+    heroAccent: 'technology',
     heroText:
-      'We connect field documentation, geospatial context, and AI-assisted verification to make infrastructure operations clearer and easier to review',
-    explore: 'Explore technology',
-    heroImageLabel: 'INFRASTRUCTURE INTELLIGENCE',
+      'The system uses an AI model trained on real field data to analyze execution photographs, assist supervisors in checking contractor work quality, and document review outcomes',
+    explore: 'Technologies used',
+    heroImageLabel: 'INFRASTRUCTURE DOCUMENTATION',
 
     stats: [
-      { value: 100, suffix: '', label: 'Images in the validation experiment' },
-      { value: 94, suffix: '%', label: 'Image acceptance rate in the experiment' },
-      { value: 4, suffix: '', label: 'Connected workflow stages' },
+      { value: 100, suffix: '', label: 'Images in the acceptance test' },
+      { value: 94, suffix: '%', label: 'Correct image acceptance rate' },
+      { value: 4, suffix: '', label: 'Documentation and verification stages' },
     ],
-    statsNote: 'Results from the project validation experiment',
+    statsNote: 'Verification testing covered 148 real field images, with 94 correctly accepted images out of 100 recorded after 10 supervisor approvals under the evaluation conditions',
 
-    featuresLabel: '01 / CORE CAPABILITIES',
-    featuresTitle: 'System capabilities',
+    featuresLabel: '01 / DOCUMENTATION AND ANALYSIS',
+    featuresTitle: 'System components',
     featuresDescription:
-      'Connected technologies turn field activities into documented, reviewable information',
+      'The system combines image documentation, analysis, and review records to check execution requirements; model customization provides a method for aligning verification with each organization’s quality criteria',
 
     features: [
       {
         number: '01',
-        label: 'FIELD DOCUMENTATION',
+        label: 'EXECUTION EVIDENCE',
         title: 'Field documentation',
         description:
-          'Capture images and information linked to every stage of field execution',
+          'Execution photographs are retained with location, time, and work records to provide documented evidence of contractor activities and compliance with technical requirements',
         image: IMAGES.documentation,
       },
       {
         number: '02',
-        label: 'AI-ASSISTED VERIFICATION',
-        title: 'AI-assisted verification',
+        label: 'ANALYSIS AND TRAINING',
+        title: 'Model training',
         description:
-          'Support image review and highlight records that may require additional attention',
+          'The model was developed and trained on reliable field data and tested on real images; it can be adapted to each organization’s criteria and improved through reviewed training on validated image-decision records to support consistent recommendations and reduce repetitive checks, with final decisions retained by supervisors',
         image: IMAGES.verification,
       },
       {
         number: '03',
-        label: 'LOCATION INTELLIGENCE',
-        title: 'Geospatial intelligence',
+        label: 'LOCATION DATA',
+        title: 'Work records',
         description:
-          'Connect field records to geographic locations for better tracking and oversight',
+          'Records bring together work locations, photographs, observations, and supervisor decisions so review outcomes can be traced and referenced during audits and contractor evaluations',
         image: IMAGES.geospatial,
       },
     ],
 
-    processLabel: '02 / WORKFLOW',
+    processLabel: '02 / OPERATING PROCEDURE',
     processTitle: 'How it works',
     processDescription:
-      'A connected workflow linking field information to responsible stakeholders',
-    processImageLabel: 'FIELD OPERATIONS / WORKFLOW',
+      'Preliminary verification and centralized review can reduce repetitive checks and unnecessary site visits; earlier identification of execution issues can help limit rework, follow-up inspections, and maintenance costs',
+    processImageLabel: 'WORK REVIEW STAGES',
 
     steps: [
       {
-        title: 'Register work',
+        title: 'Field check-in',
         description:
-          'Create an activity record with geographic information',
+          'The crew checks in at the execution site and the application records the location and associated work details',
       },
       {
-        title: 'Document progress',
+        title: 'Execution documentation',
         description:
-          'Attach field photographs and supporting documents',
+          'The crew photographs completed work, with images associated with capture time, execution location, and the activity record',
       },
       {
-        title: 'AI-assisted verification',
+        title: 'Image analysis',
         description:
-          'Support documentation checks and highlight potential observations',
+          'The trained model analyzes images against review criteria to support preliminary verification and identify cases requiring supervisor attention',
       },
       {
-        title: 'Review and approval',
+        title: 'Supervisor review',
         description:
-          'Make records available to authorized stakeholders',
+          'The supervisor reviews the evidence and records approval or rejection; validated images and decisions are retained for review reference and subsequent training',
       },
     ],
 
-    resultsLabel: '03 / VALIDATION & EVALUATION',
-    resultsTitle: 'Verification results',
+    resultsLabel: '03 / MODEL EVALUATION',
+    resultsTitle: 'Test results',
     resultsText:
-      'The initial system evaluation recorded 94 accepted images out of 100 tested, demonstrating the application of verification capabilities to field documentation and quality review workflows',
-    accepted: 'Accepted images',
-    total: 'Out of 100 images',
-    dashboardLabel: 'UNIFIED WORKS / PLATFORM',
+      'Verification tests recorded accuracy values of 79.4%, 96.8%, 99.5%, and 99.9% when comparing different quantities of approved images, with 94 correctly accepted images out of 100 after 10 supervisor approvals; results reflect the evaluation conditions and do not guarantee the same performance in every operating environment',
+    accepted: 'Correctly accepted images',
+    total: 'Out of 100 images after 10 supervisor approvals',
+    dashboardLabel: 'UNIFIED WORKS / MONITORING DASHBOARD',
 
     closing:
-      'Connected records and clearer oversight',
+      'Review decision records',
     unavailable: 'Image unavailable',
   },
 }
@@ -397,7 +397,7 @@ export default function Technology() {
             <Reveal className={styles.heroVisual} delay={120}>
               <ProjectImage
                 src={IMAGES.hero}
-                alt="Underground infrastructure and utility networks"
+                alt={isArabic ? 'البنية التحتية وشبكات المرافق تحت الأرض' : 'Underground infrastructure and utility networks'}
                 fallbackText={t.unavailable}
                 eager
               />
@@ -488,7 +488,7 @@ export default function Technology() {
             <Reveal className={styles.workflowVisual}>
               <ProjectImage
                 src={IMAGES.workflow}
-                alt="Field utility network installation"
+                alt={isArabic ? 'تنفيذ شبكات المرافق في الموقع' : 'Utility network installation at the worksite'}
                 fallbackText={t.unavailable}
               />
             </Reveal>
@@ -558,7 +558,7 @@ export default function Technology() {
             <Reveal className={styles.resultsVisual} delay={100}>
               <ProjectImage
                 src={IMAGES.dashboard}
-                alt="Unified Works dashboard"
+                alt={isArabic ? 'لوحة متابعة الأعمال الموحّدة' : 'Unified Works monitoring dashboard'}
                 fallbackText={t.unavailable}
               />
             </Reveal>
@@ -574,7 +574,7 @@ export default function Technology() {
             <ShieldCheck size={23} />
             <strong>{t.closing}</strong>
           </div>
-          <span>UNIFIED WORKS / FIELD INTELLIGENCE</span>
+          <span>{isArabic ? 'الأعمال الموحّدة / التوثيق والتحقق' : 'UNIFIED WORKS / DOCUMENTATION AND VERIFICATION'}</span>
         </div>
       </section>
 

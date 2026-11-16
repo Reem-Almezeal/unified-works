@@ -9,10 +9,10 @@ const IMG = "/images/impact/";
 const ORG = "/images/organizations/";
 
 const sectors = [
-  { id: "energy", logo: `${ORG}saudi-energy.png`, image: `${IMG}impact-energy.webp`, url: "https://uw.81-208-191-204.sslip.io/p/el/#dash", ar: { name: "الطاقة والكهرباء", title: "متابعة أعمال الشبكات الكهربائية", description: "توثيق الأعمال الميدانية وربط سجلات التنفيذ بمواقعها، لتصبح مراجعة أعمال الشبكات أكثر وضوحًا" }, en: { name: "Energy & electricity", title: "Visibility across electrical works", description: "Link field evidence and execution records to their locations for clearer oversight of electrical networks" } },
-  { id: "water", logo: `${ORG}water.png`, image: `${IMG}impact-water.webp`, url: "https://uw.81-208-191-204.sslip.io/p/wa/#dash", ar: { name: "المياه والصرف الصحي", title: "سجل متصل لأعمال المياه والصرف", description: "جمع الصور والملاحظات الميدانية لأعمال المياه والصرف الصحي في سياق مكاني واضح وقابل للمراجعة" }, en: { name: "Water & wastewater", title: "Connected records for water works", description: "Bring water and wastewater field images and observations into a clear, reviewable location context" } },
-  { id: "telecom", logo: `${ORG}telecom.png`, image: `${IMG}impact-telecom.webp`, url: "https://uw.81-208-191-204.sslip.io/p/tc/#dash", ar: { name: "الاتصالات", title: "متابعة أوضح لأعمال الاتصالات", description: "تجميع أدلة التنفيذ الميداني وربطها بمواقع الأعمال لتسهيل مراجعة أعمال شبكات الاتصالات" }, en: { name: "Telecommunications", title: "Clearer telecom work oversight", description: "Connect field evidence with work locations to simplify the review of telecommunications network activity" } },
-  { id: "municipality", logo: `${ORG}municipality.png`, image: `${IMG}impact-municipality.webp`, url: "https://uw.81-208-191-204.sslip.io/muni#query", ar: { name: "الأمانات والبلديات", title: "رؤية أشمل للأعمال داخل المدينة", description: "دعم متابعة مواقع أعمال البنية التحتية والملاحظات المرتبطة بها، بما يعزز التنسيق بين الجهات" }, en: { name: "Municipal authorities", title: "A wider view of city works", description: "Support oversight of infrastructure worksites and related observations, helping stakeholders coordinate" } },
+  { id: "energy", logo: `${ORG}saudi-energy.png`, image: `${IMG}impact-energy.webp`, url: "https://uw.81-208-191-204.sslip.io/p/el/#dash", ar: { name: "الطاقة والكهرباء", title: "متابعة أعمال الكهرباء", description: "صور مراحل التنفيذ وسجلات المواقع تدعم مراجعة أعمال المقاولين وفق المتطلبات الفنية وتوثيق الملاحظات وإجراءات المعالجة" }, en: { name: "Energy and electricity", title: "Electrical work monitoring", description: "Execution photographs and site records support contractor work reviews against technical requirements, with documented observations and corrective actions" } },
+  { id: "water", logo: `${ORG}water.png`, image: `${IMG}impact-water.webp`, url: "https://uw.81-208-191-204.sslip.io/p/wa/#dash", ar: { name: "المياه والصرف الصحي", title: "توثيق أعمال الشبكات", description: "ربط صور أعمال التركيب والصيانة بمواقعها وملاحظات المشرف يتيح الرجوع إلى أدلة التنفيذ عند مراجعة أعمال المياه والصرف الصحي" }, en: { name: "Water and wastewater", title: "Network work documentation", description: "Linking installation and maintenance photographs to locations and supervisor observations provides evidence for water and wastewater work reviews" } },
+  { id: "telecom", logo: `${ORG}telecom.png`, image: `${IMG}impact-telecom.webp`, url: "https://uw.81-208-191-204.sslip.io/p/tc/#dash", ar: { name: "الاتصالات", title: "متابعة تنفيذ شبكات الاتصالات", description: "توثيق التمديدات وأعمال الصيانة ونتائج المراجعة يساعد في متابعة تقدم الأعمال وتقييم أداء المقاولين ومعالجة الملاحظات" }, en: { name: "Telecommunications", title: "Telecommunications execution oversight", description: "Installation and maintenance records and review outcomes support progress monitoring, contractor performance assessment, and observation follow-up" } },
+  { id: "municipality", logo: `${ORG}municipality.png`, image: `${IMG}impact-municipality.webp`, url: "https://uw.81-208-191-204.sslip.io/muni#query", ar: { name: "الأمانات والبلديات", title: "سجلات الأعمال البلدية", description: "إتاحة سجلات أعمال البنية التحتية ومواقعها وملاحظاتها للمستخدمين المخولين تدعم المتابعة البلدية والتنسيق بين الجهات المعنية" }, en: { name: "Municipal authorities", title: "Municipal work records", description: "Authorized access to infrastructure work records, locations, and observations supports municipal oversight and coordination between relevant entities" } },
 ];
 
 function Reveal({ children, className = "", delay = 0 }) {
@@ -79,9 +79,9 @@ export default function Impact() {
   const activeText = ar ? active.ar : active.en;
 
   const benefits = [
-    { number: "01", image: `${IMG}impact-documentation.webp`, ar: { eyebrow: "توثيق مرتبط بالواقع", title: "توثيق ميداني موحد", desc: "بدل أن تبقى الصور والملاحظات موزعة بين قنوات مختلفة، تصبح جزءًا من سجل مرتبط بالعمل وموقعه ويمكن الرجوع إليه عند الحاجة" }, en: { eyebrow: "Evidence with context", title: "Unified Field Documentation", desc: "Instead of leaving photos and observations scattered across channels, keep them connected to the work and its location in a traceable record" } },
-    { number: "02", image: `${IMG}impact-ai-validation.webp`, ar: { eyebrow: "مراجعة أكثر كفاءة", title: "مراجعة أكثر كفاءة", desc: "تساعد المراجعة المدعومة بالذكاء الاصطناعي في تنظيم الأدلة المرئية وإبراز ما يحتاج إلى تدقيق بشري، دون استبدال دور المسؤول عن القرار" }, en: { eyebrow: "More focused review", title: "More Efficient Review", desc: "AI-assisted review helps organize visual evidence and highlight what may need human attention, without replacing the decision-maker" } },
-    { number: "03", image: `${IMG}impact-after.webp`, ar: { eyebrow: "رؤية تدعم القرار", title: "متابعة تدعم القرار", desc: "عندما تتصل السجلات بالمواقع والملاحظات، يصبح من الأسهل متابعة الأعمال ومراجعة حالتها والتنسيق حول الخطوات التالية" }, en: { eyebrow: "Decision-ready visibility", title: "Decision-Ready Oversight", desc: "When records connect to locations and observations, stakeholders can more easily review progress and coordinate next steps" } },
+    { number: "01", image: `${IMG}impact-documentation.webp`, ar: { eyebrow: "أدلة التنفيذ", title: "التوثيق والمساءلة", desc: "تُحفظ صور مراحل العمل مع بيانات الموقع والوقت وملاحظات المشرف وقراراته، لتوفير سجل يمكن الرجوع إليه في متابعة المشروع وتقييم المقاول" }, en: { eyebrow: "Execution evidence", title: "Documentation and accountability", desc: "Work stage photographs are retained with location, time, supervisor observations, and decisions, providing a reference for project follow-up and contractor evaluation" } },
+    { number: "02", image: `${IMG}impact-ai-validation.webp`, ar: { eyebrow: "مساندة المشرف", title: "كفاءة المراجعة", desc: "دُرّب النموذج واختُبر على صور ميدانية فعلية لمساندة الفحص الأولي، وتتيح منهجية تخصيصه استخدام الصور والقرارات المعتمدة لتحسين اتساق المراجعة وتقليل تكرارها، مع بقاء الاعتماد للمشرف" }, en: { eyebrow: "Supervisor assistance", title: "Review efficiency", desc: "The model was trained and tested on real field images to support preliminary checks; organization-specific training can use validated images and decisions to improve review consistency and reduce repetition, with approval retained by supervisors" } },
+    { number: "03", image: `${IMG}impact-after.webp`, ar: { eyebrow: "إجراءات المعالجة", title: "تكاليف إعادة العمل والصيانة", desc: "مراجعة أدلة التنفيذ مبكرًا وتوثيق العيوب وإجراءات معالجتها يساعدان في الحد من تكرار الأعمال وزيارات المتابعة وتكاليف الصيانة التي يمكن تجنبها" }, en: { eyebrow: "Corrective action", title: "Rework and maintenance costs", desc: "Early review of execution evidence and documented defects and corrective actions can help limit repeated work, follow-up visits, and avoidable maintenance costs" } },
   ];
 
   return (
@@ -91,14 +91,14 @@ export default function Impact() {
         <div className={styles.container}>
           <div className={styles.heroGrid}>
             <Reveal className={styles.heroCopy}>
-              <span className={styles.eyebrow}>UNIFIED WORKS / {t("الأثر", "IMPACT")}</span>
-              <h1>{t("أثر يتجاوز الميدان", "Impact Beyond the Field")}<span>{t("من التوثيق إلى القرار", "From Documentation to Decisions")}</span></h1>
-              <p>{t("لأن جودة متابعة البنية التحتية لا تعتمد على تنفيذ الأعمال وحده، بل على وضوح ما يحدث في الميدان، وإمكانية توثيقه ومراجعته والتنسيق بشأنه", "Because better infrastructure oversight is not only about completing the work. It is about making field activity visible, traceable and easier to coordinate")}</p>
-              <a href="#impact-value" className={styles.primaryLink}>{t("اكتشف قيمة المنصة", "Discover the value")}<ArrowDown size={17} /></a>
+              <span className={styles.eyebrow}>{t("الأعمال الموحّدة", "UNIFIED WORKS")} / {t("الأثر", "IMPACT")}</span>
+              <h1>{t("الأثر التشغيلي", "Operational impact")}<span>{t("وكفاءة الإنفاق", "Cost efficiency")}</span></h1>
+              <p>{t("تساعد مراجعة صور التنفيذ وسجلات المشرفين الجهات المالكة والمشغلة في متابعة جودة أعمال المقاولين وترشيد زيارات التفتيش وتكاليف إعادة العمل والصيانة", "Reviewing execution photographs and supervisor records helps project owners and operators monitor contractor quality and manage inspection, rework, and maintenance costs")}</p>
+              <a href="#impact-value" className={styles.primaryLink}>{t("استعراض مجالات الأثر", "View operational benefits")}<ArrowDown size={17} /></a>
             </Reveal>
             <Reveal className={styles.heroImageWrap} delay={130}>
               <Image src={`${IMG}impact-hero.webp`} alt={t("أعمال البنية التحتية في الميدان", "Infrastructure field operations")} className={styles.heroImage} eager />
-              <div className={styles.heroImageCaption}><span className={styles.captionLine} />{t("من الموقع إلى الرؤية الشاملة", "FROM FIELD TO VISIBILITY")}</div>
+              <div className={styles.heroImageCaption}><span className={styles.captionLine} />{t("متابعة تنفيذ الأعمال", "WORK EXECUTION MONITORING")}</div>
             </Reveal>
           </div>
         </div>
@@ -108,24 +108,24 @@ export default function Impact() {
       <section className={styles.whySection} id="impact-value">
         <div className={styles.container}>
           <Reveal className={styles.whyHeading}>
-            <span className={styles.eyebrow}>{t("لماذا يهم؟", "WHY IT MATTERS")}</span>
-            <h2>{t("متابعة موحدة للأعمال الميدانية", "Unified Field Oversight")}<span>{t("بيانات مترابطة ورؤية أوضح", "Connected Data and Clarity")}</span></h2>
+            <span className={styles.eyebrow}>{t("الإشراف على التنفيذ", "EXECUTION OVERSIGHT")}</span>
+            <h2>{t("متابعة المقاولين", "Contractor monitoring")}<span>{t("وجودة التنفيذ", "Execution quality")}</span></h2>
           </Reveal>
           <div className={styles.whyLayout}>
             <Reveal className={styles.whyPhoto}>
               <Image src={`${IMG}impact-regulator.webp`} alt={t("متابعة أعمال البنية التحتية", "Infrastructure operations oversight")} />
-              <div className={styles.photoBottomText}>{t("رؤية واحدة لأعمال متعددة", "ONE VIEW. MULTIPLE OPERATIONS")}</div>
+              <div className={styles.photoBottomText}>{t("سجلات التنفيذ وقرارات المراجعة", "EXECUTION AND REVIEW RECORDS")}</div>
             </Reveal>
             <div className={styles.whyCards}>
               <Reveal className={styles.whyCard} delay={80}>
                 <span className={styles.cardIndex}>01 / {t("التحدي", "THE CHALLENGE")}</span>
-                <h3>{t("تشتت البيانات الميدانية", "Fragmented Field Data")}</h3>
-                <p>{t("صور وملاحظات ومواقع وأطراف متعددة، دون سياق موحد يسهل الرجوع إليه", "Photos, observations, locations and stakeholders without a shared context")}</p>
+                <h3>{t("تشتت سجلات الأعمال", "Fragmented work records")}</h3>
+                <p>{t("توزع الصور والملاحظات بين الملفات والمراسلات يصعّب تتبع حالة العمل ويزيد المتابعة اليدوية وتكرار طلب المعلومات", "Photographs and observations scattered across files and correspondence make work status harder to track and increase manual follow-up and repeated information requests")}</p>
               </Reveal>
               <Reveal className={`${styles.whyCard} ${styles.whyCardAccent}`} delay={150}>
-                <span className={styles.cardIndex}>02 / {t("الفرصة", "THE OPPORTUNITY")}</span>
-                <h3>{t("توثيق ومتابعة مترابطة", "Connected Documentation & Oversight")}</h3>
-                <p>{t("تجمع المنصة الأدلة الميدانية في مسار منظم يدعم وضوح الحالة والتنسيق", "Bring field evidence into a structured workflow that supports visibility and coordination")}</p>
+                <span className={styles.cardIndex}>02 / {t("دور المنصة", "PLATFORM SUPPORT")}</span>
+                <h3>{t("مراجعة الالتزام بالمتطلبات", "Requirements review")}</h3>
+                <p>{t("تجمع المنصة أدلة الأعمال والملاحظات وقرارات المراجعة للتحقق من المتطلبات الفنية ومتابعة إجراءات المعالجة وإتاحة السجلات للمخولين", "The platform brings together work evidence, observations, and decisions to check technical requirements, track corrective actions, and provide records to authorized users")}</p>
               </Reveal>
             </div>
           </div>
@@ -136,13 +136,13 @@ export default function Impact() {
       <section className={styles.metricsSection}>
         <div className={styles.container}>
           <Reveal className={styles.metricsTop}>
-            <div><span className={styles.eyebrow}>{t("نتائج تجربة التحقق", "VALIDATION EXPERIMENT")}</span><h2>{t("كفاءة التحقق التقني", "Technical Verification")}</h2></div>
-            <p>{t("أظهرت تجربة التحقق الأولية قبول 94 صورة من أصل 100 صورة جرى اختبارها لدعم مراجعة التوثيق الميداني", "The initial verification experiment recorded 94 accepted images out of 100 tested to support field documentation review")}</p>
+            <div><span className={styles.eyebrow}>{t("تقييم النموذج", "MODEL EVALUATION")}</span><h2>{t("نتائج الاختبارات", "Test results")}</h2></div>
+            <p>{t("شملت اختبارات التحقق 148 صورة ميدانية فعلية، وسُجل قبول صحيح لـ94 صورة من أصل 100 بعد 10 اعتمادات من المشرف، وتعكس النتائج شروط التقييم ولا تقيس وفورات مالية أو تضمن أداءً مماثلًا في كل بيئة", "Verification testing covered 148 real field images, with 94 correctly accepted images out of 100 after 10 supervisor approvals; results reflect evaluation conditions, not measured financial savings or guaranteed performance in every environment")}</p>
           </Reveal>
           <div className={styles.metricCards}>
-            <Reveal className={`${styles.metricCard} ${styles.metricFeatured}`}><span className={styles.metricLabel}>{t("نسبة القبول في التجربة", "EXPERIMENT ACCEPTANCE")}</span><Count value={94} suffix="%" /><p>{t("من الصور المقبولة ضمن التجربة", "of images accepted during the experiment")}</p></Reveal>
-            <Reveal className={styles.metricCard} delay={100}><span className={styles.metricLabel}>{t("حجم العينة", "SAMPLE SIZE")}</span><Count value={100} /><p>{t("صورة ضمن تجربة التحقق", "images in the validation experiment")}</p></Reveal>
-            <Reveal className={styles.metricCard} delay={180}><span className={styles.metricLabel}>{t("مراحل العمل", "WORKFLOW")}</span><Count value={4} /><p>{t("مراحل مترابطة من التوثيق إلى المراجعة", "connected stages from capture to review")}</p></Reveal>
+            <Reveal className={`${styles.metricCard} ${styles.metricFeatured}`}><span className={styles.metricLabel}>{t("القبول الصحيح للصور", "CORRECT IMAGE ACCEPTANCE")}</span><Count value={94} suffix="%" /><p>{t("بعد 10 اعتمادات من المشرف وفق شروط التقييم", "after 10 supervisor approvals under evaluation conditions")}</p></Reveal>
+            <Reveal className={styles.metricCard} delay={100}><span className={styles.metricLabel}>{t("صور اختبار القبول", "ACCEPTANCE TEST IMAGES")}</span><Count value={100} /><p>{t("صورة في نتيجة القبول المسجلة", "images in the recorded acceptance result")}</p></Reveal>
+            <Reveal className={styles.metricCard} delay={180}><span className={styles.metricLabel}>{t("مراحل العمل", "WORKFLOW STAGES")}</span><Count value={4} /><p>{t("من تسجيل الموقع إلى قرار المشرف", "from field check-in to the supervisor decision")}</p></Reveal>
           </div>
         </div>
       </section>
@@ -151,9 +151,9 @@ export default function Impact() {
       <section className={styles.benefitsSection}>
         <div className={styles.container}>
           <Reveal className={styles.benefitsHeader}>
-            <span className={styles.eyebrow}>{t("القيمة التشغيلية", "OPERATIONAL VALUE")}</span>
-            <h2>{t("قيمة تشغيلية", "Operational Value")}<span>{t("ملموسة في الميدان", "Across Field Operations")}</span></h2>
-            <p>{t("ثلاث قيم أساسية تنقل التوثيق من مهمة منفصلة إلى جزء من منظومة المتابعة", "Three ways to turn documentation from an isolated task into part of connected oversight")}</p>
+            <span className={styles.eyebrow}>{t("كفاءة العمليات", "OPERATIONAL EFFICIENCY")}</span>
+            <h2>{t("التوثيق والمراجعة", "Documentation and review")}<span>{t("وإدارة التكاليف", "Cost management")}</span></h2>
+            <p>{t("تتيح الأدلة المركزية مراجعة العمل عن بُعد وتوجيه الزيارات للحالات التي تستدعي الفحص، بما يساعد في ترشيد الإنفاق والتنسيق بين المقاول والمشرف ومالك المشروع", "Centralized evidence supports remote review and helps direct visits to cases requiring inspection, enabling cost control and coordination between contractors, supervisors, and project owners")}</p>
           </Reveal>
           <div className={styles.benefitStories}>
             {benefits.map((item, index) => {
@@ -173,8 +173,8 @@ export default function Impact() {
       <section className={styles.sectorsSection}>
         <div className={styles.container}>
           <Reveal className={styles.sectorsHeader}>
-            <div><span className={styles.eyebrow}>{t("القطاعات المستفيدة", "SECTOR IMPACT")}</span><h2>{t("حلول لمختلف القطاعات", "Solutions Across Sectors")}<span>{t("متابعة متكاملة", "Connected Oversight")}</span></h2></div>
-            <p>{t("تختلف طبيعة الأعمال بين الجهات، لكن الحاجة إلى توثيق واضح ومتابعة مترابطة تجمعها", "Different sectors face different field challenges, but all benefit from clearer records and connected oversight")}</p>
+            <div><span className={styles.eyebrow}>{t("مجالات الاستخدام", "APPLICATION AREAS")}</span><h2>{t("القطاعات المستفيدة", "Beneficiary sectors")}<span>{t("في البنية التحتية", "Infrastructure operations")}</span></h2></div>
+            <p>{t("تدعم وظائف التوثيق والمراجعة احتياجات الجهات في قطاعات الكهرباء والمياه والاتصالات والبلديات، بحسب اختصاص كل جهة وصلاحيات مستخدميها", "Documentation and review functions support electricity, water, telecommunications, and municipal responsibilities according to each organization’s remit and user permissions")}</p>
           </Reveal>
           <div className={styles.sectorTabs} role="group" aria-label={t("اختر القطاع", "Choose a sector")}>
             {sectors.map((item) => <button type="button" key={item.id} className={`${styles.sectorTab} ${activeSector === item.id ? styles.sectorTabActive : ""}`} aria-pressed={activeSector === item.id} onClick={() => setActiveSector(item.id)}>{ar ? item.ar.name : item.en.name}</button>)}
@@ -182,10 +182,10 @@ export default function Impact() {
           <div className={styles.sectorShowcase} key={active.id}>
             <div className={styles.sectorShowcaseImage}><Image src={active.image} alt={activeText.name} /><div className={styles.sectorImageShade} /><span className={styles.sectorImageText}>{activeText.name}</span></div>
             <div className={styles.sectorShowcaseContent}>
-              <span className={styles.sectorSmall}>{t("أثر القطاع", "SECTOR VALUE")}</span>
+              <span className={styles.sectorSmall}>{t("الاستخدام القطاعي", "SECTOR APPLICATION")}</span>
               {active.logo && <img className={styles.sectorLogo} src={active.logo} alt="" onError={e => { e.currentTarget.style.display = "none"; }} />}
               <h3>{activeText.title}</h3><p>{activeText.description}</p>
-              <a href={active.url} target="_blank" rel="noopener noreferrer">{t("استعرض واجهة القطاع", "Explore the sector portal")}<ArrowUpRight size={19} /></a>
+              <a href={active.url} target="_blank" rel="noopener noreferrer">{t("عرض واجهة القطاع", "View sector workspace")}<ArrowUpRight size={19} /></a>
             </div>
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function Impact() {
       {/* 06 — CLOSING */}
       <section className={styles.closing}>
         <div className={styles.container}>
-          <Reveal className={styles.closingInner}><div><span className={styles.closingEyebrow}>UNIFIED WORKS</span><h2>{t("وضوح أكبر", "Clearer Insights")}<span>{t("قرارات أفضل", "Better Decisions")}</span></h2></div><a href="/platform">{t("تعرّف على المنصة", "Explore the platform")}<ArrowUpRight size={19} /></a></Reveal>
+          <Reveal className={styles.closingInner}><div><span className={styles.closingEyebrow}>{t("الأعمال الموحّدة", "UNIFIED WORKS")}</span><h2>{t("وظائف المنصة", "Platform functions")}<span>{t("للجهات والشركات", "For organizations")}</span></h2></div><a href="/platform">{t("عرض المنصة", "View the platform")}<ArrowUpRight size={19} /></a></Reveal>
         </div>
       </section>
     </main>

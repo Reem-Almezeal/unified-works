@@ -41,8 +41,8 @@ const content = {
         description: 'مراجعة التزام المقاولين بمتطلبات المشروع والمعايير الفنية وتوثيق المخالفات والإجراءات التصحيحية',
       },
       {
-        title: 'نماذج ذكاء اصطناعي مخططة',
-        description: 'يتضمن التصور التقني نموذجًا خاصًا بكل جهة، يُدرّب على الصور وقرارات المشرفين المعتمدة لدعم سرعة المراجعة واتساقها تدريجيًا، مع بقاء الاعتماد النهائي للمشرف',
+        title: 'نموذج الذكاء الاصطناعي',
+        description: 'يعتمد النظام على نموذج ذكاء اصطناعي مدرّب لتحليل صور الأعمال الميدانية، والتحقق من جودة التنفيذ ومدى مطابقته للمتطلبات الفنية، بما يدعم أعمال المراجعة والإشراف',
       },
     ],
     videoTag: 'عرض المنصة / 02',
@@ -123,8 +123,8 @@ const content = {
         description: 'Review compliance with project requirements and technical standards, documenting issues and corrective actions',
       },
       {
-        title: 'Planned organization-specific AI',
-        description: 'The concept includes a model for each organization, trained on images and validated supervisor decisions to support faster, more consistent reviews over time, with final approval retained by supervisors',
+        title: 'AI Model',
+        description: 'The system uses a trained AI model to analyze fieldwork photographs and assess execution quality and compliance with technical requirements, supporting review and supervision',
       },
     ],
     videoTag: 'PLATFORM OVERVIEW / 02',

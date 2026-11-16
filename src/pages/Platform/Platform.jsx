@@ -45,13 +45,13 @@ const roles = [
     logo: null,
     url: 'https://uw.81-208-191-204.sslip.io/#dash',
     ar: 'الجهة المنظمة',
-    en: 'Regulatory Organization',
-    subtitleAr: 'الإشراف ومتابعة السجلات',
-    subtitleEn: 'Supervision and records oversight',
-    descAr: 'يتابع ممثلو الجهة المخولون تقدم الأعمال وسجلات المقاولين وقرارات المراجعة لدعم التدقيق وتقييم الأداء، بحسب الصلاحيات المسندة إليهم',
-    descEn: 'Authorized representatives monitor work progress, contractor records, and review decisions to support audits and performance assessment within assigned permissions',
-    featuresAr: ['متابعة تقدم الأعمال', 'مراجعة سجلات المقاولين', 'متابعة قرارات المراجعة', 'تقييم أداء المقاولين'],
-    featuresEn: ['Work progress monitoring', 'Contractor record review', 'Review decision tracking', 'Contractor performance assessment']
+    en: 'Regulatory organization',
+    subtitleAr: 'متابعة الأعمال وجودة التنفيذ',
+    subtitleEn: 'Work monitoring and quality oversight',
+    descAr: 'تتيح سجلات المقاولين وقرارات المشرفين متابعة الأداء والتحقق من الالتزام بالمتطلبات الفنية، وتدعم رصد المشكلات مبكرًا للحد من إعادة العمل وتكاليف الصيانة الممكن تجنبها',
+    descEn: 'Contractor records and supervisor decisions support performance monitoring and technical compliance checks, helping identify issues before they lead to rework or avoidable maintenance costs',
+    featuresAr: ['متابعة مراحل التنفيذ', 'التحقق من متطلبات الجودة', 'الرجوع إلى قرارات المشرفين', 'مراجعة أداء المقاولين'],
+    featuresEn: ['Execution progress', 'Quality requirement checks', 'Supervisor decision records', 'Contractor performance review']
   },
   {
     id: 'contractor',
@@ -60,12 +60,12 @@ const roles = [
     url: null,
     ar: 'المقاول',
     en: 'Contractor',
-    subtitleAr: 'إعداد التوثيق وتحديثه',
-    subtitleEn: 'Documentation and submission updates',
-    descAr: 'يوثق المقاول الأعمال بالصور وبيانات الموقع والمشروع، ويحدث الطلبات لمعالجة ملاحظات المشرف والإجراءات التصحيحية المطلوبة',
-    descEn: 'Contractors submit photographs, location and project details, and update submissions to address supervisor observations and required corrective actions',
-    featuresAr: ['توثيق الأعمال المسندة', 'إرفاق الصور والبيانات', 'متابعة ملاحظات المشرف', 'تحديث طلبات المراجعة'],
-    featuresEn: ['Assigned work documentation', 'Photographs and work data', 'Supervisor observation tracking', 'Submission updates']
+    subtitleAr: 'رفع الأعمال للمراجعة',
+    subtitleEn: 'Work submissions',
+    descAr: 'يرفع المقاول صور الأعمال وبياناتها للمراجعة، ويتابع ملاحظات المشرف ويحدث الطلب عند استكمال البيانات أو تنفيذ التصحيحات المطلوبة',
+    descEn: 'Contractors submit work photographs and details for review, respond to supervisor observations, and update submissions when information or corrective work is required',
+    featuresAr: ['إعداد طلب المراجعة', 'إرفاق صور التنفيذ', 'استكمال البيانات المطلوبة', 'توثيق معالجة الملاحظات'],
+    featuresEn: ['Submission preparation', 'Execution photographs', 'Required information updates', 'Corrective action documentation']
   },
   {
     id: 'energy',
@@ -74,40 +74,40 @@ const roles = [
     url: 'https://uw.81-208-191-204.sslip.io/p/el/#dash',
     ar: 'السعودية للطاقة',
     en: 'Saudi Energy',
-    subtitleAr: 'البنية التحتية الكهربائية',
-    subtitleEn: 'Electrical infrastructure',
-    descAr: 'متابعة توثيق أعمال شبكات الكهرباء ومراجعة أدلة التنفيذ والملاحظات ذات الصلة بمتطلبات المشروع',
-    descEn: 'Monitor electrical network documentation and review execution evidence and observations against project requirements',
-    featuresAr: ['توثيق أعمال الكهرباء', 'سجلات المشاريع', 'مراجعة أدلة التنفيذ', 'متابعة الملاحظات'],
-    featuresEn: ['Electrical work documentation', 'Project records', 'Execution evidence review', 'Observation tracking']
+    subtitleAr: 'متابعة أعمال الكهرباء',
+    subtitleEn: 'Electrical work oversight',
+    descAr: 'تجمع واجهة القطاع سجلات أعمال الكهرباء وصور التنفيذ والملاحظات لتمكين المستخدم المخول من مراجعتها وفق متطلبات المشروع',
+    descEn: 'The sector workspace brings together electrical work records, execution photographs, and observations for review by authorized users against project requirements',
+    featuresAr: ['سجلات أعمال الكهرباء', 'صور مراحل التنفيذ', 'متطلبات المشروع', 'ملاحظات المراجعة'],
+    featuresEn: ['Electrical work records', 'Execution stage photographs', 'Project requirements', 'Review observations']
   },
   {
     id: 'water',
     icon: Droplets,
     logo: '/images/organizations/water.png',
     url: 'https://uw.81-208-191-204.sslip.io/p/wa/#dash',
-    ar: 'شبكة المياه والصرف',
-    en: 'Water & Wastewater',
-    subtitleAr: 'البنية التحتية للمياه',
-    subtitleEn: 'Water infrastructure',
-    descAr: 'متابعة أعمال شبكات المياه والصرف الصحي، وربط صور التنفيذ ونتائج المراجعة بمواقع الأعمال وسجلاتها',
-    descEn: 'Monitor water and wastewater works, linking execution photographs and review outcomes to work locations and records',
-    featuresAr: ['متابعة أعمال الشبكات', 'مواقع التنفيذ', 'سجلات التوثيق', 'نتائج المراجعة'],
-    featuresEn: ['Network work monitoring', 'Work locations', 'Documentation records', 'Review outcomes']
+    ar: 'المياه والصرف الصحي',
+    en: 'Water and wastewater',
+    subtitleAr: 'متابعة أعمال الشبكات',
+    subtitleEn: 'Network work oversight',
+    descAr: 'تُعرض أعمال شبكات المياه والصرف الصحي مع مواقعها والصور المرفقة ونتائج المراجعة للرجوع إلى توثيق كل عمل',
+    descEn: 'Water and wastewater work is presented with locations, submitted photographs, and review outcomes so users can refer to the record for each activity',
+    featuresAr: ['سجلات أعمال الشبكات', 'بيانات مواقع الأعمال', 'الصور المرفقة', 'قرارات المراجعة'],
+    featuresEn: ['Network work records', 'Worksite details', 'Submitted photographs', 'Review decisions']
   },
   {
     id: 'telecom',
     icon: RadioTower,
     logo: '/images/organizations/telecom.png',
     url: 'https://uw.81-208-191-204.sslip.io/p/tc/#dash',
-    ar: 'شبكة الاتصالات',
+    ar: 'الاتصالات',
     en: 'Telecommunications',
-    subtitleAr: 'شبكات الاتصالات',
-    subtitleEn: 'Telecommunications networks',
-    descAr: 'متابعة توثيق تمديدات شبكات الاتصالات وسجلات المواقع والملاحظات المسجلة أثناء مراجعة التنفيذ',
-    descEn: 'Monitor telecommunications installation documentation, site records, and observations recorded during execution review',
-    featuresAr: ['توثيق أعمال الشبكات', 'سجلات المواقع', 'مراجعة الصور', 'متابعة الملاحظات'],
-    featuresEn: ['Network work documentation', 'Site records', 'Photograph review', 'Observation tracking']
+    subtitleAr: 'متابعة تمديدات الاتصالات',
+    subtitleEn: 'Telecommunications installation oversight',
+    descAr: 'تتيح سجلات تمديدات الاتصالات مراجعة صور المواقع ومتابعة الملاحظات المرتبطة بأعمال التنفيذ ضمن اختصاص الجهة',
+    descEn: 'Telecommunications installation records support site photograph review and follow-up of execution observations within the organization’s remit',
+    featuresAr: ['سجلات التمديدات', 'صور مواقع التنفيذ', 'ملاحظات المشرفين', 'متابعة أعمال التصحيح'],
+    featuresEn: ['Installation records', 'Worksite photographs', 'Supervisor observations', 'Corrective work follow-up']
   },
   {
     id: 'municipality',
@@ -118,77 +118,77 @@ const roles = [
     en: 'Municipality',
     subtitleAr: 'المتابعة البلدية',
     subtitleEn: 'Municipal oversight',
-    descAr: 'الاطلاع على البلاغات والملاحظات وسجلات أعمال البنية التحتية الواقعة ضمن الاختصاص البلدي بحسب الصلاحيات',
-    descEn: 'Access reports, observations, and infrastructure work records within municipal responsibilities and assigned permissions',
-    featuresAr: ['الاستعلام عن البلاغات', 'متابعة مواقع الأعمال', 'مراجعة الملاحظات', 'الاطلاع على السجلات'],
-    featuresEn: ['Report inquiries', 'Worksite monitoring', 'Observation review', 'Record access']
+    descAr: 'تعرض الواجهة البلاغات ومواقع الأعمال والملاحظات ذات الصلة بالاختصاص البلدي، مع إتاحة السجلات للمستخدمين المخولين',
+    descEn: 'The workspace presents reports, work locations, and observations relevant to municipal responsibilities, with record access limited to authorized users',
+    featuresAr: ['الاستعلام عن البلاغات', 'الاطلاع على مواقع الأعمال', 'متابعة الملاحظات البلدية', 'الرجوع إلى سجلات الأعمال'],
+    featuresEn: ['Report lookup', 'Work location access', 'Municipal observation follow-up', 'Work record reference']
   }
 ]
 
 const translations = {
   ar: {
     eyebrow: 'الأعمال الموحّدة / المنصة',
-    heroTitle: 'إدارة الأعمال الميدانية',
-    heroAccent: 'التوثيق والمراجعة',
-    heroDesc: 'توثيق أعمال المقاولين ومتابعة جودتها، مع حفظ أدلة التنفيذ والملاحظات والقرارات في سجلات منظمة تدعم المساءلة وتقييم الأداء',
-    heroButton: 'وظائف المنصة',
-    heroSecondary: 'الأدوار والصلاحيات',
-    heroTag: 'توثيق الأعمال ومتابعة التنفيذ',
+    heroTitle: 'نظرة عامة',
+    heroAccent: 'على المنصة',
+    heroDesc: 'تتيح الأعمال الموحّدة توثيق أنشطة البنية التحتية ورفع أعمال المقاولين للمراجعة، مع حفظ الصور والملاحظات والقرارات في سجل لكل عمل',
+    heroButton: 'استعراض الإجراءات',
+    heroSecondary: 'عرض المستخدمين',
+    heroTag: 'إدارة الأعمال الميدانية',
 
-    fieldLabel: '01 / وظائف المنصة',
-    fieldTitle: 'التوثيق الميداني',
-    fieldAccent: 'ومراجعة الأعمال',
-    fieldDesc: 'تُربط الصور وبيانات الموقع والمشروع بكل عمل لمراجعتها وتوثيق نتائجها، بما يساعد في تقليل تشتت السجلات والزيارات غير الضرورية وتكاليفها، ورصد المشكلات مبكرًا للحد من إعادة العمل والصيانة',
+    fieldLabel: '01 / آلية العمل',
+    fieldTitle: 'إجراءات',
+    fieldAccent: 'العمل',
+    fieldDesc: 'يُعد المقاول الطلب بصور التنفيذ وبيانات الموقع، ثم يراجعه المشرف ويسجل النتيجة وفق الإجراء المعتمد، وتساعد السجلات الموحدة في تقليل المتابعة اليدوية والزيارات غير الضرورية',
     fieldFeatures: [
-      { title: 'توثيق الأعمال', desc: 'إرفاق الصور وبيانات المشروع والسجلات الداعمة لكل نشاط' },
-      { title: 'بيانات الموقع', desc: 'ربط التوثيق بموقع العمل للرجوع إليه أثناء المراجعة' },
-      { title: 'المراجعة والاعتماد', desc: 'قرار المشرف حسب الإجراء المعتمد، مع مساندة مخططة بنماذج خاصة بالجهات تُدرّب بضوابط على الصور والقرارات المعتمدة' }
+      { title: 'إعداد الطلب', desc: 'إرفاق صور العمل وبيانات المشروع والمستندات اللازمة للمراجعة' },
+      { title: 'تحديد الموقع', desc: 'ربط الطلب بموقع التنفيذ للرجوع إلى سجل العمل وأدلته' },
+      { title: 'مراجعة الطلب', desc: 'يسجل المشرف قراره، ويشمل التطوير المخطط نموذجًا لكل جهة يُدرّب بضوابط على الصور وقرارات المراجعة المعتمدة لمساندة المراجعات اللاحقة' }
     ],
 
-    rolesLabel: '02 / أدوار المستخدمين',
+    rolesLabel: '02 / المستخدمون',
     rolesTitle: 'الأدوار والصلاحيات',
-    rolesDesc: 'يوثق المقاول الأعمال ويراجعها المشرف، ويتابع ممثلو الجهة المخولون التقدم والسجلات بحسب صلاحياتهم، ويمكن اختيار جهة للاطلاع على مسؤولياتها وواجهتها',
-    roleFeatures: 'المسؤوليات الوظيفية',
-    openRole: 'فتح مساحة العمل',
-    noLink: 'رابط واجهة المقاول غير متوفر حاليًا',
-    accessHint: 'تُتاح الوظائف وفق الصلاحيات المسندة للمستخدم',
+    rolesDesc: 'تُحدد مهام المقاول والمشرف وممثل الجهة وفق مسؤولياتهم وصلاحياتهم، ويمكن اختيار المستخدم أو القطاع أدناه للاطلاع على المهام ورابط الواجهة المتاح',
+    roleFeatures: 'المهام المتاحة بحسب الصلاحية',
+    openRole: 'فتح الواجهة',
+    noLink: 'واجهة المقاول غير متاحة عبر هذا الموقع حاليًا',
+    accessHint: 'يتطلب الاطلاع على السجلات صلاحية مناسبة',
 
-    accessLabel: '03 / الوصول الموحد',
-    accessTitle: 'الدخول إلى المنصة',
-    accessDesc: 'تسجيل الدخول للوصول إلى وظائف التوثيق والمراجعة والمتابعة وفق دور المستخدم وصلاحياته',
-    accessButton: 'الدخول إلى المنصة',
+    accessLabel: '03 / حساب المستخدم',
+    accessTitle: 'الوصول إلى المنصة',
+    accessDesc: 'استخدم حسابك المصرح له للوصول إلى مساحة العمل والطلبات والسجلات المتاحة لك',
+    accessButton: 'تسجيل الدخول',
   },
   en: {
     eyebrow: 'UNIFIED WORKS / PLATFORM',
-    heroTitle: 'Field operations',
-    heroAccent: 'Documentation and review',
-    heroDesc: 'Document contractor work and monitor quality, retaining execution evidence, observations, and decisions to support accountability and performance assessment',
-    heroButton: 'Platform functions',
-    heroSecondary: 'Roles and permissions',
-    heroTag: 'WORK DOCUMENTATION AND MONITORING',
+    heroTitle: 'Platform',
+    heroAccent: 'overview',
+    heroDesc: 'Unified Works supports infrastructure work documentation and contractor submissions for review, retaining photographs, observations, and decisions in a record for each activity',
+    heroButton: 'View procedures',
+    heroSecondary: 'View users',
+    heroTag: 'FIELD OPERATIONS MANAGEMENT',
 
-    fieldLabel: '01 / PLATFORM FUNCTIONS',
-    fieldTitle: 'Field documentation',
-    fieldAccent: 'and work review',
-    fieldDesc: 'Link photographs, location and project data to each activity for review, helping reduce fragmented records, unnecessary visits, and inspection costs while identifying issues early to limit rework and avoidable maintenance',
+    fieldLabel: '01 / WORKFLOW',
+    fieldTitle: 'Work',
+    fieldAccent: 'procedures',
+    fieldDesc: 'Contractors prepare submissions with photographs and location details for supervisor review under the applicable procedure; consolidated records can reduce manual follow-up and unnecessary inspection visits',
     fieldFeatures: [
-      { title: 'Work documentation', desc: 'Attach photographs, project details, and supporting records to each activity' },
-      { title: 'Location data', desc: 'Link documentation to the worksite for reference during review' },
-      { title: 'Review and approval', desc: 'Supervisors decide under the applicable workflow, with planned organization-specific AI trained on reviewed images and decisions through a controlled process' }
+      { title: 'Prepare a submission', desc: 'Attach work photographs, project details, and documents required for review' },
+      { title: 'Identify the location', desc: 'Associate the submission with its worksite and supporting evidence' },
+      { title: 'Review the submission', desc: 'Supervisors record decisions, with planned organization-specific AI trained through a controlled process on images and validated decisions to assist future reviews' }
     ],
 
-    rolesLabel: '02 / USER ROLES',
+    rolesLabel: '02 / USERS',
     rolesTitle: 'Roles and permissions',
-    rolesDesc: 'Contractors document work, supervisors review it, and authorized representatives monitor progress and records within assigned permissions; select an organization to view its responsibilities and workspace',
-    roleFeatures: 'Assigned responsibilities',
+    rolesDesc: 'Contractors, supervisors, and organization representatives have duties defined by their responsibilities and permissions; select a user group or sector below to view its tasks and available workspace link',
+    roleFeatures: 'Tasks subject to permission',
     openRole: 'Open workspace',
-    noLink: 'Contractor workspace link is not available yet',
-    accessHint: 'Functions are available according to assigned user permissions',
+    noLink: 'The contractor workspace is not currently accessible from this website',
+    accessHint: 'Record access requires the appropriate permission',
 
-    accessLabel: '03 / UNIFIED ACCESS',
+    accessLabel: '03 / USER ACCOUNT',
     accessTitle: 'Platform access',
-    accessDesc: 'Sign in to access documentation, review, and monitoring functions according to your role and permissions',
-    accessButton: 'Access the platform'
+    accessDesc: 'Use your authorized account to access the workspace, submissions, and records available to you',
+    accessButton: 'Sign in'
   }
 }
 
@@ -294,18 +294,18 @@ function OrganizationLogoContent({ role, large = false }) {
 function InteractivePhone({ activeFeature, ar }) {
   const screens = [
     {
-      ar: 'التوثيق الميداني',
-      en: 'Field documentation',
+      ar: 'توثيق العمل',
+      en: 'Work documentation',
       icon: Camera
     },
     {
-      ar: 'بيانات الموقع',
-      en: 'Location data',
+      ar: 'موقع التنفيذ',
+      en: 'Work location',
       icon: MapPinned
     },
     {
-      ar: 'المراجعة والاعتماد',
-      en: 'Review and approval',
+      ar: 'نتيجة المراجعة',
+      en: 'Review outcome',
       icon: BrainCircuit
     }
   ]
@@ -341,7 +341,7 @@ function InteractivePhone({ activeFeature, ar }) {
                   <strong>
                     {ar ? 'الأعمال الموحّدة' : 'UNIFIED WORKS'}
                   </strong>
-                  <small>FIELD OPERATIONS</small>
+                  <small>{ar ? 'الأعمال الميدانية' : 'FIELD OPERATIONS'}</small>
                 </div>
               </div>
 
@@ -351,26 +351,26 @@ function InteractivePhone({ activeFeature, ar }) {
             <div className={styles.phoneAppBody} key={activeFeature}>
               <div className={styles.phonePageTitle}>
                 <span className={styles.phonePageEyebrow}>
-                  {ar ? 'مساحة العمل / المشاريع' : 'WORKSPACE / PROJECTS'}
+                  {ar ? 'المشاريع / طلبات المراجعة' : 'PROJECTS / SUBMISSIONS'}
                 </span>
 
                 <h3>{ar ? active.ar : active.en}</h3>
 
                 <p>
                   {ar
-                    ? 'مشروع تطوير البنية التحتية'
-                    : 'Infrastructure Development Project'}
+                    ? 'مثال توضيحي لمشروع بنية تحتية'
+                    : 'Illustrative infrastructure project'}
                 </p>
               </div>
 
               <div className={styles.phoneProjectInfo}>
                 <div>
-                  <small>{ar ? 'رقم المشروع' : 'PROJECT ID'}</small>
+                  <small>{ar ? 'مرجع المشروع' : 'PROJECT REFERENCE'}</small>
                   <strong>UW-2026-014</strong>
                 </div>
 
                 <span className={styles.phoneProjectBadge}>
-                  {ar ? 'قيد التنفيذ' : 'In progress'}
+                  {ar ? 'أعمال جارية' : 'Work in progress'}
                 </span>
               </div>
 
@@ -379,7 +379,7 @@ function InteractivePhone({ activeFeature, ar }) {
                   <div className={styles.phoneImage}>
                     <img
                       src={IMAGES.field}
-                      alt="Underground utility construction"
+                      alt={ar ? 'أعمال تنفيذ شبكات المرافق' : 'Utility network construction work'}
                     />
                     <span>
                       <Camera size={12} />
@@ -388,24 +388,24 @@ function InteractivePhone({ activeFeature, ar }) {
                   </div>
 
                   <div className={styles.phoneFormField}>
-                    <small>{ar ? 'نوع العمل' : 'WORK TYPE'}</small>
+                    <small>{ar ? 'النشاط' : 'ACTIVITY'}</small>
                     <strong>
-                      {ar ? 'تمديد شبكات المياه' : 'Water network installation'}
+                      {ar ? 'تمديد خط مياه' : 'Water pipeline installation'}
                     </strong>
                   </div>
 
                   <div className={styles.phoneFormField}>
-                    <small>{ar ? 'الموقع' : 'LOCATION'}</small>
+                    <small>{ar ? 'موقع النشاط' : 'ACTIVITY LOCATION'}</small>
                     <strong>
                       <MapPinned size={13} />
-                      {ar ? 'موقع العمل الميداني' : 'Field worksite'}
+                      {ar ? 'موقع التنفيذ المسجل' : 'Recorded work location'}
                     </strong>
                   </div>
 
                   <div className={styles.phoneUpload}>
                     <Camera size={17} />
                     <span>
-                      {ar ? 'إرفاق صور الموقع' : 'Attach site photographs'}
+                      {ar ? 'إرفاق صور التنفيذ' : 'Attach work photographs'}
                     </span>
                   </div>
                 </div>
@@ -461,9 +461,9 @@ function InteractivePhone({ activeFeature, ar }) {
                   </div>
 
                   <div className={styles.phoneFormField}>
-                    <small>{ar ? 'الموقع المحدد' : 'SELECTED LOCATION'}</small>
+                    <small>{ar ? 'نطاق التنفيذ' : 'WORK AREA'}</small>
                     <strong>
-                      {ar ? 'منطقة العمل / القطاع 04' : 'Worksite / Sector 04'}
+                      {ar ? 'منطقة التنفيذ / القطاع 04' : 'Work area / Sector 04'}
                     </strong>
                   </div>
 
@@ -471,8 +471,8 @@ function InteractivePhone({ activeFeature, ar }) {
                     <Layers3 size={16} />
                     <span>
                       {ar
-                        ? 'عرض طبقات شبكات المرافق'
-                        : 'Utility network layers'}
+                        ? 'بيانات شبكات المرافق'
+                        : 'Utility network data'}
                     </span>
                   </div>
                 </div>
@@ -486,20 +486,20 @@ function InteractivePhone({ activeFeature, ar }) {
                     </div>
 
                     <strong>
-                      {ar ? 'مراجعة أدلة التنفيذ' : 'Execution evidence review'}
+                      {ar ? 'مراجعة المرفقات' : 'Supporting evidence review'}
                     </strong>
 
                     <span>
                       {ar
-                        ? 'مساندة الذكاء الاصطناعي مخططة'
-                        : 'AI review assistance is planned'}
+                        ? 'القرار النهائي للمشرف'
+                        : 'Final decisions remain with supervisors'}
                     </span>
                   </div>
 
                   <div className={styles.phoneReviewRow}>
                     <CheckCircle2 size={17} />
                     <span>
-                      {ar ? 'تم إرفاق الصور' : 'Photographs attached'}
+                      {ar ? 'صور التنفيذ مرفقة' : 'Work photographs attached'}
                     </span>
                     <strong>01</strong>
                   </div>
@@ -507,7 +507,7 @@ function InteractivePhone({ activeFeature, ar }) {
                   <div className={styles.phoneReviewRow}>
                     <CheckCircle2 size={17} />
                     <span>
-                      {ar ? 'بيانات الموقع متوفرة' : 'Location data available'}
+                      {ar ? 'موقع العمل مسجل' : 'Work location recorded'}
                     </span>
                     <strong>02</strong>
                   </div>
@@ -515,7 +515,7 @@ function InteractivePhone({ activeFeature, ar }) {
                   <div className={styles.phoneReviewRow}>
                     <Activity size={17} />
                     <span>
-                      {ar ? 'قرار المراجعة للمشرف' : 'Supervisor decision required'}
+                      {ar ? 'بانتظار قرار المشرف' : 'Awaiting supervisor decision'}
                     </span>
                     <strong>03</strong>
                   </div>
@@ -524,8 +524,8 @@ function InteractivePhone({ activeFeature, ar }) {
                     <ShieldCheck size={18} />
                     <span>
                       {ar
-                        ? 'قبول أو رفض أو إعادة للتصحيح وفق الإجراء المعتمد'
-                        : 'Approve, reject, or return for correction under the applicable workflow'}
+                        ? 'اعتماد أو رفض أو إعادة للتصحيح بحسب الإجراء المتاح'
+                        : 'Approve, reject, or return for correction where supported'}
                     </span>
                   </div>
                 </div>
@@ -540,12 +540,12 @@ function InteractivePhone({ activeFeature, ar }) {
 
               <div className={styles.phoneNavActive}>
                 <ActiveIcon size={18} />
-                <small>{ar ? 'العمل' : 'Workspace'}</small>
+                <small>{ar ? 'الطلبات' : 'Submissions'}</small>
               </div>
 
               <div>
                 <FileCheck2 size={18} />
-                <small>{ar ? 'السجلات' : 'Records'}</small>
+                <small>{ar ? 'سجلات الأعمال' : 'Work records'}</small>
               </div>
             </div>
           </div>
@@ -555,7 +555,7 @@ function InteractivePhone({ activeFeature, ar }) {
 
         <div className={`${styles.eyebrow} ${styles.phoneStageCaption}`} dir={ar ? 'rtl' : 'ltr'}>
           <span className={styles.eyebrowLine} />
-          {ar ? 'عرض توضيحي تفاعلي' : 'INTERACTIVE PRODUCT PREVIEW'}
+          {ar ? 'نموذج توضيحي للإجراءات' : 'ILLUSTRATIVE WORKFLOW PREVIEW'}
         </div>
       </div>
     </div>
@@ -631,7 +631,7 @@ export default function Platform() {
                 <div className={styles.dashboardFrame}>
                   <Photo
                     src={IMAGES.dashboard}
-                    alt="Unified Works operations dashboard"
+                    alt={ar ? 'لوحة متابعة الأعمال الميدانية' : 'Field operations monitoring dashboard'}
                     eager
                   />
                 </div>
@@ -640,7 +640,7 @@ export default function Platform() {
           </Reveal>
 
           <div className={styles.heroBottomLine}>
-            <span>UNIFIED WORKS / PLATFORM</span>
+            <span>{ar ? 'الأعمال الموحّدة / المنصة' : 'UNIFIED WORKS / PLATFORM'}</span>
             <span>01 — 03</span>
           </div>
         </div>
@@ -749,7 +749,7 @@ export default function Platform() {
           <Reveal delay={130}>
             <div className={styles.rolePanel}>
               <div className={styles.rolePanelMain} key={activeRole.id}>
-                <span className={styles.roleOverline}>ROLE / WORKSPACE</span>
+                <span className={styles.roleOverline}>{ar ? 'المستخدم / القطاع' : 'USER GROUP / SECTOR'}</span>
 
                 <div className={styles.roleIdentity}>
                   <div className={styles.roleLargeLogo}>
