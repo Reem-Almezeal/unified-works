@@ -18,7 +18,7 @@ const content = {
   ar: {
     heroLabel: "من نحن / نظام الاعمال الموحد",
     heroFirst: "عن",
-    heroSecond: "نظام الاعمال الموحد",
+    heroSecond: "النظام",
     heroText:
       "نظام الاعمال الموحد منصة رقمية لتوثيق أعمال البنية التحتية ومتابعة المقاولين ومراجعة جودة التنفيذ، من خلال الصور الميدانية وسجلات الأعمال وقرارات المشرفين",
     discover: "نبذة عن المنصة",
@@ -180,7 +180,7 @@ const content = {
   en: {
     heroLabel: "ABOUT US / Unified Works",
     heroFirst: "About",
-    heroSecond: "Unified Works",
+    heroSecond: "the System",
     heroText:
       "Unified Works is a digital platform for infrastructure work documentation, contractor monitoring, and execution quality review through field photographs, work records, and supervisor decisions",
     discover: "Platform overview",
