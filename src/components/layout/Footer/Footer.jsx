@@ -152,6 +152,10 @@ export default function Footer() {
           <div className={`${styles.column} ${styles.contactColumn}`}>
             <h3>{t.contact}</h3>
             <p>{t.contactText}</p>
+            <div className={styles.directEmail}>
+              <span>{isArabic ? "البريد الإلكتروني" : "Email"}</span>
+              <a href="mailto:info@unifiedworks.net" dir="ltr">info@unifiedworks.net</a>
+            </div>
             <Link to="/contact" className={styles.contactLink}>
               <span>{t.contactButton}</span>
               <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>

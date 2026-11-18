@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Copy } from "lucide-react";
 import styles from "./Contact.module.css";
 import { buildContactDraft, openContactDraft } from "./contactCompose";
 
@@ -230,6 +230,7 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [draftReady, setDraftReady] = useState(false);
   const [copyState, setCopyState] = useState("");
+  const [emailCopyState, setEmailCopyState] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
   const draft = draftReady ? buildContactDraft(form, t) : null;
 
@@ -408,6 +409,33 @@ export default function Contact() {
               <span>{t.formAccent}</span>
             </h2>
             <p>{t.formDescription}</p>
+            <div className={styles.directEmail}>
+              <span>{isArabic ? "البريد الإلكتروني" : "Email"}</span>
+              <div className={styles.directEmailActions}>
+                <a href="mailto:info@unifiedworks.net" dir="ltr">info@unifiedworks.net</a>
+                <button
+                  type="button"
+                  aria-label={isArabic ? "نسخ البريد الإلكتروني" : "Copy email address"}
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText("info@unifiedworks.net");
+                      setEmailCopyState("copied");
+                    } catch {
+                      setEmailCopyState("unavailable");
+                    }
+                  }}
+                >
+                  <Copy size={16} strokeWidth={1.8} aria-hidden="true" />
+                </button>
+              </div>
+              <span role="status">
+                {emailCopyState === "copied"
+                  ? isArabic ? "تم نسخ البريد الإلكتروني" : "Email address copied"
+                  : emailCopyState === "unavailable"
+                    ? isArabic ? "تعذر النسخ، يرجى نسخ البريد الإلكتروني يدويًا" : "Unable to copy; please copy the email address manually"
+                    : ""}
+              </span>
+            </div>
           </div>
 
           <div className={styles.formLayout}>

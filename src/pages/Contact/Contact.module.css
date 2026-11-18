@@ -56,6 +56,50 @@
 }
 
 /* HERO */
+.directEmail {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  margin-top: 24px;
+  max-width: 100%;
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.directEmailActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.directEmailActions a {
+  color: var(--green);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.directEmailActions button {
+  display: inline-flex;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+}
+
+.directEmailActions a:hover,
+.directEmailActions button:hover {
+  text-decoration: underline;
+  background: var(--soft);
+}
+
+.directEmailActions a:focus-visible,
+.directEmailActions button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
 
 .hero {
   background: #fff;

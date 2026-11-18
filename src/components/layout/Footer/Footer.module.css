@@ -162,6 +162,24 @@
 }
 
 /* BOTTOM BAR */
+.directEmail {
+  display: grid;
+  gap: 6px;
+  margin-top: 20px;
+  max-width: 100%;
+  color: var(--footer-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.directEmail a {
+  color: var(--footer-white);
+  overflow-wrap: anywhere;
+}
+
+.directEmail a:hover {
+  text-decoration: underline;
+}
 
 .footerBottom {
   display: flex;
