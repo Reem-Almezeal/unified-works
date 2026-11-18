@@ -36,7 +36,7 @@ const IMAGES = {
 
 const content = {
   ar: {
-    heroLabel: 'الاعمال الموحد / التقنية',
+    heroLabel: 'نظام الاعمال الموحد / التقنية',
     heroTitle: 'التقنية',
     heroAccent: 'المستخدمة',
     heroText:
@@ -118,7 +118,7 @@ const content = {
       'سجلت اختبارات التحقق قيم دقة 79.4% و96.8% و99.5% و99.9% عند المقارنة بين كميات مختلفة من الصور المعتمدة، وسُجل قبول صحيح لـ94 صورة من أصل 100 بعد 10 اعتمادات من المشرف، وتعكس النتائج شروط التقييم ولا تضمن الأداء نفسه في جميع بيئات التشغيل',
     accepted: 'صور مقبولة بصورة صحيحة',
     total: 'من أصل 100 صورة بعد 10 اعتمادات من المشرف',
-    dashboardLabel: 'الاعمال الموحد / لوحة المتابعة',
+    dashboardLabel: 'نظام الاعمال الموحد / لوحة المتابعة',
 
     closing:
       'توثيق قرارات المراجعة',
@@ -363,7 +363,7 @@ export default function Technology() {
 
   useEffect(() => {
     document.title = isArabic
-      ? 'التقنية | الاعمال الموحد'
+      ? 'التقنية | نظام الاعمال الموحد'
       : 'Technology | Unified Works'
   }, [isArabic])
 
@@ -558,7 +558,7 @@ export default function Technology() {
             <Reveal className={styles.resultsVisual} delay={100}>
               <ProjectImage
                 src={IMAGES.dashboard}
-                alt={isArabic ? 'لوحة متابعة الاعمال الموحد' : 'Unified Works monitoring dashboard'}
+                alt={isArabic ? 'لوحة متابعة نظام الاعمال الموحد' : 'Unified Works monitoring dashboard'}
                 fallbackText={t.unavailable}
               />
             </Reveal>
@@ -574,7 +574,7 @@ export default function Technology() {
             <ShieldCheck size={23} />
             <strong>{t.closing}</strong>
           </div>
-          <span>{isArabic ? 'الاعمال الموحد / التوثيق والتحقق' : 'Unified Works / DOCUMENTATION AND VERIFICATION'}</span>
+          <span>{isArabic ? 'نظام الاعمال الموحد / التوثيق والتحقق' : 'Unified Works / DOCUMENTATION AND VERIFICATION'}</span>
         </div>
       </section>
 

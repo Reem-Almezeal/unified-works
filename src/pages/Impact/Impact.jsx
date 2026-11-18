@@ -91,7 +91,7 @@ export default function Impact() {
         <div className={styles.container}>
           <div className={styles.heroGrid}>
             <Reveal className={styles.heroCopy}>
-              <span className={styles.eyebrow}>{t("الاعمال الموحد", "Unified Works")} / {t("الأثر", "IMPACT")}</span>
+              <span className={styles.eyebrow}>{t("نظام الاعمال الموحد", "Unified Works")} / {t("الأثر", "IMPACT")}</span>
               <h1>{t("الأثر التشغيلي", "Operational impact")}<span>{t("وكفاءة الإنفاق", "Cost efficiency")}</span></h1>
               <p>{t("تساعد مراجعة صور التنفيذ وسجلات المشرفين الجهات المالكة والمشغلة في متابعة جودة أعمال المقاولين وترشيد زيارات التفتيش وتكاليف إعادة العمل والصيانة", "Reviewing execution photographs and supervisor records helps project owners and operators monitor contractor quality and manage inspection, rework, and maintenance costs")}</p>
               <a href="#impact-value" className={styles.primaryLink}>{t("استعراض مجالات الأثر", "View operational benefits")}<ArrowDown size={17} /></a>
@@ -194,7 +194,7 @@ export default function Impact() {
       {/* 06 — CLOSING */}
       <section className={styles.closing}>
         <div className={styles.container}>
-          <Reveal className={styles.closingInner}><div><span className={styles.closingEyebrow}>{t("الاعمال الموحد", "Unified Works")}</span><h2>{t("وظائف المنصة", "Platform functions")}<span>{t("للجهات والشركات", "For organizations")}</span></h2></div><a href="/platform">{t("عرض المنصة", "View the platform")}<ArrowUpRight size={19} /></a></Reveal>
+          <Reveal className={styles.closingInner}><div><span className={styles.closingEyebrow}>{t("نظام الاعمال الموحد", "Unified Works")}</span><h2>{t("وظائف المنصة", "Platform functions")}<span>{t("للجهات والشركات", "For organizations")}</span></h2></div><a href="/platform">{t("عرض المنصة", "View the platform")}<ArrowUpRight size={19} /></a></Reveal>
         </div>
       </section>
     </main>

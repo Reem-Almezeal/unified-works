@@ -127,10 +127,10 @@ const roles = [
 
 const translations = {
   ar: {
-    eyebrow: 'الاعمال الموحد / المنصة',
+    eyebrow: 'نظام الاعمال الموحد / المنصة',
     heroTitle: 'نظرة عامة',
     heroAccent: 'على المنصة',
-    heroDesc: 'تتيح الاعمال الموحد توثيق أنشطة البنية التحتية ورفع أعمال المقاولين للمراجعة، مع حفظ الصور والملاحظات والقرارات في سجل لكل عمل',
+    heroDesc: 'يتيح نظام الاعمال الموحد توثيق أنشطة البنية التحتية ورفع أعمال المقاولين للمراجعة، مع حفظ الصور والملاحظات والقرارات في سجل لكل عمل',
     heroButton: 'استعراض الإجراءات',
     heroSecondary: 'عرض المستخدمين',
     heroTag: 'إدارة الأعمال الميدانية',
@@ -340,7 +340,7 @@ function InteractivePhone({ activeFeature, ar }) {
                 />
                 <div>
                   <strong>
-                    {ar ? 'الاعمال الموحد' : 'Unified Works'}
+                    {ar ? 'نظام الاعمال الموحد' : 'Unified Works'}
                   </strong>
                   <small>{ar ? 'الأعمال الميدانية' : 'FIELD OPERATIONS'}</small>
                 </div>
@@ -582,7 +582,7 @@ export default function Platform() {
 
   useEffect(() => {
     document.title = ar
-      ? 'المنصة | الاعمال الموحد'
+      ? 'المنصة | نظام الاعمال الموحد'
       : 'Platform | Unified Works'
   }, [ar])
 
@@ -641,7 +641,7 @@ export default function Platform() {
           </Reveal>
 
           <div className={styles.heroBottomLine}>
-            <span>{ar ? 'الاعمال الموحد / المنصة' : 'Unified Works / PLATFORM'}</span>
+            <span>{ar ? 'نظام الاعمال الموحد / المنصة' : 'Unified Works / PLATFORM'}</span>
             <span>01 — 03</span>
           </div>
         </div>

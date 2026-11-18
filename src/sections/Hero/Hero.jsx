@@ -36,7 +36,7 @@ const content = {
     overviewTag: 'عن المنصة / 01',
     overviewTitle: 'وظائف المنصة',
     overviewDescription:
-      'الاعمال الموحد منصة رقمية لتوثيق أعمال البنية التحتية والإشراف عليها، وتنظيم سجلات الأعمال الجارية والمنجزة لدعم المراجعة والاعتماد',
+      'نظام الاعمال الموحد منصة رقمية لتوثيق أعمال البنية التحتية والإشراف عليها، وتنظيم سجلات الأعمال الجارية والمنجزة لدعم المراجعة والاعتماد',
     features: [
       {
         title: 'التوثيق الميداني',
@@ -101,7 +101,7 @@ const content = {
     finalTitle: 'حوكمة الأعمال الميدانية',
     finalDescription:
       'سجلات موثقة تدعم المساءلة وتتبع التنفيذ وقرارات الإشراف لدى الجهات والمقاولين',
-    finalAction: 'عن الاعمال الموحد',
+    finalAction: 'عن نظام الاعمال الموحد',
     videoUnavailable: 'الفيديو غير متاح حاليًا',
   },
 
@@ -239,7 +239,7 @@ export default function Hero() {
         </div>
 
         <div className={styles.heroBottom}>
-          <span>{isArabic ? 'الاعمال الموحد / النظام' : 'Unified Works SYSTEM'}</span>
+          <span>{isArabic ? 'نظام الاعمال الموحد / النظام' : 'Unified Works SYSTEM'}</span>
           <span>01 / 04</span>
         </div>
       </section>
@@ -327,7 +327,7 @@ export default function Hero() {
           </div>
 
           <div className={styles.videoCaption}>
-            <span>{isArabic ? 'الاعمال الموحد / نظرة عامة على النظام' : 'Unified Works / SYSTEM OVERVIEW'}</span>
+            <span>{isArabic ? 'نظام الاعمال الموحد / نظرة عامة على النظام' : 'Unified Works / SYSTEM OVERVIEW'}</span>
             <span>{isArabic ? 'التوثيق والإشراف الميداني' : 'Field documentation and supervision'}</span>
           </div>
         </div>
@@ -388,7 +388,7 @@ export default function Hero() {
         <div className={styles.container}>
           <div className={styles.finalBanner}>
             <div>
-              <span className={styles.finalEyebrow}>{isArabic ? 'الاعمال الموحد' : 'Unified Works'}</span>
+              <span className={styles.finalEyebrow}>{isArabic ? 'نظام الاعمال الموحد' : 'Unified Works'}</span>
               <h2>{t.finalTitle}</h2>
               <p>{t.finalDescription}</p>
             </div>

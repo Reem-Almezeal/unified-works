@@ -108,7 +108,7 @@ export default function Footer() {
               />
               <div className={styles.brandName}>
                 <strong>
-                  {isArabic ? "الاعمال الموحد" : "Unified Works"}
+                  {isArabic ? "نظام الاعمال الموحد" : "Unified Works"}
                 </strong>
               </div>
             </Link>
@@ -161,7 +161,7 @@ export default function Footer() {
 
         <div className={styles.footerBottom}>
           <span>
-            © {year} {isArabic ? "الاعمال الموحد" : "Unified Works"} — {t.copyright}
+            © {year} {isArabic ? "نظام الاعمال الموحد" : "Unified Works"} — {t.copyright}
           </span>
 
           <button

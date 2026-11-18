@@ -82,7 +82,7 @@ export default function Navbar() {
           to="/"
           className={styles.brand}
           onClick={closeMenu}
-          aria-label={ar ? 'الاعمال الموحد - الرئيسية' : 'Unified Works - Home'}
+          aria-label={ar ? 'نظام الاعمال الموحد - الرئيسية' : 'Unified Works - Home'}
         >
           <img
             className={styles.logo}
@@ -92,7 +92,7 @@ export default function Navbar() {
 
           <div className={styles.brandText}>
             <strong>
-              {ar ? 'الاعمال الموحد' : 'Unified Works'}
+              {ar ? 'نظام الاعمال الموحد' : 'Unified Works'}
             </strong>
 
           </div>
@@ -193,7 +193,7 @@ export default function Navbar() {
         </nav>
 
         <div className={styles.mobileFooter}>
-          {ar ? 'الاعمال الموحد' : 'Unified Works'}
+          {ar ? 'نظام الاعمال الموحد' : 'Unified Works'}
         </div>
       </div>
     </header>

@@ -7,11 +7,11 @@ import { buildContactDraft, openContactDraft } from "./contactCompose";
 
 const content = {
   ar: {
-    eyebrow: "الاعمال الموحد / التواصل",
+    eyebrow: "نظام الاعمال الموحد / التواصل",
     heroTitle: "تواصل",
     heroAccent: "معنا",
     heroDescription:
-      "للتواصل مع فريق الاعمال الموحد بشأن وظائف المنصة، وطلبات العروض التوضيحية، والاستفسارات الفنية والتشغيلية، وفرص التعاون مع الجهات والشركات والأفراد",
+      "للتواصل مع فريق نظام الاعمال الموحد بشأن وظائف المنصة، وطلبات العروض التوضيحية، والاستفسارات الفنية والتشغيلية، وفرص التعاون مع الجهات والشركات والأفراد",
     heroIndex: "عرض مجالات التواصل",
 
     introLabel: "01 — مجالات التواصل",
@@ -83,7 +83,7 @@ const content = {
     consent:
       "أوافق على استخدام بياناتي للرد على هذا الطلب",
     submit: "فتح مسودة البريد",
-    emailTitle: "طلب تواصل جديد — الاعمال الموحد",
+    emailTitle: "طلب تواصل جديد — نظام الاعمال الموحد",
     emailConsent: "الموافقة على التواصل",
     yes: "نعم",
     no: "لا",
@@ -235,7 +235,7 @@ export default function Contact() {
 
   useEffect(() => {
     document.title = isArabic
-      ? "تواصل معنا | الاعمال الموحد"
+      ? "تواصل معنا | نظام الاعمال الموحد"
       : "Contact Us | Unified Works";
   }, [isArabic]);
 
@@ -330,7 +330,7 @@ export default function Contact() {
           </div>
 
           <div className={styles.heroBottom}>
-            <span>{isArabic ? "الاعمال الموحد" : "Unified Works"}</span>
+            <span>{isArabic ? "نظام الاعمال الموحد" : "Unified Works"}</span>
             <span>{isArabic ? "التعاون / العروض / الاستفسارات" : "COOPERATION / DEMONSTRATIONS / INQUIRIES"}</span>
           </div>
         </div>
@@ -423,7 +423,7 @@ export default function Contact() {
               </div>
 
               <div className={styles.asideBottom}>
-                <span>{isArabic ? "الاعمال الموحد" : "Unified Works"}</span>
+                <span>{isArabic ? "نظام الاعمال الموحد" : "Unified Works"}</span>
                 <span>{t.formSideBottom}</span>
               </div>
             </aside>
@@ -693,7 +693,7 @@ export default function Contact() {
           </h2>
           <p>{t.closingText}</p>
           <span className={styles.closingBrand}>
-            {isArabic ? "الاعمال الموحد" : "Unified Works"}
+            {isArabic ? "نظام الاعمال الموحد" : "Unified Works"}
           </span>
         </div>
       </section>
