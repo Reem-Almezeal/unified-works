@@ -390,6 +390,7 @@
 /* FORM PANEL */
 
 .formPanel {
+  position: relative;
   padding: 43px 45px;
   background: #fff;
 }
@@ -494,10 +495,14 @@
 
 .honeypot {
   position: absolute;
-  left: -9999px;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   width: 1px;
   height: 1px;
   overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .consentRow {
@@ -811,6 +816,13 @@
   .fieldsGrid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  /* Prevent iOS focus zoom without changing desktop controls or page zoom. */
+  .field input,
+  .field select,
+  .field textarea {
+    font-size: 16px;
   }
 
   .submitRow {
