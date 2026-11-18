@@ -1,8 +1,9 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowUpRight } from "lucide-react";
 import styles from "./Contact.module.css";
+import { buildContactDraft, openContactDraft } from "./contactCompose";
 
 const content = {
   ar: {
@@ -81,19 +82,18 @@ const content = {
     selectType: "اختر نوع الطلب",
     consent:
       "أوافق على استخدام بياناتي للرد على هذا الطلب",
-    submit: "إرسال الطلب",
-    sending: "جارٍ الإرسال",
-    success: "تم إرسال الطلب",
-    successDescription:
-      "يمكن إرسال طلب جديد للاستفسارات الإضافية المستقلة",
-    newMessage: "تقديم طلب جديد",
-    error:
-      "تعذر إرسال الطلب حاليًا، يرجى المحاولة مرة أخرى لاحقًا",
-    configError:
-      "خدمة إرسال الطلبات غير متاحة حاليًا",
-    rateLimited: "تم تجاوز عدد المحاولات المسموح، يرجى الانتظار ثم المحاولة مجددًا",
-    invalidRequest: "يرجى التحقق من البيانات المدخلة وأطوال الحقول ثم إعادة الإرسال",
-    requestTooLarge: "حجم الطلب يتجاوز الحد المسموح، يرجى اختصار تفاصيل الرسالة",
+    submit: "فتح مسودة البريد",
+    emailTitle: "طلب تواصل جديد — الاعمال الموحد",
+    emailConsent: "الموافقة على التواصل",
+    yes: "نعم",
+    no: "لا",
+    recipient: "إلى",
+    composeInstruction: "أكمل إرسال الرسالة من Gmail أو تطبيق البريد، فلم تُرسل تلقائيًا، وإذا فتح Gmail صندوق الوارد بدل المسودة على الهاتف، استخدم تطبيق البريد أو انسخ التفاصيل",
+    openGmail: "فتح Gmail",
+    openMailApp: "فتح تطبيق البريد",
+    copyDetails: "نسخ تفاصيل البريد",
+    copied: "نُسخت التفاصيل، ويمكن لصقها في تطبيق البريد وإرسال الرسالة",
+    copyUnavailable: "تعذر النسخ التلقائي، يرجى نسخ بيانات الحقول يدويًا إلى تطبيق البريد",
     invalidEmail: "يرجى إدخال بريد إلكتروني صحيح",
     invalidName: "يرجى إدخال اسم لا يقل عن حرفين",
     invalidSubject: "يرجى إدخال موضوع الطلب",
@@ -183,19 +183,18 @@ const content = {
     selectType: "Select request type",
     consent:
       "I agree to the use of my information to respond to this request",
-    submit: "Submit request",
-    sending: "Submitting",
-    success: "Your request has been submitted",
-    successDescription:
-      "You can submit a separate request for additional inquiries",
-    newMessage: "Submit another request",
-    error:
-      "The request could not be submitted, please try again later",
-    configError:
-      "The request submission service is currently unavailable",
-    rateLimited: "Too many attempts, please wait before submitting again",
-    invalidRequest: "Please check the entered values and field lengths before resubmitting",
-    requestTooLarge: "The request is too large, please shorten the message details",
+    submit: "Open email draft",
+    emailTitle: "New Contact Request — Unified Works",
+    emailConsent: "Consent to contact",
+    yes: "Yes",
+    no: "No",
+    recipient: "To",
+    composeInstruction: "Complete sending in Gmail or your email application; nothing has been sent automatically, and if Gmail opens the inbox instead of a draft on mobile, use your email application or copy the details",
+    openGmail: "Open Gmail",
+    openMailApp: "Open email application",
+    copyDetails: "Copy email details",
+    copied: "Details copied; paste them into your email application and send the message",
+    copyUnavailable: "Automatic copying is unavailable; copy the field values into your email application manually",
     invalidEmail: "Please enter a valid email address",
     invalidName: "Please enter a name containing at least 2 characters",
     invalidSubject: "Please enter the request subject",
@@ -229,11 +228,10 @@ export default function Contact() {
   const t = isArabic ? content.ar : content.en;
 
   const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [draftReady, setDraftReady] = useState(false);
+  const [copyState, setCopyState] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
-  const submitting = useRef(false);
-  const submission = useRef(null);
+  const draft = draftReady ? buildContactDraft(form, t) : null;
 
   useEffect(() => {
     document.title = isArabic
@@ -244,10 +242,8 @@ export default function Contact() {
   const updateField = (name, value) => {
     setForm((prev) => ({ ...prev, [name]: value }));
     setFieldErrors((prev) => ({ ...prev, [name]: "" }));
-    if (status === "error") {
-      setStatus("idle");
-      setErrorMessage("");
-    }
+    setDraftReady(false);
+    setCopyState("");
   };
 
   const selectType = (type) => {
@@ -284,68 +280,21 @@ export default function Contact() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (submitting.current) return;
+    if (!validate() || form.website) return;
+    const emailDraft = buildContactDraft(form, t);
+    setDraftReady(true);
+    setCopyState("");
+    openContactDraft(emailDraft);
+  };
 
-    if (!validate()) return;
-
-    // Honeypot field for basic spam filtering.
-    if (form.website) return;
-
-    submitting.current = true;
-    setStatus("sending");
-    setErrorMessage("");
-
+  const copyEmailDetails = async () => {
     try {
-      const body = JSON.stringify({
-        name: form.name.trim(),
-        email: form.email.trim(),
-        organization: form.organization.trim(),
-        position: form.position.trim(),
-        phone: form.phone.trim(),
-        type: form.type,
-        subject: form.subject.trim(),
-        message: form.message.trim(),
-        consent: form.consent,
-        website: form.website,
-        source: "unified-works-contact",
-      });
-      // Reuse the key after an uncertain network result, provided the draft is unchanged.
-      if (submission.current?.body !== body) {
-        submission.current = { body, key: crypto.randomUUID() };
-      }
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Idempotency-Key": submission.current.key,
-        },
-        body,
-        signal: AbortSignal.timeout(20000),
-      });
-      const result = await response.json();
-      if (!response.ok || result.success !== true || typeof result.id !== "string" || !result.id) {
-        const messages = {
-          service_unavailable: t.configError,
-          rate_limited: t.rateLimited,
-          validation_error: t.invalidRequest,
-          invalid_request: t.invalidRequest,
-          request_too_large: t.requestTooLarge,
-        };
-        setStatus("error");
-        setErrorMessage(messages[result.code] || t.error);
-        return;
-      }
-
-      setStatus("success");
-      setForm(initialForm);
-      submission.current = null;
+      await navigator.clipboard.writeText(draft.copyText);
+      setCopyState("copied");
     } catch {
-      setStatus("error");
-      setErrorMessage(t.error);
-    } finally {
-      submitting.current = false;
+      setCopyState("unavailable");
     }
   };
 
@@ -480,25 +429,6 @@ export default function Contact() {
             </aside>
 
             <div className={styles.formPanel}>
-              {status === "success" ? (
-                <div className={styles.successState} role="status">
-                  <span className={styles.successMark}>✓</span>
-                  <h3>{t.success}</h3>
-                  <p>{t.successDescription}</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setStatus("idle");
-                      setForm(initialForm);
-                      setFieldErrors({});
-                    }}
-                    className={styles.resetButton}
-                  >
-                    {t.newMessage}
-                    <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
-                  </button>
-                </div>
-              ) : (
                 <form onSubmit={handleSubmit} noValidate>
                   <div className={styles.formTop}>
                     <span>{isArabic ? "طلب تواصل" : "CONTACT REQUEST"}</span>
@@ -716,10 +646,16 @@ export default function Contact() {
                     )}
                   </div>
 
-                  {status === "error" && (
-                    <p className={styles.submitError} role="alert">
-                      {errorMessage}
-                    </p>
+                  {draft && (
+                    <div className={styles.composeNotice} role="status">
+                      <p>{t.composeInstruction}</p>
+                      <div className={styles.composeActions}>
+                        <a href={draft.gmail} target="_blank" rel="noopener noreferrer">{t.openGmail}</a>
+                        <a href={draft.mailto}>{t.openMailApp}</a>
+                        <button type="button" onClick={copyEmailDetails}>{t.copyDetails}</button>
+                      </div>
+                      {copyState && <p>{copyState === "copied" ? t.copied : t.copyUnavailable}</p>}
+                    </div>
                   )}
 
                   <div className={styles.submitRow}>
@@ -727,18 +663,14 @@ export default function Contact() {
                     <button
                       type="submit"
                       className={styles.submitButton}
-                      disabled={status === "sending"}
                     >
                       <span>
-                        {status === "sending"
-                          ? t.sending
-                          : t.submit}
+                        {t.submit}
                       </span>
                       <span aria-hidden="true"><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                     </button>
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </div>

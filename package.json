@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test:contact": "node --test tests/contact.test.js",
+    "test:contact": "node --test tests/contact-compose.test.js",
     "preview": "vite preview"
   },
   "dependencies": {

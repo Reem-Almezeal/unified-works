@@ -529,13 +529,29 @@
   line-height: 1.9;
 }
 
-.submitError {
-  margin-top: 22px !important;
-  padding: 12px 15px;
-  border-radius: 6px;
-  background: #fff1f1;
-  color: #a44747;
+.composeNotice {
+  margin-top: 22px;
+  color: var(--muted);
   font-size: 13px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.composeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-block: 10px;
+}
+
+.composeActions a,
+.composeActions button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--green);
+  font: inherit;
+  text-decoration: underline;
 }
 
 .submitRow {
