@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowUpRight } from "lucide-react";
 import styles from "./Contact.module.css";
@@ -91,6 +91,9 @@ const content = {
       "تعذر إرسال الطلب حاليًا، يرجى المحاولة مرة أخرى لاحقًا",
     configError:
       "خدمة إرسال الطلبات غير متاحة حاليًا",
+    rateLimited: "تم تجاوز عدد المحاولات المسموح، يرجى الانتظار ثم المحاولة مجددًا",
+    invalidRequest: "يرجى التحقق من البيانات المدخلة وأطوال الحقول ثم إعادة الإرسال",
+    requestTooLarge: "حجم الطلب يتجاوز الحد المسموح، يرجى اختصار تفاصيل الرسالة",
     invalidEmail: "يرجى إدخال بريد إلكتروني صحيح",
     invalidName: "يرجى إدخال اسم لا يقل عن حرفين",
     invalidSubject: "يرجى إدخال موضوع الطلب",
@@ -190,6 +193,9 @@ const content = {
       "The request could not be submitted, please try again later",
     configError:
       "The request submission service is currently unavailable",
+    rateLimited: "Too many attempts, please wait before submitting again",
+    invalidRequest: "Please check the entered values and field lengths before resubmitting",
+    requestTooLarge: "The request is too large, please shorten the message details",
     invalidEmail: "Please enter a valid email address",
     invalidName: "Please enter a name containing at least 2 characters",
     invalidSubject: "Please enter the request subject",
@@ -226,6 +232,8 @@ export default function Contact() {
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
+  const submitting = useRef(false);
+  const submission = useRef(null);
 
   useEffect(() => {
     document.title = isArabic
@@ -278,52 +286,66 @@ export default function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (submitting.current) return;
 
     if (!validate()) return;
 
     // Honeypot field for basic spam filtering.
     if (form.website) return;
 
-    const endpoint = import.meta.env.VITE_CONTACT_API_URL;
-
-    if (!endpoint) {
-      setStatus("error");
-      setErrorMessage(t.configError);
-      return;
-    }
-
+    submitting.current = true;
     setStatus("sending");
     setErrorMessage("");
 
     try {
-      const response = await fetch(endpoint, {
+      const body = JSON.stringify({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        organization: form.organization.trim(),
+        position: form.position.trim(),
+        phone: form.phone.trim(),
+        type: form.type,
+        subject: form.subject.trim(),
+        message: form.message.trim(),
+        consent: form.consent,
+        website: form.website,
+        source: "unified-works-contact",
+      });
+      // Reuse the key after an uncertain network result, provided the draft is unchanged.
+      if (submission.current?.body !== body) {
+        submission.current = { body, key: crypto.randomUUID() };
+      }
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Idempotency-Key": submission.current.key,
         },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          organization: form.organization.trim(),
-          position: form.position.trim(),
-          phone: form.phone.trim(),
-          type: form.type,
-          subject: form.subject.trim(),
-          message: form.message.trim(),
-          consent: form.consent,
-          source: "unified-works-contact",
-        }),
+        body,
+        signal: AbortSignal.timeout(20000),
       });
-
-      if (!response.ok) {
-        throw new Error("Contact request failed");
+      const result = await response.json();
+      if (!response.ok || result.success !== true || typeof result.id !== "string" || !result.id) {
+        const messages = {
+          service_unavailable: t.configError,
+          rate_limited: t.rateLimited,
+          validation_error: t.invalidRequest,
+          invalid_request: t.invalidRequest,
+          request_too_large: t.requestTooLarge,
+        };
+        setStatus("error");
+        setErrorMessage(messages[result.code] || t.error);
+        return;
       }
 
       setStatus("success");
       setForm(initialForm);
+      submission.current = null;
     } catch {
       setStatus("error");
       setErrorMessage(t.error);
+    } finally {
+      submitting.current = false;
     }
   };
 
@@ -491,6 +513,7 @@ export default function Contact() {
                       </label>
                       <input
                         id="contact-name"
+                        maxLength={120}
                         autoComplete="name"
                         value={form.name}
                         onChange={(e) =>
@@ -514,6 +537,7 @@ export default function Contact() {
                       </label>
                       <input
                         id="contact-email"
+                        maxLength={254}
                         type="email"
                         autoComplete="email"
                         value={form.email}
@@ -538,6 +562,7 @@ export default function Contact() {
                       </label>
                       <input
                         id="contact-organization"
+                        maxLength={200}
                         value={form.organization}
                         onChange={(e) =>
                           updateField(
@@ -556,6 +581,7 @@ export default function Contact() {
                       </label>
                       <input
                         id="contact-position"
+                        maxLength={160}
                         value={form.position}
                         onChange={(e) =>
                           updateField("position", e.target.value)
@@ -571,6 +597,7 @@ export default function Contact() {
                       </label>
                       <input
                         id="contact-phone"
+                        maxLength={40}
                         type="tel"
                         autoComplete="tel"
                         value={form.phone}
@@ -608,6 +635,7 @@ export default function Contact() {
                       </label>
                       <input
                         id="contact-subject"
+                        maxLength={200}
                         value={form.subject}
                         onChange={(e) =>
                           updateField("subject", e.target.value)
@@ -630,6 +658,7 @@ export default function Contact() {
                       </label>
                       <textarea
                         id="contact-message"
+                        maxLength={5000}
                         rows={6}
                         value={form.message}
                         onChange={(e) =>
