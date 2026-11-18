@@ -649,6 +649,11 @@ export default function Contact() {
                   {draft && (
                     <div className={styles.composeNotice} role="status">
                       <p>{t.composeInstruction}</p>
+                      {(draft.gmailRequiresCopy || draft.mailtoRequiresCopy) && (
+                        <p>{isArabic
+                          ? "قد تتجاوز الرسالة حد طول روابط البريد، لذلك قد تُفتح المسودة دون نص الرسالة، يرجى نسخ تفاصيل البريد ولصقها في المسودة قبل الإرسال"
+                          : "This message may exceed email link length limits, so the draft may open without its body. Copy the email details and paste them into the draft before sending"}</p>
+                      )}
                       <div className={styles.composeActions}>
                         <a href={draft.gmail} target="_blank" rel="noopener noreferrer">{t.openGmail}</a>
                         <a href={draft.mailto}>{t.openMailApp}</a>
