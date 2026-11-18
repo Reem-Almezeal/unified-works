@@ -6,11 +6,11 @@ import styles from "./Contact.module.css";
 
 const content = {
   ar: {
-    eyebrow: "الأعمال الموحّدة / التواصل",
+    eyebrow: "الاعمال الموحد / التواصل",
     heroTitle: "تواصل",
     heroAccent: "معنا",
     heroDescription:
-      "للتواصل مع فريق الأعمال الموحّدة بشأن وظائف المنصة، وطلبات العروض التوضيحية، والاستفسارات الفنية والتشغيلية، وفرص التعاون مع الجهات والشركات والأفراد",
+      "للتواصل مع فريق الاعمال الموحد بشأن وظائف المنصة، وطلبات العروض التوضيحية، والاستفسارات الفنية والتشغيلية، وفرص التعاون مع الجهات والشركات والأفراد",
     heroIndex: "عرض مجالات التواصل",
 
     introLabel: "01 — مجالات التواصل",
@@ -105,7 +105,7 @@ const content = {
   },
 
   en: {
-    eyebrow: "UNIFIED WORKS / CONTACT",
+    eyebrow: "Unified Works / CONTACT",
     heroTitle: "Contact",
     heroAccent: "us",
     heroDescription:
@@ -229,7 +229,7 @@ export default function Contact() {
 
   useEffect(() => {
     document.title = isArabic
-      ? "تواصل معنا | الأعمال الموحّدة"
+      ? "تواصل معنا | الاعمال الموحد"
       : "Contact Us | Unified Works";
   }, [isArabic]);
 
@@ -359,7 +359,7 @@ export default function Contact() {
           </div>
 
           <div className={styles.heroBottom}>
-            <span>{isArabic ? "الأعمال الموحّدة" : "UNIFIED WORKS"}</span>
+            <span>{isArabic ? "الاعمال الموحد" : "Unified Works"}</span>
             <span>{isArabic ? "التعاون / العروض / الاستفسارات" : "COOPERATION / DEMONSTRATIONS / INQUIRIES"}</span>
           </div>
         </div>
@@ -452,7 +452,7 @@ export default function Contact() {
               </div>
 
               <div className={styles.asideBottom}>
-                <span>{isArabic ? "الأعمال الموحّدة" : "UNIFIED WORKS"}</span>
+                <span>{isArabic ? "الاعمال الموحد" : "Unified Works"}</span>
                 <span>{t.formSideBottom}</span>
               </div>
             </aside>
@@ -727,7 +727,7 @@ export default function Contact() {
           </h2>
           <p>{t.closingText}</p>
           <span className={styles.closingBrand}>
-            UNIFIED WORKS
+            {isArabic ? "الاعمال الموحد" : "Unified Works"}
           </span>
         </div>
       </section>

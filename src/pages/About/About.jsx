@@ -16,20 +16,20 @@ const team = [
 
 const content = {
   ar: {
-    heroLabel: "من نحن / الأعمال الموحّدة",
+    heroLabel: "من نحن / الاعمال الموحد",
     heroFirst: "عن",
-    heroSecond: "الأعمال الموحّدة",
+    heroSecond: "الاعمال الموحد",
     heroText:
-      "الأعمال الموحّدة منصة رقمية لتوثيق أعمال البنية التحتية ومتابعة المقاولين ومراجعة جودة التنفيذ، من خلال الصور الميدانية وسجلات الأعمال وقرارات المشرفين",
+      "الاعمال الموحد منصة رقمية لتوثيق أعمال البنية التحتية ومتابعة المقاولين ومراجعة جودة التنفيذ، من خلال الصور الميدانية وسجلات الأعمال وقرارات المشرفين",
     discover: "نبذة عن المنصة",
-    heroNote: "منصة الأعمال الموحّدة",
+    heroNote: "منصة الاعمال الموحد",
     heroFoot: "التوثيق والإشراف على الأعمال",
 
     storyLabel: "01 — التعريف بالمنصة",
     storyTitle: "نبذة عن",
     storyAccent: "المنصة",
     storyLead:
-      "طُوّرت الأعمال الموحّدة لتنظيم التوثيق الميداني ومساندة الجهات في الإشراف على تنفيذ أعمال البنية التحتية",
+      "طُوّرت الاعمال الموحد لتنظيم التوثيق الميداني ومساندة الجهات في الإشراف على تنفيذ أعمال البنية التحتية",
     storyText:
       "تعدد مواقع التنفيذ وتوزع الصور والملاحظات بين ملفات ومراسلات منفصلة يصعّبان متابعة المقاولين واسترجاع سجلات الأعمال والتحقق من معالجة الملاحظات",
     storyText2:
@@ -115,7 +115,7 @@ const content = {
     directionAccent: "المنصة",
     vision: "الرؤية",
     visionText:
-      "أن تكون الأعمال الموحّدة المنصة الرقمية الوطنية الموحدة لإدارة أعمال البنية التحتية الميدانية والإشراف عليها في المملكة العربية السعودية، بما يعزز التكامل بين الجهات ويوحّد التوثيق ومراجعة الجودة ومتابعة التزام المقاولين بالمتطلبات الفنية، ويرفع كفاءة العمليات وجودة التنفيذ",
+      "أن تكون الاعمال الموحد المنصة الرقمية الوطنية الموحدة لإدارة أعمال البنية التحتية الميدانية والإشراف عليها في المملكة العربية السعودية، بما يعزز التكامل بين الجهات ويوحّد التوثيق ومراجعة الجودة ومتابعة التزام المقاولين بالمتطلبات الفنية، ويرفع كفاءة العمليات وجودة التنفيذ",
     mission: "الرسالة",
     missionText:
       "تحسين ممارسات التوثيق ومتابعة الالتزام بالمتطلبات الفنية، وتسهيل التنسيق بين المقاولين والمشرفين والجهات لتقليل المتابعة والزيارات غير الضرورية",
@@ -162,13 +162,13 @@ const content = {
 
     teamLabel: "06 — الفريق",
     teamTitle: "فريق",
-    teamAccent: "الأعمال الموحّدة",
+    teamAccent: "الاعمال الموحد",
     teamIntro:
-      "أعضاء الفريق القائم على تطوير منصة الأعمال الموحّدة لتوثيق أعمال البنية التحتية ومراجعتها",
+      "أعضاء الفريق القائم على تطوير منصة الاعمال الموحد لتوثيق أعمال البنية التحتية ومراجعتها",
     member: "عضو الفريق",
     teamEnglish: "TEAM",
 
-    closingLabel: "الأعمال الموحّدة",
+    closingLabel: "الاعمال الموحد",
     closingTitle: "وظائف المنصة",
     closingAccent: "والتواصل",
     closingText:
@@ -178,7 +178,7 @@ const content = {
   },
 
   en: {
-    heroLabel: "ABOUT US / UNIFIED WORKS",
+    heroLabel: "ABOUT US / Unified Works",
     heroFirst: "About",
     heroSecond: "Unified Works",
     heroText:
@@ -331,7 +331,7 @@ const content = {
     member: "Team member",
     teamEnglish: "TEAM",
 
-    closingLabel: "UNIFIED WORKS",
+    closingLabel: "Unified Works",
     closingTitle: "Platform functions",
     closingAccent: "and enquiries",
     closingText:
@@ -414,7 +414,7 @@ export default function About() {
 
   useEffect(() => {
     document.title = isArabic
-      ? "من نحن | الأعمال الموحّدة"
+      ? "من نحن | الاعمال الموحد"
       : "About | Unified Works";
   }, [isArabic]);
 
@@ -450,7 +450,7 @@ export default function About() {
             </Reveal>
 
             <Reveal className={styles.heroBrand} delay={120}>
-              <img src={LOGO} alt="Unified Works" />
+              <img src={LOGO} alt={isArabic ? "الاعمال الموحد" : "Unified Works"} />
               <span className={styles.heroBrandCaption}>
                 {t.heroNote}
               </span>
@@ -478,7 +478,7 @@ export default function About() {
           <div className={styles.storyComposition}>
             <Reveal className={styles.storyFeature}>
               <span className={styles.storyFeatureIndex}>
-                {isArabic ? "الأعمال الموحّدة / التعريف" : "UNIFIED WORKS / INTRODUCTION"}
+                {isArabic ? "الاعمال الموحد / التعريف" : "Unified Works / INTRODUCTION"}
               </span>
               <strong>{t.storyLead}</strong>
               <span className={styles.storyFeatureEnd}>01 / 06</span>
@@ -547,7 +547,7 @@ export default function About() {
                   </span>
 
                   <span className={styles.challengeBottom}>
-                    <span>UNIFIED WORKS</span>
+                    <span>{isArabic ? "الاعمال الموحد" : "Unified Works"}</span>
                     <span><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                   </span>
                 </button>
@@ -636,7 +636,7 @@ export default function About() {
                 <span>{t.directionAccent}</span>
               </h2>
               <span className={styles.directionSignature}>
-                {isArabic ? "الأعمال الموحّدة / الأهداف" : "UNIFIED WORKS / OBJECTIVES"}
+                {isArabic ? "الاعمال الموحد / الأهداف" : "Unified Works / OBJECTIVES"}
               </span>
             </Reveal>
 
@@ -709,7 +709,7 @@ export default function About() {
                 </span>
 
                 <span className={styles.ecosystemCardFooter}>
-                  <span>UNIFIED WORKS</span>
+                  <span>{isArabic ? "الاعمال الموحد" : "Unified Works"}</span>
                   <span><ArrowUpRight className={styles.arrowIcon} size="1em" strokeWidth={1.8} aria-hidden="true" focusable="false" /></span>
                 </span>
               </button>

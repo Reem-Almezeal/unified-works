@@ -1,4 +1,4 @@
-﻿
+
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -21,13 +21,12 @@ const tickerLogos = [
   { src: '/images/organizations/water.png', ar: 'المياه والصرف الصحي', en: 'Water and wastewater' },
   { src: '/images/organizations/telecom.png', ar: 'الاتصالات', en: 'Telecommunications' },
   { src: '/images/organizations/municipality.png', ar: 'الأمانات والبلديات', en: 'Municipal authorities' },
-  { src: '/images/unified-works-logo.png', ar: 'الأعمال الموحّدة', en: 'Unified Works' },
 ]
 
 const content = {
   ar: {
     eyebrow: 'منصة رقمية للإشراف الميداني',
-    stakeholdersLabel: 'شعارات الجهات والأعمال الموحّدة',
+    stakeholdersLabel: 'شعارات الجهات',
     title: 'توثيق ومراجعة',
     accent: 'أعمال البنية التحتية',
     description:
@@ -37,7 +36,7 @@ const content = {
     overviewTag: 'عن المنصة / 01',
     overviewTitle: 'وظائف المنصة',
     overviewDescription:
-      'الأعمال الموحّدة منصة رقمية لتوثيق أعمال البنية التحتية والإشراف عليها، وتنظيم سجلات الأعمال الجارية والمنجزة لدعم المراجعة والاعتماد',
+      'الاعمال الموحد منصة رقمية لتوثيق أعمال البنية التحتية والإشراف عليها، وتنظيم سجلات الأعمال الجارية والمنجزة لدعم المراجعة والاعتماد',
     features: [
       {
         title: 'التوثيق الميداني',
@@ -52,8 +51,8 @@ const content = {
         description: 'يعتمد النظام على نموذج ذكاء اصطناعي مدرّب لتحليل صور الأعمال الميدانية، والتحقق من جودة التنفيذ ومدى مطابقته للمتطلبات الفنية، بما يدعم أعمال المراجعة والإشراف',
       },
     ],
-    videoTag: 'عرض المنصة / 02',
-    videoTitle: 'نظرة عامة على المنصة',
+    videoTag: '02 / نظرة عامة',
+    videoTitle: 'نظرة عامة',
     videoDescription:
       'عرض مرئي يوضح توثيق الأعمال الميدانية ومتابعة التنفيذ ومراجعة الأدلة وتسجيل نتائج الإشراف',
     processTag: 'إجراءات العمل / 03',
@@ -102,13 +101,13 @@ const content = {
     finalTitle: 'حوكمة الأعمال الميدانية',
     finalDescription:
       'سجلات موثقة تدعم المساءلة وتتبع التنفيذ وقرارات الإشراف لدى الجهات والمقاولين',
-    finalAction: 'عن الأعمال الموحّدة',
+    finalAction: 'عن الاعمال الموحد',
     videoUnavailable: 'الفيديو غير متاح حاليًا',
   },
 
   en: {
     eyebrow: 'DIGITAL FIELD OVERSIGHT',
-    stakeholdersLabel: 'Organization and Unified Works logos',
+    stakeholdersLabel: 'Organization logos',
     title: 'Infrastructure works',
     accent: 'Documentation and review',
     description:
@@ -116,7 +115,7 @@ const content = {
     explore: 'About the platform',
     watch: 'Platform overview',
     overviewTag: 'ABOUT THE PLATFORM / 01',
-    overviewTitle: 'Key functions',
+    overviewTitle: 'Platform Features',
     overviewDescription:
       'Unified Works is a digital platform for documenting and supervising infrastructure operations, with organized records of ongoing and completed work to support review and approval',
     features: [
@@ -133,8 +132,8 @@ const content = {
         description: 'The system uses a trained AI model to analyze fieldwork photographs and assess execution quality and compliance with technical requirements, supporting review and supervision',
       },
     ],
-    videoTag: 'PLATFORM OVERVIEW / 02',
-    videoTitle: 'Platform overview',
+    videoTag: '02 / Overview',
+    videoTitle: 'Overview',
     videoDescription:
       'A video overview of field documentation, execution monitoring, evidence review, and supervision records',
     processTag: 'WORK PROCEDURES / 03',
@@ -240,7 +239,7 @@ export default function Hero() {
         </div>
 
         <div className={styles.heroBottom}>
-          <span>UNIFIED WORKS SYSTEM</span>
+          <span>{isArabic ? 'الاعمال الموحد / النظام' : 'Unified Works SYSTEM'}</span>
           <span>01 / 04</span>
         </div>
       </section>
@@ -328,7 +327,7 @@ export default function Hero() {
           </div>
 
           <div className={styles.videoCaption}>
-            <span>UNIFIED WORKS / SYSTEM OVERVIEW</span>
+            <span>{isArabic ? 'الاعمال الموحد / نظرة عامة على النظام' : 'Unified Works / SYSTEM OVERVIEW'}</span>
             <span>{isArabic ? 'التوثيق والإشراف الميداني' : 'Field documentation and supervision'}</span>
           </div>
         </div>
@@ -389,7 +388,7 @@ export default function Hero() {
         <div className={styles.container}>
           <div className={styles.finalBanner}>
             <div>
-              <span className={styles.finalEyebrow}>UNIFIED WORKS</span>
+              <span className={styles.finalEyebrow}>{isArabic ? 'الاعمال الموحد' : 'Unified Works'}</span>
               <h2>{t.finalTitle}</h2>
               <p>{t.finalDescription}</p>
             </div>

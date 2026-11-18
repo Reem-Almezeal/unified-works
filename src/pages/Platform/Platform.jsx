@@ -127,10 +127,10 @@ const roles = [
 
 const translations = {
   ar: {
-    eyebrow: 'الأعمال الموحّدة / المنصة',
+    eyebrow: 'الاعمال الموحد / المنصة',
     heroTitle: 'نظرة عامة',
     heroAccent: 'على المنصة',
-    heroDesc: 'تتيح الأعمال الموحّدة توثيق أنشطة البنية التحتية ورفع أعمال المقاولين للمراجعة، مع حفظ الصور والملاحظات والقرارات في سجل لكل عمل',
+    heroDesc: 'تتيح الاعمال الموحد توثيق أنشطة البنية التحتية ورفع أعمال المقاولين للمراجعة، مع حفظ الصور والملاحظات والقرارات في سجل لكل عمل',
     heroButton: 'استعراض الإجراءات',
     heroSecondary: 'عرض المستخدمين',
     heroTag: 'إدارة الأعمال الميدانية',
@@ -159,7 +159,7 @@ const translations = {
     accessButton: 'تسجيل الدخول',
   },
   en: {
-    eyebrow: 'UNIFIED WORKS / PLATFORM',
+    eyebrow: 'Unified Works / PLATFORM',
     heroTitle: 'Platform',
     heroAccent: 'overview',
     heroDesc: 'Unified Works supports infrastructure work documentation and contractor submissions for review, retaining photographs, observations, and decisions in a record for each activity',
@@ -240,6 +240,7 @@ function Photo(props) {
 }
 
 function PhotoContent({ src, alt, className = '', eager = false }) {
+  const { t } = useTranslation()
   const [failed, setFailed] = useState(false)
 
 
@@ -248,7 +249,7 @@ function PhotoContent({ src, alt, className = '', eager = false }) {
       {failed ? (
         <div className={styles.photoFallback}>
           <Layers3 size={30} />
-          <span>UNIFIED WORKS</span>
+          <span>{t('brand')}</span>
         </div>
       ) : (
         <img
@@ -339,7 +340,7 @@ function InteractivePhone({ activeFeature, ar }) {
                 />
                 <div>
                   <strong>
-                    {ar ? 'الأعمال الموحّدة' : 'UNIFIED WORKS'}
+                    {ar ? 'الاعمال الموحد' : 'Unified Works'}
                   </strong>
                   <small>{ar ? 'الأعمال الميدانية' : 'FIELD OPERATIONS'}</small>
                 </div>
@@ -581,7 +582,7 @@ export default function Platform() {
 
   useEffect(() => {
     document.title = ar
-      ? 'المنصة | الأعمال الموحّدة'
+      ? 'المنصة | الاعمال الموحد'
       : 'Platform | Unified Works'
   }, [ar])
 
@@ -640,7 +641,7 @@ export default function Platform() {
           </Reveal>
 
           <div className={styles.heroBottomLine}>
-            <span>{ar ? 'الأعمال الموحّدة / المنصة' : 'UNIFIED WORKS / PLATFORM'}</span>
+            <span>{ar ? 'الاعمال الموحد / المنصة' : 'Unified Works / PLATFORM'}</span>
             <span>01 — 03</span>
           </div>
         </div>
